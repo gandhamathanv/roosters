@@ -38,42 +38,19 @@
     </nav>
     
     <section class="header"><br><br>
-     <input value="AWB Number/Service ID 618-42747283"style="padding:10px;" > </input>
+     <input placeholder="AWB Number/Service ID"style="padding:10px;" > </input>
       <input type="text"  style="width: 120px;height: 40px;margin-top: 0ch;" placeholder="Customer Name">
-      <input type="submit" style="width:100px;height:40px" value="Search">
+      <input type="submit" onclick="myFunction()" value="Search">
       <th style="margin-left: 50px;"> Help<i class="fa-sharp fa-solid fa-question" ></i></th>
     </section>
     
     <br>
     <br>
-      <nav class="navbar1">
-    
-        <div class="navbar-options">
-        <div>
-          <label for="cn">Customer Name</label>
-          <h3 name="cn" >JUPITER SINGAPORE PTE LTD</h3> 
-          </div>
-          <br>
-          <div>
-          <label for="cn">AWD Number</label>
-          <h3 name="cn" >618-42747283</h3> 
-        </div><br>
-        <div>
-          <label for="cn">SHC</label>
-          <h3 name="cn" >VAL EAP EAW</h3> 
-        </div><br>
-        <div>
-          <label for="cn">Handling Area</label>
-          <h3 name="cn" >AFT1</h3> 
-        </div><br>
-        <div>
-          <label for="cn">Export/Import</label>
-          <h3 name="cn" >Import</h3> 
-        </div>
-        </div>
-       
-      </nav>
+    <div id="myDiv">
+   
 
+      <script>
+        const tempalte2=`
       <div style="margin-top:15px;"><h4>CHARGE ADVICE</h4></div>
       <section class="table-section">
         
@@ -110,9 +87,9 @@
           <tr>
            <td>WEIGHT VERIFICATION</td>
             
-           <td><input value="1000.0" class="table-input" /></td>
-           <td><input value="  " class="table-input" /></td>
-            <td><input value="3.00" class="table-input" /></td>
+           <td><input value="${Quantity}" class="table-input" /></td>
+           <td><input value="${Duration}" class="table-input" /></td>
+            <td><input value="${Amount}" class="table-input" /></td>
            <td>
   <select>
     <option value="cashier">Bill</option>
@@ -120,32 +97,32 @@
    
   </select>
 </td>
-<td><input value="   " class="table-input" /></td>
-<td><input value="   " class="table-input" /></td>
-<td><input value="   " class="table-input" /></td>
+<td><input value="${paid}" class="table-input" /></td>
+<td><input value="${recieptNumber}" class="table-input" /></td>
+<td><input value="${waivedAmount}" class="table-input" /></td>
 
           </tr>
           <tr>
             <td>DANGEROUS GOODS HANDLING FEE</td>
              
-            <td><input value="10.0" class="table-input" /></td>
-            <td><input value="  " class="table-input" /></td>
-             <td><input value="100.00" class="table-input" /></td>
+            <td><input value="${Quantity}" class="table-input" /></td>
+            <td><input value="${Duration}" class="table-input" /></td>
+             <td><input value="${Amount}" class="table-input" /></td>
              <td><input value="Collect" class="table-input" /></td>
              <td class="icon-table-column">
               <i class="fa fa-check" style="color:green" aria-hidden="true"></i>
             </td>
  
- <td><input value="100-09102917" class="table-input" /></td>
- <td><input value="   " class="table-input" /></td>
+ <td><input value="${recieptNumber}" class="table-input" /></td>
+ <td><input value="${waivedAmount}" class="table-input" /></td>
  
            </tr>
            <tr>
             <td>RCAR SCREENING FEE</td>
              
-            <td><input value="1000.0" class="table-input" /></td>
-            <td><input value="  " class="table-input" /></td>
-             <td><input value="900.00" class="table-input" /></td>
+            <td><input value="${Quantity}" class="table-input" /></td>
+            <td><input value="${Duration}" class="table-input" /></td>
+             <td><input value="${Amount}" class="table-input" /></td>
             <td>
    <select>
      <option value="cashier">Bill</option>
@@ -154,33 +131,33 @@
    </select>
  </td>
  <td><input value="   " class="table-input" /></td>
- <td><input value="   " class="table-input" /></td>
- <td><input value="   " class="table-input" /></td>
+ <td><input value="${recieptNumber}" class="table-input" /></td>
+ <td><input value="${waivedAmount}" class="table-input" /></td>
  
            </tr>
            <tr >
              <td style="text-align: right">To Collect</td>
               
-             <td><input value="  " class="table-input" /></td>
-             <td><input value="  " class="table-input" /></td>
-              <td><input value="1,378.00" class="table-input" /></td>
+             <td><input value="${Quantity}" class="table-input" /></td>
+             <td><input value="${Duration}" class="table-input" /></td>
+              <td><input value="${Amount}" class="table-input" /></td>
               <td><input value="  " class="table-input" /></td>
               <td><input value="  " class="table-input" /></td>
-              <td><input value="  " class="table-input" /></td>
-              <td><input value="  " class="table-input" /></td>
+              <td><input value="${recieptNumber}" class="table-input" /></td>
+              <td><input value="${waivedAmount}" class="table-input" /></td>
 
   
             </tr>
             <tr >
               <td style="text-align: right">To Bill</td>
                
-              <td><input value="  " class="table-input" /></td>
-              <td><input value="  " class="table-input" /></td>
-               <td><input value="0.00" class="table-input" /></td>
+              <td><input value="${Quantity}" class="table-input" /></td>
+              <td><input value="${Duration}" class="table-input" /></td>
+               <td><input value="${Amount}" class="table-input" /></td>
                <td><input value="  " class="table-input" /></td>
                <td><input value="  " class="table-input" /></td>
-               <td><input value="  " class="table-input" /></td>
-               <td><input value="  " class="table-input" /></td>
+               <td><input value="${recieptNumber}" class="table-input" /></td>
+               <td><input value="${waivedAmount}" class="table-input" /></td>
    
              </tr>
         </table>
@@ -192,9 +169,41 @@
         <input style="margin-right:15px;padding: 10px;" type="button" value="Make Payment">
         <input style="margin-right:15px;padding: 10px;" type="button" value="Add Service ">
        </div>
+      </div>
+`
+const template=`   <nav class="navbar1">
+    
+    <div class="navbar-options">
+    <div>
+      <label for="cn">Customer Name</label>
+      <h3 name="cn" >${CustomerName}</h3> 
+      </div>
+      <br>
+      <div>
+      <label for="cn">AWD Number</label>
+      <h3 name="cn" >${AWBNumber}</h3> 
+    </div><br>
+    <div>
+      <label for="cn">SHC</label>
+      <h3 name="cn" >${SHC}</h3> 
+    </div><br>
+    <div>
+      <label for="cn">${HandlingArea}</label>
+      <h3 name="cn" >AFT1</h3> 
+    </div><br>
+    <div>
+      <label for="cn">Export/Import</label>
+      <h3 name="cn" >${ExportImport}</h3> 
+    </div>
+    </div>
+   
+  </nav>`
+
+
+  const SearchButton=document.querySelector(".");
+  SearchButton.addEventListener("click",()=>{
+
+  })
+      </script>
   </body>
 </html>
-
-
-
-
