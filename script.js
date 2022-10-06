@@ -51,22 +51,22 @@ const data = [{
             waivedAmount: null,
         },
         ToCollect: {
-            Quantity: null,
-            Duration: null,
+            Quantity: " ",
+            Duration: " ",
             Amount: 1378.0,
-            CollectionMechanism: null,
-            paid: null,
-            recieptNumber: null,
-            waivedAmount: null,
+            CollectionMechanism: " ",
+            paid: " ",
+            recieptNumber: " ",
+            waivedAmount: " ",
         },
         ToBill: {
-            Quantity: null,
-            Duration: null,
+            Quantity: " ",
+            Duration: " ",
             Amount: 0.0,
-            CollectionMechanism: null,
-            paid: null,
-            recieptNumber: null,
-            waivedAmount: null,
+            CollectionMechanism: " ",
+            paid: " ",
+            recieptNumber: " ",
+            waivedAmount: " ",
         },
     },
 }, ];
@@ -117,32 +117,32 @@ const tabelContentTemlate = (el) => `
 
 </select>
 </td>
-<td><input value="${el.paid}" class="table-input" /></td>
-<td><input value="${el.recieptNumber}" class="table-input" /></td>
-<td><input value="${el.waivedAmount}" class="table-input" /></td>
+<td><input value="${el.WeightVerification.paid}" class="table-input" /></td>
+<td><input value="${el.WeightVerification.recieptNumber}" class="table-input" /></td>
+<td><input value="${el.WeightVerification.waivedAmount}" class="table-input" /></td>
 
     </tr>
     <tr>
       <td>DANGEROUS GOODS HANDLING FEE</td>
        
-      <td><input value="${el.Quantity}" class="table-input" /></td>
-      <td><input value="${el.Duration}" class="table-input" /></td>
-       <td><input value="${el.Amount}" class="table-input" /></td>
+      <td><input value="${el.DangerousGoodsHandlingFee.Quantity}" class="table-input" /></td>
+      <td><input value="${el.DangerousGoodsHandlingFee.Duration}" class="table-input" /></td>
+       <td><input value="${el.DangerousGoodsHandlingFee.Amount}" class="table-input" /></td>
        <td><input value="Collect" class="table-input" /></td>
        <td class="icon-table-column">
         <i class="fa fa-check" style="color:green" aria-hidden="true"></i>
       </td>
 
-<td><input value="${el.recieptNumber}" class="table-input" /></td>
-<td><input value="${el.waivedAmount}" class="table-input" /></td>
+<td><input value="${el.DangerousGoodsHandlingFee.recieptNumber}" class="table-input" /></td>
+<td><input value="${el.DangerousGoodsHandlingFee.waivedAmount}" class="table-input" /></td>
 
      </tr>
      <tr>
       <td>RCAR SCREENING FEE</td>
        
-      <td><input value="${el.Quantity}" class="table-input" /></td>
-      <td><input value="${el.Duration}" class="table-input" /></td>
-       <td><input value="${el.Amount}" class="table-input" /></td>
+      <td><input value="${el.RcarScreeningFee.Quantity}" class="table-input" /></td>
+      <td><input value="${el.RcarScreeningFee.Duration}" class="table-input" /></td>
+       <td><input value="${el.RcarScreeningFee.Amount}" class="table-input" /></td>
       <td>
 <select>
 <option value="cashier">Bill</option>
@@ -151,33 +151,33 @@ const tabelContentTemlate = (el) => `
 </select>
 </td>
 <td><input value="   " class="table-input" /></td>
-<td><input value="${el.recieptNumber}" class="table-input" /></td>
-<td><input value="${el.waivedAmount}" class="table-input" /></td>
+<td><input value="${el.RcarScreeningFee.recieptNumber}" class="table-input" /></td>
+<td><input value="${el.RcarScreeningFee.waivedAmount}" class="table-input" /></td>
 
      </tr>
      <tr >
        <td style="text-align: right">To Collect</td>
         
-       <td><input value="${el.Quantity}" class="table-input" /></td>
-       <td><input value="${el.Duration}" class="table-input" /></td>
-        <td><input value="${el.Amount}" class="table-input" /></td>
+       <td><input value="${el.ToCollect.Quantity}" class="table-input" /></td>
+       <td><input value="${el.ToCollect.Duration}" class="table-input" /></td>
+        <td><input value="${el.ToCollect.Amount}" class="table-input" /></td>
         <td><input value="  " class="table-input" /></td>
         <td><input value="  " class="table-input" /></td>
-        <td><input value="${el.recieptNumber}" class="table-input" /></td>
-        <td><input value="${el.waivedAmount}" class="table-input" /></td>
+        <td><input value="${el.ToCollect.recieptNumber}" class="table-input" /></td>
+        <td><input value="${el.ToCollect.waivedAmount}" class="table-input" /></td>
 
 
       </tr>
       <tr >
         <td style="text-align: right">To Bill</td>
          
-        <td><input value="${el.Quantity}" class="table-input" /></td>
-        <td><input value="${el.Duration}" class="table-input" /></td>
-         <td><input value="${el.Amount}" class="table-input" /></td>
+        <td><input value="${el.ToBill.Quantity}" class="table-input" /></td>
+        <td><input value="${el.ToBill.Duration}" class="table-input" /></td>
+         <td><input value="${el.ToBill.Amount}" class="table-input" /></td>
          <td><input value="  " class="table-input" /></td>
          <td><input value="  " class="table-input" /></td>
-         <td><input value="${el.recieptNumber}" class="table-input" /></td>
-         <td><input value="${el.waivedAmount}" class="table-input" /></td>
+         <td><input value="${el.ToBill.recieptNumber}" class="table-input" /></td>
+         <td><input value="${el.ToBill.waivedAmount}" class="table-input" /></td>
 
        </tr>
   </table>

@@ -7,22 +7,22 @@ const data=[{
     ChargeAdvice:{
         WeightVerification:{
             Quantity:1000.0,
-            Duration:null,
+            Duration:" ",
             Amount:3.00,
             CollectionMechanism:["BILL","COLLECT"],
             paid:false,
-            recieptNumber:null,
-            waivedAmount:null
+            recieptNumber:" ",
+            waivedAmount:" "
             
         },
         RcarScreeningFee:{
             Quantity:1000.0,
-            Duration:null,
+            Duration:" ",
             Amount:90.00,
             CollectionMechanism:["BILL","COLLECT"],
-            paid:false,
-            recieptNumber:null,
-            waivedAmount:null
+            paid:" ",
+            recieptNumber:" ",
+            waivedAmount:" "
             
         },
         FwbCreationServiceFee:{
@@ -56,23 +56,23 @@ const data=[{
             
         },
         ToCollect:{
-            Quantity:null,
-            Duration:null,
+            Quantity:" ",
+            Duration:" ",
             Amount:1378.00,
-            CollectionMechanism:null,
-            paid:null,
-            recieptNumber:null,
-            waivedAmount:null
+            CollectionMechanism:" ",
+            paid:" ",
+            recieptNumber:" ",
+            waivedAmount:" "
             
         },
         ToBill:{
-            Quantity:null,
-            Duration:null,
+            Quantity:" ",
+            Duration:" ",
             Amount:0.00,
-            CollectionMechanism:null,
-            paid:null,
-            recieptNumber:null,
-            waivedAmount:null
+            CollectionMechanism:" ",
+            paid:" ",
+            recieptNumber:" ",
+            waivedAmount:" "
             
         },
         
