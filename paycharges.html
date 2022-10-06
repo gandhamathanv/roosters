@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pay Charges</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+    <link rel="stylesheet" href="./waiver-limit.css" />
+  </head>
+
+  <body class="by">
+    <nav class="navbar">
+      <h3 class="heading">Pay Charges</h3>
+
+      <div class="navbar-options">
+        <div class="navbar-icons-container bg-white">
+          <i class="fa-solid fa-print icon"></i>
+          <p class="icon-name">Print</p>
+        </div>
+        <div class="navbar-icons-container bg-red">
+          <i class="fa-solid fa-xmark icon"></i>
+          <p class="icon-name">Cancel</p>
+        </div>
+        <div class="navbar-icons-container bg-green">
+          <i class="fa-regular fa-floppy-disk icon"></i>
+          <p class="icon-name">Save</p>
+        </div>
+        <div class="navbar-icons-container bg-white">
+          <i class="fa-solid fa-eraser icon"></i>
+          <p class="icon-name">Clear All</p>
+        </div>
+      </div>
+    </nav>
+    <br><br>
+    
+      <nav class="navbar1">
+    
+        <div class="navbar-options">
+        <div>
+          <label for="cn">Customer Name</label>
+          <h3 name="cn" >JUPITER SINGAPORE PTE LTD</h3> 
+          </div>
+          <br>
+          <div>
+          <label for="cn">AWB Number</label>
+          <h3 name="cn" >618-42747283</h3> 
+        </div><br>
+        <div>
+          <label for="cn">SHC</label>
+          <h3 name="cn" >VAL EAP EAW</h3> 
+        </div><br>
+        <div>
+          <label for="cn">Handling Area</label>
+          <h3 name="cn" >AFT1</h3> 
+        </div><br>
+        <div>
+          <label for="cn">Export/Import</label>
+          <h3 name="cn" >Import</h3> 
+        </div>
+        <div>
+            <label for="cn">Counter</label>
+            <h3 name="cn" >T5-L-01</h3> 
+          </div>
+          <div>
+            <input  style="padding: 10px" type="button" value="Set/Change Counter ">
+          </div>
+        </div>
+       
+      </nav>
+
+      <div style="margin-top:15px;"><h4>CHARGE</h4></div>
+      <div style="text-align:right;margin-right: 120px;">
+        <label for="cn">Total Amount</label>
+    <h3 name="cn">27.00</h3>
+</div>
+      <section class="table-section">
+        
+        <table class="table" >
+          <tr>
+            <th>Service Type</th>
+            <th>Quantity</th>
+            <th>Duration</th>
+            <th>Amount</th>
+           <th>Waived Amount</th>
+
+          </tr>
+          <tr>
+           <td>WEIGHT VERIFICATION</td>
+            
+           <td><input value="1000.0" class="table-input" /></td>
+           <td><input value="  " class="table-input" /></td>
+            <td><input value="3.00" class="table-input" /></td>
+           
+            <td><input value="   " class="table-input" /></td>
+
+          </tr>
+          <tr>
+            <td>RCAR SCREENING FEE</td>
+             
+            <td><input value="1000.0" class="table-input" /></td>
+            <td><input value="  " class="table-input" /></td>
+             <td><input value="9.00" class="table-input" /></td>
+           
+ <td><input value="3.00" class="table-input" /></td>
+ 
+           </tr>
+           <tr>
+            <td>FWB CREATION SERVICE FEE</td>
+             
+            <td><input value="1.0" class="table-input" /></td>
+            <td><input value="  " class="table-input" /></td>
+             <td><input value="18.00" class="table-input" /></td>
+            
+  
+ <td><input value="   " class="table-input" /></td>
+ 
+           </tr>
+           <tr >
+             <td style="text-align: right">To Collect</td>
+              
+             <td><input value="  " class="table-input" /></td>
+             <td><input value="  " class="table-input" /></td>
+              <td><input value="30.00" class="table-input" /></td>
+             <td><input value="3.00" class="table-input" /></td>
+  
+            </tr>
+        </table>
+      </section>
+      
+      <div style="margin-top:15px;">
+        <label for="rf">Recived from</label><br>
+        <input name="rf" type="text"  style="width: 120px;height: 40px;margin-top: 0ch;" placeholder="TIM WEE HOCK">
+    </div>
+      <div style="text-align:right;margin-right: 120px;">
+      
+        <input  style="padding: 10px" type="button" value="Add More ">
+      </div>
+        <section class="table-section">
+        
+        <table class="table" >
+          <tr>
+            <th>  </th>
+            <th>Mode</th>
+            <th>Issuing Bank</th>
+            <th>Transaction Number/Reference Number</th>
+           <th>Date</th>
+           <th>Tendered Amount</th>
+
+          </tr>
+          <tr>
+            <td>
+                
+            </td>
+           <td>
+            <select>
+                <option value="cash">CASH</option>
+                <option value="mco">MCO</option>
+                <option value="Cheque">CHEQUE</option>
+
+               
+              </select>
+           </td>
+            
+          
+           <td><input value="  " class="table-input" /></td>
+           
+           
+            <td><input value="   " class="table-input" /></td>
+            <td><input value="   " class="table-input" /></td>
+            <td><input value="3.00" class="table-input" /></td>
+
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+                <select>
+                    <option value="cash">CASH</option>
+                    <option value="mco">MCO</option>
+                    <option value="Cheque">CHEQUE</option>
+    
+                   
+                  </select>
+               </td>
+             
+            <td><input value="  " class="table-input" /></td>
+            <td><input value="GY999221" class="table-input" /></td>
+             <td><input value="  " class="table-input" /></td>
+             <td><input value="4.00" class="table-input" /></td>
+
+           
+ 
+ 
+           </tr>
+           <tr>
+            <td></td>
+            <td>
+                <select>
+                    <option value="cash">CASH</option>
+                    <option value="mco">MCO</option>
+                    <option value="Cheque">CHEQUE</option>
+    
+                   
+                  </select>
+               </td>
+             
+            <td><input value="BANK OF SINGAPORE(BOS)" class="table-input" /></td>
+            <td><input value="188823" class="table-input" /></td>
+             <td><input value="  " class="table-input" /></td>
+             <td><input value="20.00" class="table-input" /></td>
+           </tr>
+           <tr >
+            
+             <td><input value="  " class="table-input" /></td>
+             <td><input value="  " class="table-input" /></td>
+             <td><input value="  " class="table-input" /></td>
+             <td><input value="  " class="table-input" /></td>
+              <td>Total</td>
+             <td><input value="27.00" class="table-input" /></td>
+  
+            </tr>
+        </table>
+      </section>
+      <p style="font-weight: bolder;">Note:Check <a href="#">www.IATA.org</a> for updated rates</p>
+     
+     
+       
+     
+  </body>
+</html>
+
