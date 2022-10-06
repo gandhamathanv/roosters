@@ -28,7 +28,7 @@
             </div>
             <div class="navbar-icons-container bg-green">
                 <i class="fa-regular fa-floppy-disk icon"></i>
-                <p class="icon-name">Save</p>
+                <p class="icon-name" style="background-color: red">Save</p>
             </div>
             <div class="navbar-icons-container bg-white">
                 <i class="fa-solid fa-eraser icon"></i>
@@ -67,7 +67,27 @@
       <br />
 
       <section class="table-section">
-        <table class="tabel-content"></table>
+        <table>
+          <thead>
+            <tr>
+              <th>
+                AWB Number/Service ID
+                <i class="fa-solid fa-sort sort-tabel"></i>
+              </th>
+              <th>Actual Amount <i class="fa-solid fa-sort sort-tabel"></i></th>
+              <th>Waiver Amount <i class="fa-solid fa-sort sort-tabel"></i></th>
+              <th>Waiver By <i class="fa-solid fa-sort sort-tabel"></i></th>
+              <th>Waived Date <i class="fa-solid fa-sort sort-tabel"></i></th>
+              <th>Approver <i class="fa-solid fa-sort sort-tabel"></i></th>
+              <th>
+                Approval/Reject Date <i class="fa-solid fa-sort sort-tabel"></i>
+              </th>
+              <th>Status <i class="fa-solid fa-sort sort-tabel"></i></th>
+              <th>Approver Remark</th>
+            </tr>
+          </thead>
+          <tbody class="tabel-content"></tbody>
+        </table>
       </section>
     </section>
     <script src="./waive-approve.js"></script>

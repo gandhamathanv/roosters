@@ -1,6 +1,7 @@
+// DATA CONTENT FOR TABLE
 const dataContent = [{
-        AWBNumber: "616-01001001",
-        actualAmount: "1000.00",
+        AWBNumber: "616-01001005",
+        actualAmount: "100000.00",
         waiveAmount: "100.00",
         waiveBy: "GOKUL",
         waiveDate: "06OCT2022 15:28",
@@ -22,7 +23,7 @@ const dataContent = [{
     },
     {
         AWBNumber: "616-01001003",
-        actualAmount: "3000.00",
+        actualAmount: "3000000.00",
         waiveAmount: "300.00",
         waiveBy: "AAtarshinis",
         waiveDate: "05OCT2022 11:30",
@@ -33,13 +34,21 @@ const dataContent = [{
     },
 ];
 
+// USER VARIABLES
+const userVariables = {
+    sortTabel: null,
+};
+
+// QUERRY SELECTOR
 const tabelContent = document.querySelector(".tabel-content");
 const AWBNumber = document.getElementById("serviceID");
 const customerName = document.getElementById("customerName");
 const dateFrom = document.getElementById("dateFrom");
 const dateTo = document.getElementById("dateTo");
-
 const searchButton = document.querySelector(".search-button");
+const sortButton = document.querySelectorAll(".sort-tabel");
+
+// TABEL CONTENT TEMPLATE
 const content = (el) => ` <tr>
 <td>${el.AWBNumber}</td>
 <td>${el.actualAmount}</td>
@@ -52,66 +61,86 @@ const content = (el) => ` <tr>
 <td>${el.approverRemark}</td>
 </tr>`;
 
-const header = ` <tr>
-<th>AWB Number/Service ID  <i class="fa-solid fa-sort" id="AWBsort"></i></th>
-<th>Actual Amount <i class="fa-solid fa-sort"></i></th>
-<th>Waiver Amount <i class="fa-solid fa-sort"></i></th>
-<th>Waiver By <i class="fa-solid fa-sort"></i></th>
-<th>Waived Date <i class="fa-solid fa-sort"></i></th>
-<th>Approver <i class="fa-solid fa-sort"></i></th>
-<th>Approval/Reject Date <i class="fa-solid fa-sort"></i></th>
-<th>Status <i class="fa-solid fa-sort" id="statussort"></i></th>
-<th>Approver Remark <i class="fa-solid fa-sort"></i></th>
-</tr>`;
-
-// SET DATA
+// SET DATA FOR UI FUNCTION
 const setData = (data) => {
-    tabelContent.innerHTML = header;
     data.forEach((el) => {
         tabelContent.innerHTML += content(el);
     });
 };
-setData(dataContent);
+// SUB FUNCTIONS
 
-// SORT DATA
-const sortData = (data, placeholder) => {
-    return data.sort((a, b) => {
-        return a[placeholder] - b[placeholder];
-    });
+const sortString = (a, b, value) => {
+    let fa = a[value].toLowerCase(),
+        fb = b[value].toLowerCase();
+
+    if (fa < fb) {
+        return -1;
+    }
+    if (fa > fb) {
+        return 1;
+    }
+    return 0;
 };
-// SORTING FUNCTION
-console.log(sortData(dataContent));
+const sortNumber = (a, b, value) => b[value] - a[value];
+
+const sortDate = (a, b, value) => {
+    let da = new Date(a[value]),
+        db = new Date(b[value]);
+    return da - db;
+};
+
+// SORT DATA FUNCTION
+const sortData = (data, index) => {
+    switch (index) {
+        case 0:
+            data.sort((a, b) => sortString(a, b, "AWBNumber"));
+            break;
+        case 1:
+            data.sort((a, b) => sortNumber(a, b, "actualAmount"));
+            break;
+        case 2:
+            data.sort((a, b) => sortNumber(a, b, "waiveAmount"));
+            break;
+        case 3:
+            data.sort((a, b) => sortString(a, b, "waiveBy"));
+            break;
+        case 4:
+            data.sort((a, b) => sortDate(a, b, "waiveDate"));
+            break;
+        case 5:
+            data.sort((a, b) => sortString(a, b, "approver"));
+            break;
+        case 6:
+            data.sort((a, b) => sortDate(a, b, "statusDate"));
+            console.log("approver/reject dae");
+            break;
+        case 7:
+            data.sort((a, b) => sortString(a, b, "status"));
+
+            break;
+    }
+    console.log(data);
+};
 
 // FILTER FUNCTION
 const filterData = (data) => {
-    console.log(AWBNumber.value);
-    let flag = true;
-
-    return [data[2], data[3], data[1]];
-    return data.filter((el) => {
-        return AWBNumber.value.includes(el.AWBNumber);
-    });
+    // FIXME:   FILTER FUNCTION
 };
-console.log(AWBNumber);
-searchButton.addEventListener("click", () => {
-    setData(filterData(dataContent));
-});
-// const faSort = document.querySelectorAll(".fa-sort");
-// faSort.addEventListener("click", (e) => {
-//     console.log(e);
-//     setData(sortData);
-// });
 
-// sort
+// ADD EVENT LISTENER
 
-const AWBSort = document.getElementById("AWBsort");
-AWBSort.addEventListener("click", () => {
-    setData(sortData(dataContent, "AWBNumber"));
-});
-const statusSort = document.getElementById("statussort");
-statusSort.addEventListener("click", () => {
-    console.log("sort", sortData(dataContent, "status"));
-    setData(sortData(dataContent, "status"));
-});
+for (var i = 0; i < sortButton.length; i++) {
+    (function(index) {
+        sortButton[index].addEventListener("click", function() {
+            sortData(dataContent, index);
+        });
+    })(i);
+}
+
+// CALLING UI FUNCTION
+
+setData(dataContent);
+console.log(sortButton);
 
 // TODO: SYSTER PARAMS time esclaiton
+console.log(new Date(dataContent[0].waiveDate));
