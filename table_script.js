@@ -12,7 +12,7 @@ function edit_row(no) {
 
   console.log(name_data);
 
-  name.innerHTML = `<select type='text' id='name_text${no}' value=${name_data}><option value='Cashier' ${
+  name.innerHTML = `<select type='text' id='name_text${no}' ><option value='Cashier' ${
     name_data === "Cashier" ? "selected" : ""
   }>Cashier</option><option value='Cashier-Supervisor' ${
     name_data === "Cashier-Supervisor" ? "selected" : ""
@@ -84,7 +84,21 @@ function add_row() {
     document.getElementById("new_name").value = "";
     document.getElementById("new_country").value = "";
     document.getElementById("new_age").value = "";
+  } else {
+    setError("Please fill all the fields below");
   }
+}
+
+function setError(errorMessage) {
+  let errorContainer = document.querySelector(".error-container");
+
+  errorContainer.style.display = "flex";
+  let errorText = document.querySelector(".error-text");
+  errorText.innerText = errorMessage;
+
+  setTimeout(function () {
+    errorContainer.style.display = "none";
+  }, 5000); //
 }
 
 function take_print() {

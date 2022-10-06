@@ -32,8 +32,13 @@
         border: 1px #bbb solid;
       }
 
+      select {
+        margin-top: 10px 15px;
+      }
+
       input {
-        padding: 12px;
+        padding: 5px;
+        border: none;
       }
 
       button {
@@ -89,6 +94,27 @@
         </div>
       </div>
     </div>
+    <div
+      class="error-container"
+      style="
+        position: absolute;
+        top: 45;
+
+        width: 100%;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        transition: all 3s;
+        display: none;
+      "
+    >
+      <p
+        class="error-text"
+        style="color: #fa5252; padding: 10px 15px; border: 1px solid #fa5252"
+      >
+        Error Text
+      </p>
+    </div>
     <p
       style="
         padding: 10px;
@@ -104,11 +130,11 @@
       style="
         font-weight: bold;
         text-align: center;
-        margin-top: 20px;
+        margin-top: 70px;
         font-size: 15px;
       "
     >
-      Base Current Role : <span style="color: #40c057">INR</span>
+      Base Currency Role : <span style="color: #40c057">INR</span>
     </p>
     <div
       id="wrapper"
