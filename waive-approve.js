@@ -63,6 +63,7 @@ const content = (el) => ` <tr>
 
 // SET DATA FOR UI FUNCTION
 const setData = (data) => {
+    tabelContent.innerHTML = "";
     data.forEach((el) => {
         tabelContent.innerHTML += content(el);
     });
@@ -112,23 +113,32 @@ const sortData = (data, index) => {
             break;
         case 6:
             data.sort((a, b) => sortDate(a, b, "statusDate"));
-            console.log("approver/reject dae");
             break;
         case 7:
             data.sort((a, b) => sortString(a, b, "status"));
 
             break;
     }
-    console.log(data);
+    setData(data);
+    // console.log(dsata);
 };
 
 // FILTER FUNCTION
 const filterData = (data) => {
-    // FIXME:   FILTER FUNCTION
+    console.log(data);
+    console.log(AWBNumber.value);
+    let pattern = /(.*AWBNumber.value.*)/g;
+    const result = data.filter((el) => {
+        console.log(el.AWBNumber.match(pattern));
+        return el.AWBNumber.match(pattern);
+    });
+    console.log(result);
 };
 
 // ADD EVENT LISTENER
-
+// SEARCH BUTTON
+searchButton.addEventListener("click", (el) => filterData(dataContent));
+// SORT BUTTON
 for (var i = 0; i < sortButton.length; i++) {
     (function(index) {
         sortButton[index].addEventListener("click", function() {
@@ -142,5 +152,8 @@ for (var i = 0; i < sortButton.length; i++) {
 setData(dataContent);
 console.log(sortButton);
 
-// TODO: SYSTER PARAMS time esclaiton
 console.log(new Date(dataContent[0].waiveDate));
+
+// TODO: SYSTER PARAMS time esclaiton
+// TODO: SYSTER PARAMS tiptool
+// TODO: SYSTER PARAMS help
