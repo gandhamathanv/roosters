@@ -1,3 +1,8 @@
+const datas = [
+  { role: "Cashier", waiverLimit: 100.4, approvalLimit: 20.0 },
+  { role: "Cashier Supervisor", waiverLimit: 100.3, approvalLimit: 34.56 },
+];
+
 function edit_row(no) {
   document.getElementById("edit_button" + no).style.display = "none";
   document.getElementById("save_button" + no).style.display = "inline";
@@ -46,12 +51,28 @@ function delete_row(no) {
   document.getElementById("row" + no + "").outerHTML = "";
 }
 
-function add_row() {
-  var new_name = document.getElementById("new_name").value;
-  var new_country = document.getElementById("new_country").value;
-  var new_age = document.getElementById("new_age").value;
+function isFloat(n) {
+  return !isNaN(n) && !isNaN(parseFloat(n));
+}
 
-  if (new_name && new_country && new_age) {
+function add_row() {
+  var role = document.getElementById("new_name").value;
+  var waiverLimit = document.getElementById("new_country").value;
+  var approvalLimit = document.getElementById("new_age").value;
+
+  if (role && waiverLimit && approvalLimit) {
+    console.log(isFloat(waiverLimit) && isFloat(approvalLimit));
+    if (!(isFloat(waiverLimit) && isFloat(approvalLimit))) {
+      return setError("Please Provide the Correct Value");
+    }
+
+    const waiverLimitValue = parseFloat(waiverLimit);
+    const approvalLimitValue = parseFloat(approvalLimit);
+
+    if (waiverLimitValue < approvalLimitValue) {
+      setError("Waiver Limit must be Greater or Equal to Approved Limit");
+    }
+
     var table = document.getElementById("data_table");
     var table_len = table.rows.length - 1;
     var row = (table.insertRow(table_len).outerHTML =
@@ -60,15 +81,15 @@ function add_row() {
       "'><td id='name_row" +
       table_len +
       "'>" +
-      new_name +
+      role +
       "</td><td id='country_row" +
       table_len +
       "'>" +
-      new_country +
+      waiverLimit +
       "</td><td id='age_row" +
       table_len +
       "'>" +
-      new_age +
+      approvalLimit +
       "</td><td><button type='button' id='edit_button" +
       table_len +
       "' value='Edit' class='edit' onclick='edit_row(" +
