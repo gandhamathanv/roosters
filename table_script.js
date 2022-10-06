@@ -7,13 +7,13 @@ function edit_row(no) {
   document.getElementById("edit_button" + no).style.display = "none";
   document.getElementById("save_button" + no).style.display = "inline";
 
-  var name = document.getElementById("name_row" + no);
-  var country = document.getElementById("country_row" + no);
-  var age = document.getElementById("age_row" + no);
+  var role = document.getElementById("name_row" + no);
+  var waiverLimit = document.getElementById("country_row" + no);
+  var approvalLimit = document.getElementById("age_row" + no);
 
-  var name_data = name.innerHTML;
-  var country_data = country.innerHTML;
-  var age_data = age.innerHTML;
+  var name_data = role.innerHTML;
+  var country_data = waiverLimit.innerHTML;
+  var age_data = approvalLimit.innerHTML;
 
   console.log(name_data);
 
@@ -70,7 +70,9 @@ function add_row() {
     const approvalLimitValue = parseFloat(approvalLimit);
 
     if (waiverLimitValue < approvalLimitValue) {
-      setError("Waiver Limit must be Greater or Equal to Approved Limit");
+      return setError(
+        "Waiver Limit must be Greater or Equal to Approved Limit"
+      );
     }
 
     var table = document.getElementById("data_table");
