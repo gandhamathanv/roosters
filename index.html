@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.usebootstrap.com/bootstrap/3.3.7/css/bootstrap.min.css"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <title>Waiver Limit</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-family: "Roboto", sans-serif;
+      }
+      p{
+        margin:0;
+      }
+
+      .bg-white p {
+        color: #333;
+      }
+
+      table,
+      th,
+      td {
+        border: 2px solid #fff;
+        border-collapse: collapse;
+        padding: 1rem 2rem;
+        text-align: center;
+      }
+
+      th {
+        background-color: #748ffc;
+        color: #fff;
+      }
+
+      td {
+        box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+          rgba(17, 17, 26, 0.1) 0px 0px 8px;
+      }
+
+      select {
+        border: none;
+        font-size: 16px;
+        background-color: #fff;
+      }
+
+      select:focus {
+        border: 1px solid #748ffc;
+      }
+
+      .table-section {
+        margin-top: 3rem;
+
+        display: flex;
+        justify-content: flex-start;
+      }
+
+      .table-input {
+        padding: 10px;
+        font-size: inherit;
+        border: none;
+        width: 100px;
+      }
+      .main-input {
+        min-width: 200px;
+        box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.804);
+        border: 1px solid #748ffc;
+      }
+      .table-input:focus {
+        border: 1px solid #748ffc;
+      }
+
+      .element {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .element1 {
+        padding: 5px;
+        box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.158);
+        border-radius: 3px;
+      }
+      .element-head {
+        font-size: 18px;
+        font-weight: bolder;
+        color: #273746;
+      }
+      .innerelement {
+        width: fit-content;
+        gap: 18px;
+      }
+      .inside-select {
+        display: flex;
+        gap: 12px;
+      }
+
+      .section-footer {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        gap: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="navbar navbar-light" style="background-color: #4263eb; margin: 0;">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <h3 class="navbar-brand" style="color: #fff;font-size: 24px; font-weight: bold;">Charge Setup</h3>
+        </div>
+        <ul class="nav navbar-nav navbar-right" style="margin:auto ;margin-top:20px; padding:auto">
+        <li><div class="navbar-icons-container" style="border-radius: 7px;
+          padding: 10px 18px;
+          display: flex;
+          background: #fff;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          margin-right: 5px;">
+          <i class="fa-solid fa-print" style="font-size: 16px;
+        color: #333;
+        margin-right: 16px;"></i>
+          <p>Print</p>
+        </div>
+        </li>
+        <li>
+        <div class="navbar-icons-container" style="border-radius: 7px;
+        padding: 10px 18px;
+        background-color: #bb8fce;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        margin-right: 5px;">
+          <i class="fa-solid fa-trash" style="font-size: 16px;
+        color: #fff;
+        margin-right: 16px;"></i>
+          <p style="color: #fff;">Delete</p>
+        </div>
+      </li>
+
+      <li>
+        <div class="navbar-icons-container bg-red" style="border-radius: 7px;
+        padding: 10px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        background-color: #fa5252;
+        margin-right: 5px;">
+          <i class="fa-solid fa-xmark" style="font-size: 16px;
+        color: #fff;
+        margin-right: 16px;"></i>
+          <p style="color: #fff;">Cancel</p>
+        </div>
+        </li>
+        <li>
+        <div class="navbar-icons-container bg-green" style="border-radius: 7px;
+        padding: 10px 18px;
+        background-color: #40c057;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        margin-right: 5px;">
+          <i class="fa-regular fa-floppy-disk" style="font-size: 16px;
+        color: #fff;
+        margin-right: 16px;"></i>
+          <p style="color: #fff;">Save</p>
+        </div>
+        </li>
+        <li>
+        <div class="navbar-icons-container" style="border-radius: 7px;
+        padding: 10px 18px;
+        display: flex;
+        align-items: center;
+        background: #fff;
+        justify-content: center;
+        cursor: pointer;">
+          <i class="fa-solid fa-eraser" style="font-size: 16px;
+        color: #333;
+        margin-right: 16px;"></i>
+          <p >Clear All</p>
+        </div>
+        </li>
+      </ul>
+      </div>
+    </div>
+    <section class="main-section" style="padding: 4rem 1rem;
+    border: 1rem #4263eb solid;
+    border-top: none;
+    border-bottom: none;">
+      
+      <div class="block">
+        <div class="row">
+          <div class="col-md-3 element innerelement">
+            <h3 class="element-head">Charge Code</h3>
+            <input
+              class="form-contol"
+              style="
+                padding: 10px;
+                font-size: inherit;
+                border: none;
+                width: 100px;
+                min-width: 200px;
+                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                border-radius: 2px;
+              "
+              placeholder="Export Storage Charge"
+              type="text"
+            />
+          </div>
+          <div class="col-md-3 element innerelement">
+            <h3 class="element-head">Charge Code Description</h3>
+            <input
+              class="form-contol"
+              style="
+                padding: 10px;
+                font-size: inherit;
+                border: none;
+                width: 100px;
+                min-width: 200px;
+                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                border-radius: 2px;
+              "
+              placeholder="Cargo Storage Charges"
+              type="text"
+            />
+          </div>
+
+          <div class="col-md-3 element innerelement">
+            <h3 class="element-head">Active From</h3>
+            <input placeholder="Start Date" class="form-contol"
+            style="
+              padding: 10px;
+              font-size: inherit;
+              border: none;
+              width: 100px;
+              min-width: 200px;
+              box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                border-radius: 2px;
+            " type="text" onfocus="(this.type='date')" id="date" onblur="(this.type='text')">
+          </div>
+          <div class="col-md-3 element innerelement">
+            <h3 class="element-head">To</h3>
+            <input placeholder="End Date" class="form-contol"
+            style="
+              padding: 10px;
+              font-size: inherit;
+              border: none;
+              width: 100px;
+              min-width: 200px;
+              box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                border-radius: 2px;
+            " type="text" onfocus="(this.type='date')" id="date" onblur="(this.type='text')">
+          </div>
+        </div>
+</div>
+        <div class="row">
+          <div class="col-md-2 element innerelement">
+            <h3 class="element-head">Default Payment Type</h3>
+            <select
+              class="form-contol"
+              style="
+                padding: 10px;
+                font-size: inherit;
+                border: none;
+                width: 100px;
+                min-width: 200px;
+                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                border-radius: 2px;
+              "
+            >
+              <option value="cashier">Collect</option>
+              <option value="cashier-supervisor">Cashier Supervisor</option>
+              <option value="finance-manager">Finance-Manager</option>
+            </select>
+          </div>
+          <div class="col-md-2 element innerelement">
+            <h3 class="element-head">Verify before Post</h3>
+            <select
+              class="form-contol"
+              style="
+                padding: 10px;
+                font-size: inherit;
+                border: none;
+                width: 100px;
+                min-width: 200px;
+                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                border-radius: 2px;
+              "
+            >
+              <option value="cashier">Not Required</option>
+              <option value="cashier-supervisor">Cashier Supervisor</option>
+              <option value="finance-manager">Finance-Manager</option>
+            </select>
+          </div>
+          <div class="col-md-2 element innerelement">
+            <h3 class="element-head">Event Type/Activity</h3>
+            <select
+              class="form-contol"
+              style="
+                padding: 10px;
+                font-size: inherit;
+                border: none;
+                width: 100px;
+                min-width: 200px;
+                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                border-radius: 2px;
+              "
+            >
+              <option value="cashier">Export-Acceptance</option>
+              <option value="cashier-supervisor">Cashier Supervisor</option>
+              <option value="finance-manager">Finance-Manager</option>
+            </select>
+          </div>
+          <div class="col-md-2 element innerelement">
+            <h3 class="element-head">Process Type</h3>
+            <select
+              class="form-contol"
+              style="
+                padding: 10px;
+                font-size: inherit;
+                border: none;
+                width: 100px;
+                min-width: 200px;
+                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                border-radius: 2px;
+              "
+            >
+              <option value="cashier">Export</option>
+              <option value="cashier-supervisor">Cashier Supervisor</option>
+              <option value="finance-manager">Finance-Manager</option>
+            </select>
+          </div>
+          <div class="col-md-2 element innerelement">
+            <h3 class="element-head">Effective Start Date Parameter</h3>
+            <div class="inside-select">
+              <!-- <input
+              display="block"
+              class="form-contol"
+              style="
+                padding: 10px;
+                font-size: inherit;
+                border: none;
+                width: 100px;
+                min-width: 200px;
+                box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.804);
+              "
+              placeholder="Start Date"
+              type="date"
+            /> -->
+            <input placeholder="Acceptance Date" class="form-contol"
+            style="
+              padding: 10px;
+              font-size: inherit;
+              border: none;
+              width: 100px;
+              min-width: 200px;
+              box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                border-radius: 2px;
+            " type="text" onfocus="(this.type='date')" id="date" onblur="(this.type='text')">
+            <input placeholder="Export First Flight Date" class="form-contol"
+            style="
+              padding: 10px;
+              font-size: inherit;
+              border: none;
+              width: 100px;
+              min-width: 200px;
+              box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                border-radius: 2px;
+            " type="text" onfocus="(this.type='date')" id="date" onblur="(this.type='text')">
+            
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="table-section">
+        <div class="table-responsive">
+        <table>
+          <tr>
+            <th rowspan="2" colspan="4">Charge Factor</th>
+            <th colspan="2">Chargable</th>
+          </tr>
+          <tr>
+            <th colspan="2">Quantity parameters</th>
+          </tr>
+          <tr>
+            <td><input value="RACR" class="table-input" /></td>
+            <td><input value="Flight Type" class="table-input" /></td>
+            <td><input value="Process Type" class="table-input" /></td>
+            <td><input value="Agent" class="table-input" /></td>
+            <td>
+              <select>
+                <option value="cashier">Weight</option>
+                <option value="cashier-supervisor">Cashier Supervisor</option>
+                <option value="finance-manager">Finance-Manager</option>
+              </select>
+            </td>
+            <td>
+              <select>
+                <option value="cashier">NA</option>
+                <option value="cashier-supervisor">Cashier Supervisor</option>
+                <option value="finance-manager">Finance-Manager</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+        </div>
+      </section>
+      <section class="table-section">
+        <table>
+          <tr>
+            <th colspan="3">Other parameters</th>
+          </tr>
+          <tr>
+            <td><input value="" class="table-input" /></td>
+            <td><input value="" class="table-input" /></td>
+            <td><input value="" class="table-input" /></td>
+          </tr>
+        </table>
+      </section>
+    </section>
+    <div class="section-footer" style="padding:5px; border: 1rem #4263eb solid;
+    border-top: none;">
+      <div style=" background-color: #748ffc;
+      padding: 10px;
+      border-radius: 7px;
+      margin-bottom: 10px;"><a href="*" class="btn-block"
+        style="color: white; text-decoration: none">Factor Setup</a></div>
+      <div style=" background-color: #748ffc;
+      padding: 10px;
+      border-radius: 7px;
+      margin-bottom: 10px;">
+        <a href="*"
+        class="btn-block"
+            style="color: white; text-decoration: none"
+          >Charge Posting Configuration</a
+        >
+      </div>
+    </div>
+  </body>
+</html>
