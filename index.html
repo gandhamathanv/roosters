@@ -1,267 +1,114 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>List Service Request</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./index.css" />
 
-<head>
-  <link rel="stylesheet" href="https://cdn.usebootstrap.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  </head>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
-  <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      table,
-      td {
-        border: 1px solid #bbb;
-        border-collapse: collapse;
-      }
-
-      th,
-      td {
-        padding: 8px 10px;
-      }
-
-      input,
-      select {
-        border: 1px #bbb solid;
-      }
-
-      select {
-        padding: 5px;
-        border: none
-      }
-
-      input {
-        padding: 5px;
-        border: none;
-        border-radius: 5px;
-      }
-
-      input::placeholder{
-        text-align: center;
-      }
-
-      button {
-        background: none;
-        border: none;
-        padding: 0 10px;
-      }
-      
-      input:focus,select:focus{
-        border: none;
-        outline: 2px solid #748ffc;
-      }
-
-      .tooltip-container {
-         position: relative;
-        display: inline-block;
- 
-        }
-
-      /* Tooltip text */
-      .tooltip-container .tooltip-text {
-        visibility: hidden;
-        width: 120px;
-        background-color: black;
-        color: #fff;
-        text-align: center;
-        padding: 5px 0;
-        border-radius: 6px;
-        
-        font-size: 12px;
-        font-weight: normal;
-
-        width: 120px;
-        top: 100%;
-        left: 50%;
-        margin-left: -60px;
-      
-        /* Position the tooltip text - see examples below! */
-        position: absolute;
-        z-index: 1;
-      } 
-
-      tr{
-        text-align: center;
-      }
-
-      /* Show the tooltip text when you mouse over the tooltip container */
-      .tooltip-container:hover .tooltip-text {
-        visibility: visible;
-      }
-
-      .error-field{
-        outline: #fa5252 1px solid;
-      }
-
-    </style>
-
-
-</head>
-
-<body>
-  <div>
-    <div style="
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 0 50px;
-          background-color: #4263eb;
-        ">
-      <h3 style="color: white; font-weight: 600">Waiver Authority Master</h3>
-      <div style="display: flex; gap: 15px">
-        <div style="
-              display: flex;
-              align-items: center;
-              gap: 10px 12px;
-              padding: 12px;
-              background-color: white;
-              border-radius: 5px;
-            "
-          onclick="take_print()">
-          <i class="fa-solid fa-print" style="font-size: 12px"> </i>
-          <p style="font-size: 16px; margin: 0">Print</p>
+  <body>
+    <nav class="navbar">
+      <h3 class="heading">List  of Service Requests</h3>
+      <div class="navbar-options">
+        <div class="navbar-icons-container bg-white">
+          <i class="fa-solid fa-print icon"></i>
+          <p class="icon-name" onclick="window.print()">Print</p>
         </div>
-        <div style="
-              display: flex;
-              align-items: center;
-              gap: 12px;
-              padding: 5px 12px;
-              background-color: #fa5252;
-              color: white;
-              border-radius: 5px;
-            ">
-          <i class="fa-solid fa-xmark" style="font-size: 12px"></i>
-          <p style="font-size: 16px; margin: 0">Cancel</p>
+        <div class="navbar-icons-container bg-red">
+          <i class="fa-solid fa-xmark icon"></i>
+          <p class="icon-name" onclick="window.close()">Cancel</p>
+        </div>
+        <div class="navbar-icons-container bg-green">
+          <i class="fa-regular fa-floppy-disk icon"></i>
+          <p class="icon-name">Save</p>
+        </div>
+        <div class="navbar-icons-container bg-white">
+          <i class="fa-solid fa-eraser icon"></i>
+          <p class="icon-name">Clear All</p>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="error-container" style="
-        position: absolute;
-        top: 45;
+    </nav>
+    <section class="main-section">
+      <section class="section-1">
+        <div>
+          <label class="custom-field one">
+            <input type="text" id="serviceName" placeholder=" " />
+            <span class="placeholder">Service Name</span>
+          </label>
+          <label class="custom-field one">
+            <input type="text" id="customerName" placeholder=" " />
+            <span class="placeholder">Customer Name</span>
+          </label>
+          <label class="custom-field one">
+            <input type="text" id="serviceID" placeholder=" " />
+            <span class="placeholder">AWB Number</span>
+          </label>
+          <label class="custom-field one">
+            <input type="text" id="ULDNumber" placeholder=" " />
+            <span class="placeholder">ULD Number</span>
+          </label>
+          <label class="custom-field one">
+            <input type="text" id="Flight" placeholder=" " />
+            <span class="placeholder">Flight Number</span>
+          </label>
+          <label class="custom-field one">
+            <input type="text" id="Date" placeholder=" " />
+            <span class="placeholder">Date</span>
+          </label>
+        </div>
+        <div>
+          <label class="custom-field one">
+            <input type="date" id="dateFrom" placeholder=" " />
+            <span class="placeholder">Date From</span>
+          </label>
+          <label class="custom-field one">
+            <input type="date" id="dateTo" placeholder=" " />
+            <span class="placeholder">Date To</span>
+          </label>
+        </div>
 
-        width: 100%;
-        margin-top: 20px;
-        display: flex;
-        justify-content: center;
-        transition: all 3s;
-        display: none;
-      ">
-
-    <p class="error-text" style="color: #fa5252; padding: 10px 15px; border: 1px solid #fa5252">
-      Error Text
-    </p>
-  </div>
-  <p class="tooltip-container" style="
-        padding: 10px;
-        position: absolute;
-        right: 50px;
-        font-size: 14px;
-        cursor: pointer;
-    
-      ">
-
-    Help ?
-
-    <span class="tooltip-text">
-      Role contains the role of the user<br><br>Waiver Limit contains the maximum amount he/she can discount<br><br>
-    </span> </p>
-  <p style="
-        font-weight: bold;
-        text-align: center;
-        margin-top: 70px;
-        font-size: 15px;
-      ">
-    Base Currency Role : <span style="color: #40c057">INR</span>
-  </p>
-  <div id="wrapper" style="
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      ">
-    <table align="center" cellspacing="2" cellpadding="5" id="data_table" class="table" border="1">
-      <tr>
-        <th style="text-align: center; background-color: #748ffc; color: white;width: 350px">
-          <p class="tooltip-container">Role <span class="tooltip-text">Role of the user</span></p>
-        </th>
-        <th style="text-align: center; background-color: #748ffc; color: white">
-          <p class="tooltip-container">Waiver Limit<span class="tooltip-text">Waiver Limit of the user</span></p>
-        </th>
-        <th style="text-align: center; background-color: #748ffc; color: white">
-          <p class="tooltip-container">Approval Limit<span class="tooltip-text">Approval Limit of the user</span></p>
-        </th>
-        <th style="background-color: #748ffc"></th>
-      </tr>
-
-      <tr id="row1">
-        <td id="name_row1">Cashier</td>
-        <td id="country_row1">100.40</td>
-        <td id="age_row1">20.00</td>
-        <td>
-          <button type="button" id="edit_button1" value="Edit" class="edit" onclick="edit_row('1')">
-            <i class="fa-solid fa-pen"></i>
-          </button>
-          <button type="button" id="save_button1" value="Save" class="save" onclick="save_row('1')" style="display: none">
-            <i class="fa-regular fa-floppy-disk"></i>
-          </button>
-          <button type="button" value="Delete" class="delete" onclick="delete_row('1')">
-            <i class="fa-solid fa-trash"></i>
-          </button>
-        </td>
-      </tr>
-
-      <tr id="row2">
-        <td id="name_row2">Cashier Supervisor</td>
-        <td id="country_row2">100.3</td>
-        <td id="age_row2">34.56</td>
-        <td>
-          <button type="button" id="edit_button2" value="Edit" class="edit" onclick="edit_row('2')">
-            <i class="fa-solid fa-pen"></i>
-          </button>
-          <button type="button" id="save_button2" value="Save" class="save" style="display: none" onclick="save_row('2')">
-            <i class="fa-regular fa-floppy-disk"></i>
-          </button>
-          <button type="button" value="Delete" class="delete" onclick="delete_row('2')">
-            <i class="fa-solid fa-trash"></i>
-          </button>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <select type="text" id="new_name" placeholder="Role ?">
-            <option value="" selected hidden>Role ?</option>
-            <option value="Cashier">Cashier</option>
-            <option value="Cashier Supervisor">Cashier Supervisor</option>
-            <option value="Finance Manager">Finace Manager</option>
-          </select>
-        </td>
-        <td>
-          <input type="text" id="new_country" placeholder="Waiver Limit ?" />
-        </td>
-        <td>
-          <input type="text" id="new_age" placeholder="Approval Limit ?" />
-        </td>
-        <td>
-          <button type="button" class="add" onclick="add_row();" value="Add Row" style="
-                background-color: #748ffc;
-                padding: 5px 10px;
-                border-radius: 5px;
-                color: #fff;
-              ">
-            Add New
-          </button>
-        </td>
-      </tr>
-    </table>
-  </div>
-</body>
-
-<script type="text/javascript" src="./table_script.js" defer></script>
-<!-- <script type="module" src="./print.js" defer></script> -->
-
+        <div>
+          <span href="*" class="button-primary button-add search-button"
+            >search</span
+          >
+        </div>
+      </section>
+      <br />
+      <section class="table-section">
+        <table>
+          <thead>
+            <tr>
+              <th>
+                Service Requested
+                <i class="fa-solid fa-sort sort-tabel"></i>
+              </th>
+              <th>Chargable<i class="fa-solid fa-sort sort-tabel"></i></th>
+              <!-- <th>Chargeable<div style="display:flex; flex-direction: column;"><i class="fa-solid fa-sort-up sort-tabel1" style="padding:0"></i><i class="fa-solid fa-sort-down sort-tabel"></i></div></th> -->
+              <th>Customer<i class="fa-solid fa-sort sort-tabel"></i></th>
+              <th>AWB Number <i class="fa-solid fa-sort sort-tabel"></i></th>
+              <th>ULD Number <i class="fa-solid fa-sort sort-tabel"></i></th>
+              <th>Flight/Date<i class="fa-solid fa-sort sort-tabel"></i></th>
+              <th>
+                Requested Date & Time <i class="fa-solid fa-sort sort-tabel"></i>
+              </th>
+              <th>
+                Remarks</i>
+              </th>
+              <th>Status <i class="fa-solid fa-sort sort-tabel"></i></th>
+              <th>Reason for Rejection</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody class="tabel-content"></tbody>
+        </table>
+      </section>
+    <script src="./index.js"></script>
+  </body>
 </html>
