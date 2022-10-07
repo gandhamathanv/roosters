@@ -19,11 +19,11 @@ function edit_row(no) {
 
   name.innerHTML = `<select type='text' id='name_text${no}' ><option value='Cashier' ${
     name_data === "Cashier" ? "selected" : ""
-  }>Cashier</option><option value='Cashier-Supervisor' ${
+    }>Cashier</option><option value='Cashier-Supervisor' ${
     name_data === "Cashier-Supervisor" ? "selected" : ""
-  }>Cashier Supervisor</option><option value='Finance Manager' ${
+    }>Cashier Supervisor</option><option value='Finance Manager' ${
     name_data === "Finance Manager" ? "seleceted" : ""
-  }>Finance Manager</option></select>`;
+    }>Finance Manager</option></select>`;
   country.innerHTML =
     "<input type='text' id='country_text" +
     no +
