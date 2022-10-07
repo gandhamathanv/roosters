@@ -85,10 +85,11 @@ const content = (el, index) => ` <tr id="row${index}">
 <td id="remarks${index}">${el.Remarks}</td>
 <td id="status${index}">${el.Status}</td>
 <td id="reason${index}">${el.ReasonforRejection}</td>
-<td id="service${index}">
+<td id="toolbox${index}">
 <div style="display:flex; gap:15px">
-<i onclick="edit_row(${index})" class="fa-solid fa-pen" id="AWBsort"></i>
-<i class="fa-solid fa-trash"></i>
+<i id="edit-button-${index}" onclick="edit_row(${index})" class="fa-solid fa-pen" id="AWBsort"></i>
+<i id="save-button-${index}" onclick="save_row(${index})" class="fa-regular fa-floppy-disk" style="display:none"></i>
+<i id="delete-button-${index}" onclick="delete_row(${index})" class="fa-solid fa-trash"></i>
 </div>
 </td>
 </tr>`;
@@ -258,5 +259,105 @@ for (var i = 0; i < sortButton.length; i++) {
 setData(dataContent);
 
 function edit_row(index) {
-  // const servicerequestedfil
+
+  document.getElementById("edit-button-" + index).style.display = 'none';
+  document.getElementById("save-button-" + index).style.display = 'inline'
+
+  const service = document.getElementById('service' + index);
+  const chargable = document.getElementById('chargable' + index);
+  const customer = document.getElementById('customer' + index);
+  const awbnumber = document.getElementById('awbnumber' + index);
+  const uldnumber = document.getElementById('uldnumber' + index);
+  const flightdate = document.getElementById('flightdate' + index);
+  const requesteddate = document.getElementById('requesteddate' + index);
+  const remarks = document.getElementById('remarks' + index);
+  const status = document.getElementById('status' + index);
+  const reason = document.getElementById('reason' + index);
+
+
+  const serviceValue = service.innerHTML;
+  const chargableValue = chargable.innerHTML;
+  const customerValue = customer.innerHTML;
+  const awbnumberValue = awbnumber.innerHTML
+  const uldnumberValue = uldnumber.innerHTML
+  const flightDateValue = flightdate.innerHTML;
+  const requesteddateValue = requesteddate.innerHTML;
+  const remarksValue = remarks.innerHTML;
+  const statusValue = status.innerHTML;
+  const reasonValue = reason.innerHTML;
+
+
+
+  console.log(serviceValue, chargableValue, customerValue, awbnumberValue, uldnumberValue, flightDateValue, requesteddateValue, remarksValue, statusValue, reasonValue);
+
+  service.innerHTML = `<input id="service_text${index}" value=${serviceValue} />`
+  chargable.innerHTML = `<input id="charge_text${index}" value=${chargableValue} />`
+  customer.innerHTML = `<input id="customer_text${index}" value=${customerValue} />`
+  awbnumber.innerHTML = `<input id="awb_text${index}" value=${awbnumberValue} />`
+  uldnumber.innerHTML = `<input id="uld_text${index}" value=${uldnumberValue} />`
+  flightdate.innerHTML = `<input id="flight_text${index}" value=${flightDateValue} />`
+  requesteddate.innerHTML = `<input id="request_text${index}" value=${requesteddateValue} />`
+  remarks.innerHTML = `<input id="remarks_text${index}" value=${remarksValue} />`
+  status.innerHTML = `<input id="status_text${index}" value=${statusValue} />`
+  reason.innerHTML = `<input id="reason_text${index}" value=${reasonValue} />`
+
+}
+
+function delete_row(index) {
+  console.log("Delete", index);
+  console.log({ dataContent });
+
+  dataContent.splice(index, 1)
+
+  console.log({ dataContent });
+
+  setData(dataContent)
+}
+
+
+function save_row(index) {
+  document.getElementById("edit-button-" + index).style.display = 'inline';
+  document.getElementById("save-button-" + index).style.display = 'none';
+
+
+  const service = document.getElementById('service_text' + index);
+  const chargable = document.getElementById('charge_text' + index);
+  const customer = document.getElementById('customer_text' + index);
+  const awbnumber = document.getElementById('awb_text' + index);
+  const uldnumber = document.getElementById('uld_text' + index);
+  let flightdate = document.getElementById('flight_text' + index);
+  const requesteddate = document.getElementById('request_text' + index);
+  const remarks = document.getElementById('remarks_text' + index);
+  const status = document.getElementById('status_text' + index);
+  const reason = document.getElementById('reason_text' + index);
+
+
+  const serviceValue = service.value;
+  const chargableValue = chargable.value;
+  const customerValue = customer.value;
+  const awbnumberValue = awbnumber.value
+  const uldnumberValue = uldnumber.value
+  const flightDateValue = flightdate.value;
+  const requesteddateValue = requesteddate.value;
+  const remarksValue = remarks.value;
+  const statusValue = status.value;
+  const reasonValue = reason.value;
+
+
+  // service.parentNode.innerHTML = serviceValue
+  // console.log(service.parentNode);
+  console.log(flightDateValue);
+  service.parentNode.innerHTML = serviceValue;
+  chargable.parentNode.innerHTML = chargableValue;
+  customer.parentNode.innerHTML = customerValue;
+  awbnumber.parentNode.innerHTML = awbnumberValue;
+  uldnumber.parentNode.innerHTML = uldnumberValue;
+  flightdate.parentNode.innerHTML = flightDateValue;
+  requesteddate.parentNode.innerHTML = requesteddateValue;
+  remarks.parentNode.innerHTML = remarksValue;
+  status.parentNode.innerHTML = statusValue;
+  reason.parentNode.innerHTML = reasonValue
+
+  dataContent[index] = { Servicerequested: serviceValue, Chargable: chargableValue, Customer: customerValue }
+
 }
