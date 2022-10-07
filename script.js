@@ -4,8 +4,9 @@ const data = [{
     SHC: "VAL EAP EAW",
     HandlingArea: "AFT1",
     ExportImport: "Import",
-    ChargeAdvice: {
-        WeightVerification: {
+    ChargeAdvice: [
+       {
+        title:" WeightVerification: ",
             Quantity: 1000.0,
             Duration: null,
             Amount: 3.0,
@@ -14,7 +15,8 @@ const data = [{
             recieptNumber: null,
             waivedAmount: null,
         },
-        RcarScreeningFee: {
+        {
+          title:" RcarScreeningFee",
             Quantity: 1000.0,
             Duration: null,
             Amount: 90.0,
@@ -23,7 +25,9 @@ const data = [{
             recieptNumber: null,
             waivedAmount: null,
         },
-        FwbCreationServiceFee: {
+        {
+
+          title:" FwbCreationServiceFee",
             Quantity: 1.0,
             Duration: null,
             Amount: 18.0,
@@ -32,7 +36,8 @@ const data = [{
             recieptNumber: null,
             waivedAmount: null,
         },
-        DangerousGoodsHandlingFee: {
+         {
+          title:"DangerousGoodsHandlingFee:",
             Quantity: 10.0,
             Duration: null,
             Amount: 100.0,
@@ -41,7 +46,8 @@ const data = [{
             recieptNumber: "100-09102917",
             waivedAmount: null,
         },
-        ForkLiftCharges: {
+        {
+          title:"ForkLiftCharges:",
             Quantity: null,
             Duration: 3,
             Amount: 360.0,
@@ -50,26 +56,9 @@ const data = [{
             recieptNumber: "100-09102917",
             waivedAmount: null,
         },
-        ToCollect: {
-            Quantity: " ",
-            Duration: " ",
-            Amount: 1378.0,
-            CollectionMechanism: " ",
-            paid: " ",
-            recieptNumber: " ",
-            waivedAmount: " ",
-        },
-        ToBill: {
-            Quantity: " ",
-            Duration: " ",
-            Amount: 0.0,
-            CollectionMechanism: " ",
-            paid: " ",
-            recieptNumber: " ",
-            waivedAmount: " ",
-        },
-    },
-}, ];
+      ]
+    }]
+;
 const tabelContentTemlate = (el) => `
 <div style="margin-top:15px;margin-left:15px"><h2>CHARGE ADVICE</h2></div>
 <section class="table-section">
