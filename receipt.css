@@ -15,12 +15,13 @@ body{
     border-width:1px;
 }
 .left{
-    position: absolute;
+   
     clear: both;
 }
 .right{
     position: relative;
     float: right;
+    
     margin-right: 300px;
     clear: both;
 }

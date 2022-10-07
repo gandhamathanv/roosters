@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Waive Charges </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="waiver-style.css" />
+    <script type="text/javascript" src="main.js" charset="UTF-8"></script>
+
+
+  </head>
+
+  <body>
+    <body class="by">
+        <nav class="navbar">
+            <h3 class="heading">Waiver Charges</h3>
+    
+            <div class="navbar-options">
+                <div class="navbar-icons-container bg-white">
+                    <i class="fa-solid fa-print icon"></i>
+                    <p class="icon-name" onclick="window.print()">Print</p>
+                </div>
+                <div class="navbar-icons-container bg-red">
+                    <i class="fa-solid fa-xmark icon"></i>
+                    <p class="icon-name" onclick="window.close()">Cancel</p>
+                </div>
+                <div class="navbar-icons-container bg-green">
+                    <i class="fa-regular fa-floppy-disk icon"></i>
+                    <p class="icon-name">Save</p>
+                </div>
+                <div class="navbar-icons-container bg-white">
+                    <i class="fa-solid fa-eraser icon"></i>
+                    <p class="icon-name">Clear All</p>
+                </div>
+            </div>
+        </nav>
+    <div class="help">
+      <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Help"></span>
+     <a href="#" data-toggle="tooltip" title="This page will make progress with waiver charges 
+     helps in calculation of waive charges">
+      <type="button" class="btn btn-primary" style="font-size:24px">Help <i class="fa fa-question-circle"></i></button></a>
+    </div>
+    <div class="container">
+        <br/>
+    <div>
+    <form class="form form-inline">
+      <div class="input-group search-box">                
+        <input type="text" id="search" class="form-control" placeholder="AWB Number/Service ID">
+        <button class="btn btn-lg btn-success" type="submit">Search</button>
+      </div>
+    </div>    
+    </form>
+
+    <section class="table-section">
+        <table>
+          <tr>
+            <th rowspan="2">Service Type</th>
+            <th colspan="3">Actual</th>
+            <th colspan="4">Waived</th>
+            <th rowspan="2">Calculate</th>
+          </tr>
+           <tr>
+            
+            <th>Quantity</th>
+            <th>Duration</th>
+            <th>Amount</th>
+            <th>Quantity</th>
+            <th>Duration</th>
+            <th>Percentange</th>
+            <th>Amount</th>
+           </tr>
+          <tr>
+            <td><b>WEIGHT VERIFICATION</b></td>
+            <td><input value="1000.0" class="table-input" /></td>
+            <td><input value="" class="table-input" /></td>
+            <td><input value="3.00" class="table-input"/></td>
+            <td><input value="" class="table-input" /></td>
+            <td><input value="" class="table-input" /></td>
+            <td><input value="" class="table-input" /></td>
+            <td><input value="" class="table-input" /></td>
+            <td><i class="fa fa-calculator" onclick="calculate()"style="font-size:30px"></i></td>
+          </tr>
+          <tr>
+            <td><b>RCAR SCREENING FEE</b></td>
+            <td><input value="1000.0" class="table-input" /></td>
+            <td><input value="" class="table-input" /></td>
+            <td><input value="900.00" class="table-input"/></td>
+            <td><input value="" class="table-input" /></td>
+            <td><input value="" class="table-input" /></td>
+            <td><input value="" class="table-input" /></td>
+            <td><input value="" class="table-input" /></td>
+            <td><i class="fa fa-calculator" onclick="calculate()" style="font-size:30px"></i>
+             
+            
+          </tr>
+          <tr>
+            <td><b>FWB CREATION SERVICE FEE</b></td>
+            <td><input value="1.0" class="table-input" /></td>
+            <td><input value="" class="table-input" /></td>
+            <td><input value="18.00" class="table-input"/></td>
+            <td><input value="" class="table-input" /></td>
+            <td><input value="" class="table-input" /></td>
+            <td><input value="" class="table-input" /></td>
+            <td><input value="" class="table-input" /></td>
+            <td><i class="fa fa-calculator" onclick="calculate()" style="font-size:30px"></i></td>
+            
+            
+          </tr>
+          <tr>
+            <td><b>DANGEROUS GOODS HANDLING FEE</b></td>
+            <td><input value="10.0" class="table-input" /></td>
+            <td><input value="" class="table-input" /></td>
+            <td><input value="100.00" class="table-input"/></td>
+            
+            <td><input value="" class="table-input" /></td>
+            <td><input value="" class="table-input" /></td>
+            <td><input value="" class="table-input" /></td>
+            
+            <td><input value="" class="table-input" /></td>
+            <td><i class="fa fa-calculator" onclick="calculate()" style="font-size:30px"></i></td>
+          </tr>
+          <tr>
+            <td><b>FORK LIFT CHARGES</b></td>
+            <td><input value="" class="table-input" /></td>
+            <td><input value="3" class="table-input" /></td>
+            <td><input value="360.00" class="table-input"/></td>
+            <td><input value="2" class="table-input" id="Quantity"></td>
+            <td><input value="5" class="table-input"  id="Duration"/></td>
+            <td><input value="" class="table-input" /></td>
+            <td><input type="number" value="" class="table-input" id="Amount" /></td>
+            <td><i class="fa fa-calculator" onclick="calculate()" style="font-size:30px" id="calicon"></i>
+              <onclick="calculate()"></onclick></td>
+             
+          </tr>
+         <tr>
+        </table>
+        
+      </section>     
+ <br></br>
+ <div>
+ <form>
+  <div class="form justify-content-center">
+    <label class="form-label"><h4>Waive Reason</h4></label>
+    <input type="text" class="form-control" sixe="50">
+  </div>
+ </form>
+</div>
+ <br></br>
+ <div class="container overflow-hidden">
+  <div class="row gx-5">
+    <div class="col">
+     <div class="approver">
+      <label><h4>Approver</h4></label>
+      <br>
+      <select class="form-select" aria-label="Default select example">
+         <option value="1">TIAM LYE KOH</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+     </div>
+    </div>
+    <div class="col">
+      <label><h4>Total Amount</h4></label>
+      <h4>1378.00</h4>
+    </div>
+    <div class="col">
+      <label><h4>Waived Charges</h4></label>
+      <h4>36.00</h4>
+    </div>
+  </div>
+</div>
+</section>
+    </body>
+    </html>
+
