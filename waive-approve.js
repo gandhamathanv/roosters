@@ -32,6 +32,17 @@ const dataContent = [{
         status: "REJECTED",
         approverRemark: "TOO MUCH",
     },
+    {
+        AWBNumber: "616-01001007",
+        actualAmount: "4000000.00",
+        waiveAmount: "400.00",
+        waiveBy: "Aatharsh",
+        waiveDate: "10OCT2022 11:30",
+        approver: "Dhanush",
+        statusDate: "10OCT2022 11:32",
+        status: "UNDECIDED",
+        approverRemark: "LEFT UNDECIDED",
+    },
 ];
 
 // USER VARIABLES
@@ -57,7 +68,17 @@ const content = (el) => ` <tr>
 <td>${el.waiveDate}</td>
 <td>${el.approver}</td>
 <td>${el.statusDate}</td>
-<td>${el.status}</td>
+<td style="background-color:${
+  el.status == "PENDING"
+    ? "yellow"
+    : el.status == "APPROVED"
+    ? "green"
+    : el.status == "REJECTED"
+    ? "red"
+    : el.status == "UNDECIDED"
+    ? "grey"
+    : "white"
+}">${el.status}</td>
 <td>${el.approverRemark}</td>
 </tr>`;
 
@@ -119,25 +140,70 @@ const sortData = (data, index) => {
 
             break;
     }
-    setData(data);
+    if (userVariables.sortTabel == null || userVariables.sortTabel == "DESC") {
+        setData(data);
+        userVariables.sortTabel = "ASC";
+    } else if (userVariables.sortTabel == "ASC") {
+        setData(data.reverse());
+        userVariables.sortTabel = "DESC";
+    }
     // console.log(dsata);
 };
 
 // FILTER FUNCTION
 const filterData = (data) => {
+    const searchNumber = AWBNumber.value;
+    const searchName = customerName.value;
+    let searchFrom = dateFrom.value;
+    let searchTo = dateTo.value;
+    console.log(searchNumber, searchName, searchFrom, searchTo);
+    if (searchNumber != "") {
+        data = data.filter((el) => {
+            return el.AWBNumber.startsWith(searchNumber);
+        });
+    }
+    if (searchName != "") {
+        data = data.filter((el) => {
+            console.log(searchName, el.customerName);
+            return el.waiveBy.toLowerCase().startsWith(searchName.toLowerCase());
+        });
+    }
+    if (searchFrom != "" && searchTo != "") {
+        searchFrom = new Date(searchFrom);
+        searchTo = new Date(searchTo);
+        data = data.filter((el) => {
+            const waiveDate = new Date(el.waiveDate);
+            const approveDate = new Date(el.approveDate);
+            return (
+                (waiveDate >= searchFrom && waiveDate <= searchTo) ||
+                (approveDate >= searchFrom && approveDate <= searchTo)
+            );
+        });
+    } else if (searchFrom != "" && searchTo == "") {
+        searchFrom = new Date(searchFrom);
+        data = data.filter((el) => {
+            const waiveDate = new Date(el.waiveDate);
+            const approveDate = new Date(el.approveDate);
+            return waiveDate >= searchFrom || approveDate >= searchFrom;
+        });
+    } else if (searchFrom == "" && searchTo != "") {
+        searchTo = new Date(searchTo);
+        data = data.filter((el) => {
+            const waiveDate = new Date(el.waiveDate);
+            const approveDate = new Date(el.approveDate);
+            return waiveDate <= searchTo || approveDate <= searchTo;
+        });
+    }
+
     console.log(data);
-    console.log(AWBNumber.value);
-    let pattern = /(.*AWBNumber.value.*)/g;
-    const result = data.filter((el) => {
-        console.log(el.AWBNumber.match(pattern));
-        return el.AWBNumber.match(pattern);
-    });
-    console.log(result);
+    return data;
 };
 
 // ADD EVENT LISTENER
 // SEARCH BUTTON
-searchButton.addEventListener("click", (el) => filterData(dataContent));
+searchButton.addEventListener("click", (el) => {
+    setData(filterData(dataContent));
+});
 // SORT BUTTON
 for (var i = 0; i < sortButton.length; i++) {
     (function(index) {
