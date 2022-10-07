@@ -71,33 +71,33 @@ const data = [{
     },
 }, ];
 const tabelContentTemlate = (el) => `
-<div style="margin-top:15px;"><h4>CHARGE ADVICE</h4></div>
+<div style="margin-top:15px;margin-left:15px"><h2>CHARGE ADVICE</h2></div>
 <section class="table-section">
   
   <table class="table" >
     <tr>
-      <th>Service Type<div class="tooltip"> <i class="fa-sharp fa-solid fa-question" style="margin-left :10px;"></i>
+      <th><div class="tooltip">Service Type 
         <span class="tooltiptext">Service Type</span>
-      </div></th>
-      <th>Quantity <div class="tooltip"> <i class="fa-sharp fa-solid fa-question" style="margin-left :10px;"></i>
+      </div></th> 
+      <th><div class="tooltip"> Quantity 
         <span class="tooltiptext">Quantity</span>
       </div></th>
-      <th>Duration<div class="tooltip"> <i class="fa-sharp fa-solid fa-question" style="margin-left :10px;"></i>
+      <th><div class="tooltip"> Duration
         <span class="tooltiptext">Duration</span>
       </div></th>
-      <th>Amount<div class="tooltip"> <i class="fa-sharp fa-solid fa-question" style="margin-left :10px;"></i>
+      <th><div class="tooltip">Amount
         <span class="tooltiptext">Amount</span>
       </div></th>
-      <th>Collection Mechanism<div class="tooltip"> <i class="fa-sharp fa-solid fa-question" style="margin-left :10px;"></i>
+      <th><div class="tooltip">Collection Mechanism
         <span class="tooltiptext">Collection Mechanism</span>
       </div></th>
-      <th>Paid<div class="tooltip"> <i class="fa-sharp fa-solid fa-question" style="margin-left :10px;"></i>
+      <th><div class="tooltip">Paid
         <span class="tooltiptext">Paid</span>
       </div></th>
-      <th>Receipt Number<div class="tooltip"> <i class="fa-sharp fa-solid fa-question" style="margin-left :10px;"></i>
+      <th><div class="tooltip">Receipt Number
         <span class="tooltiptext">Receipt Number</span>
       </div></th>
-      <th>Waived Amount<div class="tooltip"> <i class="fa-sharp fa-solid fa-question" style="margin-left :10px;"></i>
+      <th><div class="tooltip">Waived Amount
         <span class="tooltiptext">Waived Amount</span>
       </div></th>
       </div></th>
@@ -196,25 +196,25 @@ const customerInfoTemplate = (el) =>
 
 <div class="navbar-options">
 <div>
-<label for="cn">Customer Name</label>
-<h3 name="cn" >${el.CustomerName}</h3> 
+<label for="cn" style="font-size:12px" >Customer Name</label>
+<h2 name="cn" >${el.CustomerName}</h2> 
 </div>
 <br>
 <div>
-<label for="cn">AWD Number</label>
-<h3 name="cn" >${el.AWBNumber}</h3> 
+<label for="cn" style="font-size:12px" >AWB Number</label>
+<h2 name="cn" >${el.AWBNumber}</h2> 
 </div><br>
 <div>
-<label for="cn">SHC</label>
-<h3 name="cn" >${el.SHC}</h3> 
+<label for="cn" style="font-size:12px" >SHC</label>
+<h2 name="cn" >${el.SHC}</h2> 
 </div><br>
 <div>
-<label for="cn">${el.HandlingArea}</label>
-<h3 name="cn" >AFT1</h3> 
+<label for="cn" style="font-size:12px" >Zone/Import/Export</label>
+<h2 name="cn" >${el.HandlingArea}</h2> 
 </div><br>
 <div>
-<label for="cn">Export/Import</label>
-<h3 name="cn" >${el.ExportImport}</h3> 
+<label for="cn" style="font-size:12px" >Export/Import</label>
+<h2 name="cn" >${el.ExportImport}</h2> 
 </div>
 </div>
 
@@ -229,3 +229,4 @@ SearchButton.addEventListener("click", () => {
     tabelContent.innerHTML = tabelContentTemlate(data[0].ChargeAdvice);
     console.log(data[0].ChargeAdvice);
 });
+
