@@ -223,3 +223,13 @@ console.log(new Date(dataContent[0].waiveDate));
 // TODO: SYSTER PARAMS time esclaiton
 // TODO: SYSTER PARAMS tiptool
 // TODO: SYSTER PARAMS help
+
+// PRINT tabE
+
+function printData() {
+    var divToPrint = document.getElementById("main-table");
+    newWin = window.open("");
+    newWin.document.write(divToPrint.outerHTML);
+    newWin.print();
+    newWin.close();
+}
