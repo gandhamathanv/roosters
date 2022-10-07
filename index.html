@@ -28,18 +28,25 @@
       }
 
       select {
-        margin-top: 10px 15px;
+        padding: 5px;
+        border: none
       }
 
       input {
         padding: 5px;
         border: none;
+        border-radius: 5px;
       }
 
       button {
         background: none;
         border: none;
         padding: 0 10px;
+      }
+      
+      input:focus,select:focus{
+        border: none;
+        outline: 2px solid #748ffc;
       }
 
       .tooltip-container {
@@ -66,6 +73,10 @@
         /* Position the tooltip text - see examples below! */
         position: absolute;
         z-index: 1;
+      } 
+
+      tr{
+        text-align: center;
       }
 
       /* Show the tooltip text when you mouse over the tooltip container */
@@ -162,7 +173,7 @@
       ">
     <table align="center" cellspacing="2" cellpadding="5" id="data_table" class="table" border="1">
       <tr>
-        <th style="text-align: center; background-color: #748ffc; color: white">
+        <th style="text-align: center; background-color: #748ffc; color: white;width: 350px">
           Role
         </th>
         <th style="text-align: center; background-color: #748ffc; color: white">
@@ -239,6 +250,6 @@
 </body>
 
 <script type="text/javascript" src="./table_script.js" defer></script>
-<script type="module" src="./print.js" defer></script>
+<!-- <script type="module" src="./print.js" defer></script> -->
 
 </html>

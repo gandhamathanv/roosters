@@ -17,20 +17,20 @@ function edit_row(no) {
 
   console.log(name_data);
 
-  name.innerHTML = `<select type='text' id='name_text${no}' ><option value='Cashier' ${
+  role.innerHTML = `<select type='text' id='name_text${no}' ><option value='Cashier' ${
     name_data === "Cashier" ? "selected" : ""
     }>Cashier</option><option value='Cashier-Supervisor' ${
     name_data === "Cashier-Supervisor" ? "selected" : ""
     }>Cashier Supervisor</option><option value='Finance Manager' ${
     name_data === "Finance Manager" ? "seleceted" : ""
     }>Finance Manager</option></select>`;
-  country.innerHTML =
+  waiverLimit.innerHTML =
     "<input type='text' id='country_text" +
     no +
     "' value='" +
     country_data +
     "'>";
-  age.innerHTML =
+  approvalLimit.innerHTML =
     "<input type='text' id='age_text" + no + "' value='" + age_data + "'>";
 }
 
