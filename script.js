@@ -114,12 +114,10 @@ const tabelContentTemlate = (el) => `
    
      <div class="select">
         <select name="format" id="format">
-           <option selected disabled>Choose a book format</option>
-           <option value="pdf">PDF</option>
-           <option value="txt">txt</option>
-           <option value="epub">ePub</option>
-           <option value="fb2">fb2</option>
-           <option value="mobi">mobi</option>
+           
+           <option value="bill">Bill</option>
+           <option value="Collect">Collect</option>
+         
         </select>
      </div>
 </td>
@@ -150,11 +148,14 @@ const tabelContentTemlate = (el) => `
       <td><input value="${el.RcarScreeningFee.Duration}" class="table-input" /></td>
        <td><input value="${el.RcarScreeningFee.Amount}" class="table-input" /></td>
       <td>
-<select>
-<option value="cashier">Bill</option>
-<option value="cashier-supervisor">Collect</option>
-
-</select>
+      <div class="select">
+      <select name="format" id="format">
+         
+         <option value="bill">Bill</option>
+         <option value="Collect">Collect</option>
+       
+      </select>
+   </div>
 </td>
 <td><input value="   " class="table-input" /></td>
 <td><input value="${el.RcarScreeningFee.recieptNumber}" class="table-input" /></td>
