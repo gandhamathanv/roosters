@@ -159,14 +159,14 @@
             </th>
             <th>
                 <div class="tooltip">
-                    <i>Waiver Amount</i>
+                    <i>Waive Amount</i>
                     <span class="tooltiptext">Waiver Amount</span>
                 </div>
                 <i class="fa-solid fa-sort sort-tabel"></i>
             </th>
             <th>
                 <div class="tooltip">
-                    <i>Waiver By</i>
+                    <i>Waived By</i>
                     <span class="tooltiptext">Waiver By</span>
                 </div>
                 <i class="fa-solid fa-sort sort-tabel"></i>
@@ -214,67 +214,34 @@
             </table>
         </section>
         <section class="setRole">
-            <style>
-                /* Style The Dropdown Button */
-                
-                .dropbtn {
-                    background-color: #748ffc;
-                    color: white;
-                    padding: 16px;
-                    font-size: 16px;
-                    border: none;
-                    cursor: pointer;
-                }
-                /* The container <div> - needed to position the dropdown content */
-                
-                .dropdown {
-                    position: relative;
-                    display: inline-block;
-                }
-                /* Dropdown Content (Hidden by Default) */
-                
-                .dropdown-content {
-                    display: none;
-                    position: absolute;
-                    background-color: #f9f9f9;
-                    min-width: 160px;
-                    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-                    z-index: 1;
-                }
-                /* Links inside the dropdown */
-                
-                .dropdown-content a {
-                    color: black;
-                    padding: 12px 16px;
-                    text-decoration: none;
-                    display: block;
-                }
-                /* Change color of dropdown links on hover */
-                
-                .dropdown-content a:hover {
-                    background-color: #f1f1f1
-                }
-                /* Show the dropdown menu on hover */
-                
-                .dropdown:hover .dropdown-content {
-                    display: block;
-                }
-                /* Change the background color of the dropdown button when the dropdown content is shown */
-                
-                .dropdown:hover .dropbtn {
-                    background-color: #3e8e41;
-                }
-            </style>
+            <div class="input-field">
 
-            <div class="dropdown">
-                <button class="dropbtn">Dropdown</button>
-                <div class="dropdown-content">
-                    <span>PENDING</span>
-                    <span>Link 1</span>
-                    <span>Link 2</span>
-                    <span>Link 3</span>
-                </div>
+                <label class="custom-field one">
+              <input type="text" id="setStatusInput" placeholder=" " />
+              <span class="placeholder">AWB Number/Service ID</span>
+            </label>
             </div>
+            <div class="custom-select" style="width:200px;">
+                <select id="setStatusDropdown">
+              <option selected value="">STATUS</option>
+              <option value="0">APPROVED</option>
+              <option value="1">REJECTED</option>
+              <option value="2">PENDING</option>
+              <option value="3">UNDECIDED</option>
+            </select>
+            </div>
+            <div>
+
+                <label class="custom-field one">
+                <input type="text" id="setStatusInput" placeholder=" " />
+                <span class="placeholder">Approver Remark</span>
+              </label>
+            </div>
+            <div id="setStatusButton" class="navbar-icons-container bg-green">
+                <i class="fa-regular fa-floppy-disk icon"></i>
+                <p class="icon-name">Save</p>
+            </div>
+
 
         </section>
     </section>
