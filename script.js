@@ -111,11 +111,17 @@ const tabelContentTemlate = (el) => `
      <td><input value="${el.WeightVerification.Duration}" class="table-input" /></td>
       <td><input value="${el.WeightVerification.Amount}" class="table-input" /></td>
      <td>
-<select>
-<option value="cashier">Bill</option>
-<option value="cashier-supervisor">Collect</option>
-
-</select>
+   
+     <div class="select">
+        <select name="format" id="format">
+           <option selected disabled>Choose a book format</option>
+           <option value="pdf">PDF</option>
+           <option value="txt">txt</option>
+           <option value="epub">ePub</option>
+           <option value="fb2">fb2</option>
+           <option value="mobi">mobi</option>
+        </select>
+     </div>
 </td>
 <td><input value="${el.WeightVerification.paid}" class="table-input" /></td>
 <td><input value="${el.WeightVerification.recieptNumber}" class="table-input" /></td>
