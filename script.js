@@ -1,12 +1,11 @@
-const data = [{
+const data = {
     AWBNumber: "618-4274283",
     CustomerName: "Aatarsh",
     SHC: "VAL EAP EAW",
     HandlingArea: "AFT1",
     ExportImport: "Import",
-    ChargeAdvice: [
-       {
-        title:" WeightVerification: ",
+    ChargeAdvice: [{
+            title: " WeightVerification: ",
             Quantity: 1000.0,
             Duration: null,
             Amount: 3.0,
@@ -16,7 +15,7 @@ const data = [{
             waivedAmount: null,
         },
         {
-          title:" RcarScreeningFee",
+            title: " RcarScreeningFee",
             Quantity: 1000.0,
             Duration: null,
             Amount: 90.0,
@@ -26,8 +25,7 @@ const data = [{
             waivedAmount: null,
         },
         {
-
-          title:" FwbCreationServiceFee",
+            title: " FwbCreationServiceFee",
             Quantity: 1.0,
             Duration: null,
             Amount: 18.0,
@@ -36,8 +34,8 @@ const data = [{
             recieptNumber: null,
             waivedAmount: null,
         },
-         {
-          title:"DangerousGoodsHandlingFee:",
+        {
+            title: "DangerousGoodsHandlingFee:",
             Quantity: 10.0,
             Duration: null,
             Amount: 100.0,
@@ -47,7 +45,7 @@ const data = [{
             waivedAmount: null,
         },
         {
-          title:"ForkLiftCharges:",
+            title: "ForkLiftCharges:",
             Quantity: null,
             Duration: 3,
             Amount: 360.0,
@@ -56,126 +54,68 @@ const data = [{
             recieptNumber: "100-09102917",
             waivedAmount: null,
         },
-      ]
-    }]
-;
+    ],
+};
+const tableHeaderTitle = `
+<tr>
+<th><div class="tooltip">Service Type 
+  <span class="tooltiptext">Service Type</span>
+</div></th> 
+<th><div class="tooltip"> Quantity 
+  <span class="tooltiptext">Quantity</span>
+</div></th>
+<th><div class="tooltip"> Duration
+  <span class="tooltiptext">Duration</span>
+</div></th>
+<th><div class="tooltip">Amount
+  <span class="tooltiptext">Amount</span>
+</div></th>
+<th><div class="tooltip">Collection Mechanism
+  <span class="tooltiptext">Collection Mechanism</span>
+</div></th>
+<th><div class="tooltip">Paid
+  <span class="tooltiptext">Paid</span>
+</div></th>
+<th><div class="tooltip">Receipt Number
+  <span class="tooltiptext">Receipt Number</span>
+</div></th>
+<th><div class="tooltip">Waived Amount
+  <span class="tooltiptext">Waived Amount</span>
+</div></th>
+</div></th>
+`;
+const tableBodyTemplate = (el) => `
+<tr>
+<td>${el.title}</td>
+ 
+<td><input value="${el.Quantity}" class="table-input" /></td>
+<td><input value="${el.Duration}" class="table-input" /></td>
+ <td><input value="${el.Amount}" class="table-input" /></td>
+<td>
+<select>
+<option value="cashier">Bill</option>
+<option value="cashier-supervisor">Collect</option>
+
+</select>
+</td>
+<td><input value="${el.paid}" class="table-input" /></td>
+<td><input value="${el.recieptNumber}" class="table-input" /></td>
+<td><input value="${el.waivedAmount}" class="table-input" /></td>
+
+</tr>`;
 const tabelContentTemlate = (el) => `
 <div style="margin-top:15px;margin-left:15px"><h2>CHARGE ADVICE</h2></div>
 <section class="table-section">
   
   <table class="table table-addtional"  >
-    <tr>
-      <th><div class="tooltip">Service Type 
-        <span class="tooltiptext">Service Type</span>
-      </div></th> 
-      <th><div class="tooltip"> Quantity 
-        <span class="tooltiptext">Quantity</span>
-      </div></th>
-      <th><div class="tooltip"> Duration
-        <span class="tooltiptext">Duration</span>
-      </div></th>
-      <th><div class="tooltip">Amount
-        <span class="tooltiptext">Amount</span>
-      </div></th>
-      <th><div class="tooltip">Collection Mechanism
-        <span class="tooltiptext">Collection Mechanism</span>
-      </div></th>
-      <th><div class="tooltip">Paid
-        <span class="tooltiptext">Paid</span>
-      </div></th>
-      <th><div class="tooltip">Receipt Number
-        <span class="tooltiptext">Receipt Number</span>
-      </div></th>
-      <th><div class="tooltip">Waived Amount
-        <span class="tooltiptext">Waived Amount</span>
-      </div></th>
-      </div></th>
-     
+  <thead class="table-head">
 
-    </tr>
-    <tr>
-     <td>WEIGHT VERIFICATION</td>
-      
-     <td><input value="${el.WeightVerification.Quantity}" class="table-input" /></td>
-     <td><input value="${el.WeightVerification.Duration}" class="table-input" /></td>
-      <td><input value="${el.WeightVerification.Amount}" class="table-input" /></td>
-     <td>
-   
-     <div class="select">
-        <select name="format" id="format">
-           
-           <option value="bill">Bill</option>
-           <option value="Collect">Collect</option>
-         
-        </select>
-     </div>
-</td>
-<td><input value="${el.WeightVerification.paid}" class="table-input" /></td>
-<td><input value="${el.WeightVerification.recieptNumber}" class="table-input" /></td>
-<td><input value="${el.WeightVerification.waivedAmount}" class="table-input" /></td>
-
-    </tr>
-    <tr>
-      <td>DANGEROUS GOODS HANDLING FEE</td>
-       
-      <td><input value="${el.DangerousGoodsHandlingFee.Quantity}" class="table-input" /></td>
-      <td><input value="${el.DangerousGoodsHandlingFee.Duration}" class="table-input" /></td>
-       <td><input value="${el.DangerousGoodsHandlingFee.Amount}" class="table-input" /></td>
-       <td><input value="Collect" class="table-input" /></td>
-       <td class="icon-table-column">
-        <i class="fa fa-check" style="color:green" aria-hidden="true"></i>
-      </td>
-
-<td><input value="${el.DangerousGoodsHandlingFee.recieptNumber}" class="table-input" /></td>
-<td><input value="${el.DangerousGoodsHandlingFee.waivedAmount}" class="table-input" /></td>
-
-     </tr>
-     <tr>
-      <td>RCAR SCREENING FEE</td>
-       
-      <td><input value="${el.RcarScreeningFee.Quantity}" class="table-input" /></td>
-      <td><input value="${el.RcarScreeningFee.Duration}" class="table-input" /></td>
-       <td><input value="${el.RcarScreeningFee.Amount}" class="table-input" /></td>
-      <td>
-      <div class="select">
-      <select name="format" id="format">
-         
-         <option value="bill">Bill</option>
-         <option value="Collect">Collect</option>
-       
-      </select>
-   </div>
-</td>
-<td><input value="   " class="table-input" /></td>
-<td><input value="${el.RcarScreeningFee.recieptNumber}" class="table-input" /></td>
-<td><input value="${el.RcarScreeningFee.waivedAmount}" class="table-input" /></td>
-
-     </tr>
-     <tr >
-       <td style="text-align: right">To Collect</td>
-        
-       <td><input value="${el.ToCollect.Quantity}" class="table-input" /></td>
-       <td><input value="${el.ToCollect.Duration}" class="table-input" /></td>
-        <td><input value="${el.ToCollect.Amount}" class="table-input" /></td>
-        <td><input value="  " class="table-input" /></td>
-        <td><input value="  " class="table-input" /></td>
-        <td><input value="${el.ToCollect.recieptNumber}" class="table-input" /></td>
-        <td><input value="${el.ToCollect.waivedAmount}" class="table-input" /></td>
-
-
-      </tr>
-      <tr >
-        <td style="text-align: right">To Bill</td>
-         
-        <td><input value="${el.ToBill.Quantity}" class="table-input" /></td>
-        <td><input value="${el.ToBill.Duration}" class="table-input" /></td>
-         <td><input value="${el.ToBill.Amount}" class="table-input" /></td>
-         <td><input value="  " class="table-input" /></td>
-         <td><input value="  " class="table-input" /></td>
-         <td><input value="${el.ToBill.recieptNumber}" class="table-input" /></td>
-         <td><input value="${el.ToBill.waivedAmount}" class="table-input" /></td>
-
-       </tr>
+  </thead>
+  <tbody class="table-body">
+  </tbody>
+  <tfoot class="table-foot">
+  </tfoot>
+    
   </table>
 </section><br><br>
 
@@ -239,10 +179,13 @@ const customerInfo = document.querySelector(".customer-info");
 
 const SearchButton = document.querySelector(".search-button");
 SearchButton.addEventListener("click", () => {
-    customerInfo.innerHTML = customerInfoTemplate(data[0]);
-    tabelContent.innerHTML = tabelContentTemlate(data[0].ChargeAdvice);
-    console.log(data[0].ChargeAdvice);
+    customerInfo.innerHTML = customerInfoTemplate(data);
+    tabelContent.innerHTML = tabelContentTemlate();
+    document.querySelector(".table-head").innerHTML = tableHeaderTitle;
     const addButton = document.querySelector(".add-button");
+    data.ChargeAdvice.forEach((el) => {
+        document.querySelector(".table-body").innerHTML += tableBodyTemplate(el);
+    });
     addButton.addEventListener("click", () => {
         document.querySelector(".table-addtional").innerHTML += addAditional();
     });
