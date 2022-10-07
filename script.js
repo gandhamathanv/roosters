@@ -74,7 +74,7 @@ const tabelContentTemlate = (el) => `
 <div style="margin-top:15px;margin-left:15px"><h2>CHARGE ADVICE</h2></div>
 <section class="table-section">
   
-  <table class="table" >
+  <table class="table table-addtional"  >
     <tr>
       <th><div class="tooltip">Service Type 
         <span class="tooltiptext">Service Type</span>
@@ -194,7 +194,7 @@ const tabelContentTemlate = (el) => `
 <div class="navbar2" style="margin-right:75px;text-align:right;">
   <input style="margin-right:15px;padding: 10px;" type="submit" value="Waive Charge">
   <input style="margin-right:15px;padding: 10px;" type="button" value="Make Payment">
-  <input style="margin-right:15px;padding: 10px;" type="button" value="Add Service ">
+  <input style="margin-right:15px;padding: 10px;" type="button" class="add-button" value="Add Service ">
  </div>
 </div>
 `;
@@ -226,6 +226,24 @@ const customerInfoTemplate = (el) =>
 </div>
 
 </nav>`;
+const addAditional = (el) => ` <tr>
+<td><input value="" class="table-input" /></td>
+ 
+<td><input value="" class="table-input" /></td>
+<td><input value="" class="table-input" /></td>
+ <td><input value="" class="table-input" /></td>
+<td>
+<select>
+<option value="cashier">Bill</option>
+<option value="cashier-supervisor">Collect</option>
+
+</select>
+</td>
+<td><input value="" class="table-input" /></td>
+<td><input value="" class="table-input" /></td>
+<td><input value="" class="table-input" /></td>
+
+</tr>`;
 
 const tabelContent = document.querySelector(".tabel-content");
 const customerInfo = document.querySelector(".customer-info");
@@ -235,5 +253,8 @@ SearchButton.addEventListener("click", () => {
     customerInfo.innerHTML = customerInfoTemplate(data[0]);
     tabelContent.innerHTML = tabelContentTemlate(data[0].ChargeAdvice);
     console.log(data[0].ChargeAdvice);
+    const addButton = document.querySelector(".add-button");
+    addButton.addEventListener("click", () => {
+        document.querySelector(".table-addtional").innerHTML += addAditional();
+    });
 });
-
