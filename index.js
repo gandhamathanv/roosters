@@ -92,12 +92,57 @@ const content = (el, index) => ` <tr id="row${index}">
 </div>
 </td>
 </tr>`;
+const last = `<tr>
+
+<td>
+  <input type="text" id="new_service" placeholder="Service  ?" />
+</td>
+<td>
+  <input type="text" id="new_chargable" placeholder="Chargable ?" />
+</td>
+<td>
+  <input type="text" id="new_customer" placeholder="Customer ?" />
+</td>
+<td>
+  <input type="text" id="new_awbnumber" placeholder="AWB Number ?" />
+</td>
+<td>
+  <input type="text" id="new_uldnumber" placeholder="ULD Number ?" />
+</td>
+
+<td>
+  <input type="text" id="new_flightdate" placeholder="Flight & Date ?" />
+</td>
+<td>
+  <input type="text" id="new_requesteddate" placeholder="Requested Date & Time?" />
+</td>
+<td>
+  <input type="text" id="new_remarks" placeholder="Remarks ?" />
+</td>
+<td>
+  <input type="text" id="new_status" placeholder="Status ?" />
+</td>
+<td>
+  <input type="text" id="new_reason" placeholder="Reason ?" />
+</td>
+<td>
+  <button type="button" class="add" onclick="add_row();" value="Add Row" style="
+        background-color: #748ffc;
+        padding: 5px 10px;
+        border-radius: 5px;
+        color: #fff;
+      ">
+    Add New
+  </button>
+</td>
+</tr>`;
 
 const setData = (data) => {
   tabelContent.innerHTML = "";
   data.forEach((el, index) => {
     tabelContent.innerHTML += content(el, index);
   });
+  tabelContent.innerHTML += last;
 };
 setData(dataContent);
 
@@ -259,4 +304,19 @@ setData(dataContent);
 
 function edit_row(index) {
   // const servicerequestedfil
+}
+function add_row() {
+  dataContent.push({
+    Servicerequested: document.getElementById("new_service").value,
+    Chargable: document.getElementById("new_chargable").value,
+    Customer: document.getElementById("new_customer").value,
+    AWBNumber: document.getElementById("new_awbnumber").value,
+    ULDNumber: document.getElementById("new_uldnumber").value,
+    FlightDate: document.getElementById("new_flightdate").value,
+    RequestedDate: document.getElementById("new_requesteddate").value,
+    Remarks: document.getElementById("new_remarks").value,
+    Status: document.getElementById("new_status").value,
+    ReasonforRejection: document.getElementById("new_reason").value,
+  });
+  setData(dataContent);
 }
