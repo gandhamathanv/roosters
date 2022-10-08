@@ -10,10 +10,68 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     />
     <link rel="stylesheet" href="./index.css" />
+    <style>
+      .tooltip-container {
+        position: relative;
+        display: inline-block;
+      }
+              .tooltip {
+          position: relative;
+          display: inline-block;
+          
+        }
+
+        .tooltip .tooltiptext {
+          visibility: hidden;
+          width: 120px;
+          background-color: black;
+          color: #fff;
+          /* text-align: center; */
+          border-radius: 6px;
+          padding: 5px 0;
+
+          /* Position the tooltip */
+          position: absolute;
+          z-index: 1;
+        }
+
+        .tooltip:hover .tooltiptext {
+          visibility: visible;
+        }
+
+      /* Tooltip text */
+      .tooltip-container .tooltip-text {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 5px;
+        border-radius: 6px;
+
+        font-size: 12px;
+        font-weight: normal;
+
+        width: 250px;
+        top: 100%;
+        left: 50%;
+        margin-left: -180px;
+
+        /* Position the tooltip text - see examples below! */
+        position: absolute;
+        z-index: 1;
+      }
+
+      /* Show the tooltip text when you mouse over the tooltip container */
+      .tooltip-container:hover .tooltip-text {
+        visibility: visible;
+      }
+    </style>
 
   </head>
 
   <body>
+   
     <nav class="navbar">
       <h3 class="heading">List  of Service Requests</h3>
       <div class="navbar-options">
@@ -35,6 +93,45 @@
         </div>
       </div>
     </nav>
+
+    <p
+    class="tooltip-container"
+    style="
+      padding: 10px;
+      position: absolute;
+      right: 50px;
+      font-size: 14px;
+      cursor: pointer;
+    "
+  >
+    Help ?
+
+    <span class="tooltip-text">
+          The objective of this Use Case is to list the service requests within the given date range with specified status.<br /><br />
+    User can search the listed service requests by service name, customer name, Airway bill number, ULD Number, flight number, flight date.<br /><br />
+    User can start or complete the selected service request.<br /><br />
+    Also user can edit the service request.<br /><br />
+
+
+    </span>
+  </p>
+  <p
+  style="
+  width: 100vw;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+    font-size: 15px;
+  "
+>
+  Base Currency<span style="display: flex;justify-content: center;"
+    ><img
+      src="./india-flag-icon.svg"
+      style="width: 35px; margin: 0 10px;"
+    />INR - Indian Rupee</span
+  >
+</p>
     <section class="main-section">
       <section class="section-1">
         <div>
@@ -62,9 +159,12 @@
             <input type="text" id="Date" placeholder=" " />
             <span class="placeholder">Date</span>
           </label>
-          <span href="*" class="button-primary button-add search-button"
-          >search</span
-        >
+          
+          <div class="tooltip"><span href="*" class="button-primary button-add search-button"
+            >Search</span
+          >
+            <span class="tooltiptext">Search</span>
+          </div>
         </div>
       </section>
       <br />
@@ -73,23 +173,43 @@
           <thead>
             <tr>
               <th>
-                Service Requested
+                <div class="tooltip">Service Requested
+                  <span class="tooltiptext">Service Requested</span>
+                </div>
                 <i class="fa-solid fa-sort sort-tabel"></i>
               </th>
-              <th>Chargable<i class="fa-solid fa-sort sort-tabel"></i></th>
+              <th><div class="tooltip">Chargeable 
+                <span class="tooltiptext">Chargeable</span>
+              </div><i class="fa-solid fa-sort sort-tabel"></i></th>
               <!-- <th>Chargeable<div style="display:flex; flex-direction: column;"><i class="fa-solid fa-sort-up sort-tabel1" style="padding:0"></i><i class="fa-solid fa-sort-down sort-tabel"></i></div></th> -->
-              <th>Customer<i class="fa-solid fa-sort sort-tabel"></i></th>
-              <th>AWB Number <i class="fa-solid fa-sort sort-tabel"></i></th>
-              <th>ULD Number <i class="fa-solid fa-sort sort-tabel"></i></th>
-              <th>Flight/Date<i class="fa-solid fa-sort sort-tabel"></i></th>
+              <th><div class="tooltip">Customer 
+                <span class="tooltiptext">Customer</span>
+              </div><i class="fa-solid fa-sort sort-tabel"></i></th>
+              <th><div class="tooltip">AWB Number 
+                <span class="tooltiptext">AWB Number</span>
+              </div> <i class="fa-solid fa-sort sort-tabel"></i></th>
+              <th><div class="tooltip">ULD Number 
+                <span class="tooltiptext">ULD Number</span>
+              </div> <i class="fa-solid fa-sort sort-tabel"></i></th>
+              <th><div class="tooltip">Flight/Date
+                <span class="tooltiptext">Flight/Date</span>
+              </div><i class="fa-solid fa-sort sort-tabel"></i></th>
               <th>
-                Requested Date & Time <i class="fa-solid fa-sort sort-tabel"></i>
+                <div class="tooltip">Requested Date & Time 
+                  <span class="tooltiptext">Requested Date & Time </span>
+                </div><i class="fa-solid fa-sort sort-tabel"></i>
               </th>
               <th>
-                Remarks</i>
+                <div class="tooltip">Remarks
+                  <span class="tooltiptext">Remarks</span>
+                </div></i>
               </th>
-              <th>Status <i class="fa-solid fa-sort sort-tabel"></i></th>
-              <th>Reason for Rejection</th>
+              <th><div class="tooltip">Status
+                <span class="tooltiptext">Status</span>
+              </div> <i class="fa-solid fa-sort sort-tabel"></i></th>
+              <th><div class="tooltip">Reason for Rejection
+                <span class="tooltiptext">Reason for Rejection</span>
+              </div></th>
               <th></th>
             </tr>
           </thead>
