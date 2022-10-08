@@ -75,31 +75,51 @@ ${
     ? `
 <td style="background-color:${
         el.status == "PENDING"
-          ? "yellow"
+          ? "#ffd43b"
           : el.status == "APPROVED"
-          ? "green"
+          ? "#69db7c"
           : el.status == "REJECTED"
-          ? "red"
+          ? "#ff8787"
           : el.status == "UNDECIDED"
-          ? "grey"
+          ? "#66d9e8"
           : "white"
       }">${el.status}</td>`
     : `
 <td>
-edit</td>`
+
+            <select type="text" id="set-status" placeholder="Status ?">
+              <option value="" selected hidden>Status</option>
+              <option value="PENDING">PENDING</option>
+              <option value="APPROVED">APPROVED</option>
+              <option value="REJECTED">REJECTED</option>
+              <option value="UNDECIDED">UNDECIDED</option>
+            </select>
+</td>`
 }
-<td>${el.approver}</td>
+<td>
+${
+  el.readOnly
+    ? `<input class="table-text-input" id="approver-name" type="text" value="${el.approver}" />`
+    : el.approver
+}
+</td>
+
 <td>${el.statusDate}</td>
 <td>
 ${
   el.readOnly
-    ? `<input class="table-text-input" type="text" value="${el.approverRemark}" />`
+    ? `<input class="table-text-input" id="approve-remark" type="text" value="${el.approverRemark}" />`
     : el.approverRemark
 }
 </td>
     
 
-<td><i class="fa-solid fa-pen edit-tabel"></i></td>
+<td>
+${
+  !el.readOnly
+    ? `<i class="fa-solid fa-pen edit-tabel"></i>`
+    : `<i class="fa-solid fa-save save-button-data"></i>`
+}</td>
 </tr>`;
 
 // SET DATA FOR UI FUNCTION
@@ -108,6 +128,7 @@ const setData = (data) => {
   data.forEach((el) => {
     tabelContent.innerHTML += content(el);
   });
+  setEdit(document.querySelectorAll(".edit-tabel"));
 };
 // SUB FUNCTIONS
 
@@ -223,7 +244,6 @@ const filterData = (data) => {
 // SEARCH BUTTON
 searchButton.addEventListener("click", (el) => {
   setData(filterData(dataContent));
-  setEdit(document.querySelectorAll(".edit-tabel"));
 });
 // SORT BUTTON
 for (var i = 0; i < sortButton.length; i++) {
@@ -235,6 +255,7 @@ for (var i = 0; i < sortButton.length; i++) {
 }
 
 const setEdit = (editButton) => {
+  console.log("seet eddit lisitioner", editButton);
   for (var i = 0; i < editButton.length; i++) {
     (function (index) {
       editButton[index].addEventListener("click", function () {
@@ -243,14 +264,44 @@ const setEdit = (editButton) => {
         console.log(dataContent[index].readOnly);
         console.log(dataContent[index]);
         setData(dataContent);
+        console.log(document.querySelector(".save-button-data"));
+        const save = document.querySelector(".save-button-data");
+        save.addEventListener("click", (el) => {
+          // window.alert("saved");
+          console.log(dataContent[index].readOnly);
+          console.log(!dataContent[index].readOnly);
+
+          var currentdate = new Date();
+          var dateString = currentdate.toDateString();
+          const array = dateString.split(" ").splice(1);
+          const x = array[1];
+          array[1] = array[0].toUpperCase();
+          array[0] = x;
+
+          dataContent[index].statusDate =
+            array.join("") +
+            " " +
+            currentdate.getHours() +
+            ":" +
+            currentdate.getMinutes();
+          dataContent[index].status =
+            document.getElementById("set-status").value;
+          dataContent[index].approverRemark =
+            document.getElementById("approve-remark").value;
+          dataContent[index].approver =
+            document.getElementById("approver-name").value;
+          console.log(dataContent[index].approveDate);
+          dataContent[index].readOnly = !dataContent[index].readOnly;
+          setData(dataContent);
+        });
       });
     })(i);
+    console.log("data set");
   }
 };
 // CALLING UI FUNCTION
 
 setData(dataContent);
-setEdit(document.querySelectorAll(".edit-tabel"));
 
 console.log(new Date(dataContent[0].waiveDate));
 
@@ -267,3 +318,12 @@ function printData() {
   newWin.print();
   newWin.close();
 }
+
+var currentdate = new Date();
+var dateString = currentdate.toDateString();
+const array = dateString.split(" ").splice(1);
+const x = array[1];
+array[1] = array[0].toUpperCase();
+array[0] = x;
+
+console.log();
