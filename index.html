@@ -264,7 +264,9 @@
               class="edit"
               onclick="edit_row('1')"
             >
-              <i class="fa-solid fa-pen"></i>
+              <i class="fa-solid fa-pen tooltip-container"
+                ><span class="tooltip-text">Edit</span></i
+              >
             </button>
             <button
               type="button"
@@ -274,7 +276,9 @@
               onclick="save_row('1')"
               style="display: none"
             >
-              <i class="fa-regular fa-floppy-disk"></i>
+              <i class="fa-regular fa-floppy-disk tooltip-container">
+                <span class="tooltip-text">Save</span>
+              </i>
             </button>
             <button
               type="button"
@@ -282,7 +286,9 @@
               class="delete"
               onclick="delete_row('1')"
             >
-              <i class="fa-solid fa-trash"></i>
+              <i class="fa-solid fa-trash tooltip-container"
+                ><sapn class="tooltip-text">Delete</sapn></i
+              >
             </button>
           </td>
         </tr>
@@ -299,7 +305,9 @@
               class="edit"
               onclick="edit_row('2')"
             >
-              <i class="fa-solid fa-pen"></i>
+              <i class="fa-solid fa-pen tooltip-container"
+                ><span class="tooltip-text">Edit</span></i
+              >
             </button>
             <button
               type="button"
@@ -309,7 +317,9 @@
               style="display: none"
               onclick="save_row('2')"
             >
-              <i class="fa-regular fa-floppy-disk"></i>
+              <i class="fa-regular fa-floppy-disk tooltip-container"
+                ><span class="tooltip-text">Save</span></i
+              >
             </button>
             <button
               type="button"
@@ -317,7 +327,9 @@
               class="delete"
               onclick="delete_row('2')"
             >
-              <i class="fa-solid fa-trash"></i>
+              <i class="fa-solid fa-trash tooltip-container"
+                ><sapn class="tooltip-text">Delete</sapn></i
+              >
             </button>
           </td>
         </tr>
@@ -328,7 +340,7 @@
               <option value="" selected hidden>Role ?</option>
               <option value="Cashier">Cashier</option>
               <option value="Cashier Supervisor">Cashier Supervisor</option>
-              <option value="Finance Manager">Finace Manager</option>
+              <option value="Finance Manager">Finance Manager</option>
             </select>
           </td>
           <td>
@@ -340,7 +352,7 @@
           <td>
             <button
               type="button"
-              class="add"
+              class="add tooltip-container"
               onclick="add_row();"
               value="Add Row"
               style="
@@ -351,6 +363,7 @@
               "
             >
               Add New
+              <span class="tooltip-text">Add New Waiver Limit</span>
             </button>
           </td>
         </tr>

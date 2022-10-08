@@ -15,15 +15,15 @@ function edit_row(no) {
   var country_data = waiverLimit.innerHTML;
   var age_data = approvalLimit.innerHTML;
 
-  console.log(name_data);
+  // console.log(name_data);
 
   role.innerHTML = `<select type='text' id='name_text${no}' ><option value='Cashier' ${
     name_data === "Cashier" ? "selected" : ""
-    }>Cashier</option><option value='Cashier-Supervisor' ${
+  }>Cashier</option><option value='Cashier-Supervisor' ${
     name_data === "Cashier-Supervisor" ? "selected" : ""
-    }>Cashier Supervisor</option><option value='Finance Manager' ${
+  }>Cashier Supervisor</option><option value='Finance Manager' ${
     name_data === "Finance Manager" ? "seleceted" : ""
-    }>Finance Manager</option></select>`;
+  }>Finance Manager</option></select>`;
   waiverLimit.innerHTML =
     "<input type='text' id='country_text" +
     no +
@@ -38,21 +38,19 @@ function save_row(no) {
   var waiverLimitField = document.getElementById("country_text" + no);
   var approvalLimitField = document.getElementById("age_text" + no);
 
-
   var role = document.getElementById("name_text" + no).value;
   var waiverLimit = document.getElementById("country_text" + no).value;
   var approvalLimit = document.getElementById("age_text" + no).value;
 
   if (role && waiverLimit && approvalLimit) {
-    console.log(isFloat(waiverLimit) && isFloat(approvalLimit));
+    // console.log(isFloat(waiverLimit) && isFloat(approvalLimit));
     if (!(isFloat(waiverLimit) && isFloat(approvalLimit))) {
-
-      if (!(isFloat(waiverLimit))) {
-        waiverLimitField.classList.add('error-field')
+      if (!isFloat(waiverLimit)) {
+        waiverLimitField.classList.add("error-field");
       }
 
-      if (!(isFloat(approvalLimit))) {
-        approvalLimitField.classList.add('error-field')
+      if (!isFloat(approvalLimit)) {
+        approvalLimitField.classList.add("error-field");
       }
       return setError("Please Provide the Correct Value");
     }
@@ -73,9 +71,7 @@ function save_row(no) {
     document.getElementById("edit_button" + no).style.display = "inline";
     document.getElementById("save_button" + no).style.display = "none";
   } else {
-
     setError("Please fill all the fields below");
-
   }
 }
 
@@ -87,9 +83,23 @@ function isFloat(n) {
   return !isNaN(n) && !isNaN(parseFloat(n));
 }
 
+function isRoleAlreadyExists(name) {
+  let flag = 0;
+  for (let data in datas) {
+    if (datas[data].role === String(name)) {
+      flag = 1;
+      break;
+    }
+  }
+
+  if (flag == 1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 function add_row() {
-
-
   var waiverLimitField = document.getElementById("new_country");
   var approvalLimitField = document.getElementById("new_age");
 
@@ -98,15 +108,14 @@ function add_row() {
   var approvalLimit = document.getElementById("new_age").value;
 
   if (role && waiverLimit && approvalLimit) {
-    console.log(isFloat(waiverLimit) && isFloat(approvalLimit));
+    // console.log(isFloat(waiverLimit) && isFloat(approvalLimit));
     if (!(isFloat(waiverLimit) && isFloat(approvalLimit))) {
-
-      if (!(isFloat(waiverLimit))) {
-        waiverLimitField.classList.add('error-field')
+      if (!isFloat(waiverLimit)) {
+        waiverLimitField.classList.add("error-field");
       }
 
-      if (!(isFloat(approvalLimit))) {
-        approvalLimitField.classList.add('error-field')
+      if (!isFloat(approvalLimit)) {
+        approvalLimitField.classList.add("error-field");
       }
 
       return setError("Please Provide the Correct Value");
@@ -120,6 +129,19 @@ function add_row() {
         "Waiver Limit must be Greater or Equal to Approved Limit"
       );
     }
+    console.log("dcec", isRoleAlreadyExists(role));
+
+    if (isRoleAlreadyExists(role)) {
+      console.log("role", role);
+      // console.log("dcec", isRoleAlreadyExists(role));
+      return setError("Role already exists");
+    }
+
+    // datas.push({
+    //   role,
+    //   waiverLimit: waiverLimitValue,
+    //   approvalLimit: approvalLimitValue,
+    // });
 
     var table = document.getElementById("data_table");
     var table_len = table.rows.length - 1;
@@ -142,13 +164,13 @@ function add_row() {
       table_len +
       "' value='Edit' class='edit' onclick='edit_row(" +
       table_len +
-      ")'> <i class='fa-solid fa-pen'></i></button> <button type='button' id='save_button" +
+      ")'> <i class='fa-solid fa-pen tooltip-container'><span class='tooltip-text'>Edit</span></i></button> <button type='button' id='save_button" +
       table_len +
       "' value='Save' class='save' style='display:none' onclick='save_row(" +
       table_len +
-      ")'>  <i class='fa-regular fa-floppy-disk'></i></button> <button type='button' value='Delete' class='delete' onclick='delete_row(" +
+      ")'>  <i class='fa-regular fa-floppy-disk tooltip-container'><span class='tooltip-text'>Save</span></i></button> <button type='button' value='Delete' class='delete' onclick='delete_row(" +
       table_len +
-      ")'>  <i class='fa-solid fa-trash'></i></button></td></tr>");
+      ")'>  <i class='fa-solid fa-trash tooltip-container'><span class='tooltip-text'>Delete</span></i></button></td></tr>");
 
     document.getElementById("new_name").value = "";
     document.getElementById("new_country").value = "";
