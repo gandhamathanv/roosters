@@ -35,16 +35,48 @@ function edit_row(no) {
 }
 
 function save_row(no) {
-  var name_val = document.getElementById("name_text" + no).value;
-  var country_val = document.getElementById("country_text" + no).value;
-  var age_val = document.getElementById("age_text" + no).value;
+  var waiverLimitField = document.getElementById("country_text" + no);
+  var approvalLimitField = document.getElementById("age_text" + no);
 
-  document.getElementById("name_row" + no).innerHTML = name_val;
-  document.getElementById("country_row" + no).innerHTML = country_val;
-  document.getElementById("age_row" + no).innerHTML = age_val;
 
-  document.getElementById("edit_button" + no).style.display = "inline";
-  document.getElementById("save_button" + no).style.display = "none";
+  var role = document.getElementById("name_text" + no).value;
+  var waiverLimit = document.getElementById("country_text" + no).value;
+  var approvalLimit = document.getElementById("age_text" + no).value;
+
+  if (role && waiverLimit && approvalLimit) {
+    console.log(isFloat(waiverLimit) && isFloat(approvalLimit));
+    if (!(isFloat(waiverLimit) && isFloat(approvalLimit))) {
+
+      if (!(isFloat(waiverLimit))) {
+        waiverLimitField.classList.add('error-field')
+      }
+
+      if (!(isFloat(approvalLimit))) {
+        approvalLimitField.classList.add('error-field')
+      }
+      return setError("Please Provide the Correct Value");
+    }
+
+    const waiverLimitValue = parseFloat(waiverLimit);
+    const approvalLimitValue = parseFloat(approvalLimit);
+
+    if (waiverLimitValue < approvalLimitValue) {
+      return setError(
+        "Waiver Limit must be Greater or Equal to Approved Limit"
+      );
+    }
+
+    document.getElementById("name_row" + no).innerHTML = role;
+    document.getElementById("country_row" + no).innerHTML = waiverLimit;
+    document.getElementById("age_row" + no).innerHTML = approvalLimit;
+
+    document.getElementById("edit_button" + no).style.display = "inline";
+    document.getElementById("save_button" + no).style.display = "none";
+  } else {
+
+    setError("Please fill all the fields below");
+
+  }
 }
 
 function delete_row(no) {
@@ -56,6 +88,11 @@ function isFloat(n) {
 }
 
 function add_row() {
+
+
+  var waiverLimitField = document.getElementById("new_country");
+  var approvalLimitField = document.getElementById("new_age");
+
   var role = document.getElementById("new_name").value;
   var waiverLimit = document.getElementById("new_country").value;
   var approvalLimit = document.getElementById("new_age").value;
@@ -63,6 +100,15 @@ function add_row() {
   if (role && waiverLimit && approvalLimit) {
     console.log(isFloat(waiverLimit) && isFloat(approvalLimit));
     if (!(isFloat(waiverLimit) && isFloat(approvalLimit))) {
+
+      if (!(isFloat(waiverLimit))) {
+        waiverLimitField.classList.add('error-field')
+      }
+
+      if (!(isFloat(approvalLimit))) {
+        approvalLimitField.classList.add('error-field')
+      }
+
       return setError("Please Provide the Correct Value");
     }
 
@@ -121,7 +167,7 @@ function setError(errorMessage) {
 
   setTimeout(function () {
     errorContainer.style.display = "none";
-  }, 5000); //
+  }, 10000); //
 }
 
 function take_print() {
