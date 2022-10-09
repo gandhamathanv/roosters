@@ -3,7 +3,7 @@ import editName from "./edit.js";
 const dataContent = [
   {
     Servicerequested: "TOWING SERVICE OF ENGINE",
-    Chargable: "Y",
+    chargeable: "Y",
     Customer: "DHL",
     AWBNumber: "618-98877800",
     ULDNumber: "",
@@ -15,31 +15,31 @@ const dataContent = [
   },
   {
     Servicerequested: "FORKLIFT RENTAL",
-    Chargable: "Y",
+    chargeable: "Y",
     Customer: "DBS",
     AWBNumber: "318-22110118",
     ULDNumber: "AKE10011SQ",
     FlightDate: "SQ666 06SEP2017",
     RequestedDate: "05SEP2017 13:10",
-    Remarks: "",
+    Remarks: "success",
     Status: "Completed",
     ReasonforRejection: "",
   },
   {
     Servicerequested: "SECURITY ESCORT",
-    Chargable: "Y",
+    chargeable: "Y",
     Customer: "TNT",
     AWBNumber: "618-77661001",
     ULDNumber: "",
     FlightDate: "",
     RequestedDate: "",
     Remarks: "",
-    Status: "Reject",
+    Status: "Rejected",
     ReasonforRejection: "Late Lodge-in",
   },
   {
     Servicerequested: "APPLY PERMIT",
-    Chargable: "Y",
+    chargeable: "Y",
     Customer: "NES",
     AWBNumber: "618-10012211",
     ULDNumber: "",
@@ -51,7 +51,7 @@ const dataContent = [
   },
   {
     Servicerequested: "TOPUP DRY ICE",
-    Chargable: "Y",
+    chargeable: "Y",
     Customer: "DHL",
     AWBNumber: "618-33221001",
     ULDNumber: "",
@@ -78,7 +78,7 @@ const sortButton = document.querySelectorAll(".sort-tabel");
 const sortButton1 = document.querySelectorAll(".sort-tabel1");
 const content = (el, index) => ` <tr id="row${index}">
 <td id="service${index}">${el.Servicerequested}</td>
-<td id="chargable${index}">${el.Chargable}</td>
+<td id="chargeable${index}">${el.chargeable}</td>
 <td id="customer${index}">${el.Customer}</td>
 <td id="awbnumber${index}">${el.AWBNumber}</td>
 <td id="uldnumber${index}">${el.ULDNumber}</td>
@@ -90,7 +90,7 @@ const content = (el, index) => ` <tr id="row${index}">
     ? "#ffd43b"
     : el.Status == "Completed"
     ? "#69db7c"
-    : el.Status == "Reject"
+    : el.Status == "Rejected"
     ? "#ff8787"
     : el.Status == "Started"
     ? "#66d9e8"
@@ -131,7 +131,7 @@ const last = `<tr>
   <input type="text" id="new_service" placeholder="Service  ?" />
 </td>
 <td>
-  <input type="text" id="new_chargable" placeholder="Chargable ?" />
+  <input type="text" id="new_chargeable" placeholder="chargeable ?" />
 </td>
 <td>
   <input type="text" id="new_customer" placeholder="Customer ?" />
@@ -175,7 +175,7 @@ const setData = (data) => {
   data.forEach((el, index) => {
     tabelContent.innerHTML += content(el, index);
   });
-  tabelContent.innerHTML += last;
+  // tabelContent.innerHTML += last;
   const editButton = document.querySelectorAll(".edit-button");
   console.log(editButton);
   for (var i = 0; i < editButton.length; i++) {
@@ -187,7 +187,7 @@ const setData = (data) => {
     })(i);
   }
   const saveButton = document.querySelectorAll(".save-button");
-  console.log(saveButton);
+  // console.log(saveButton);
   for (var i = 0; i < saveButton.length; i++) {
     (function (index) {
       saveButton[index].addEventListener("click", function () {
@@ -318,61 +318,12 @@ const filterData = (data) => {
       return FlightD.startsWith(searchDate.toLowerCase());
     });
   }
-  // if (searchFrom != "" && searchTo != "") {
-  //   searchFrom = new Date(searchFrom);
-  //   searchTo = new Date(searchTo);
-  //   data = data.filter((el) => {
-  //     const waiveDate = new Date(el.waiveDate);
-  //     const approveDate = new Date(el.approveDate);
-  //     return (
-  //       (waiveDate >= searchFrom && waiveDate <= searchTo) ||
-  //       (approveDate >= searchFrom && approveDate <= searchTo)
-  //     );
-  //   });
-  // } else if (searchFrom != "" && searchTo == "") {
-  //   searchFrom = new Date(searchFrom);
-  //   data = data.filter((el) => {
-  //     const waiveDate = new Date(el.waiveDate);
-  //     const approveDate = new Date(el.approveDate);
-  //     return waiveDate >= searchFrom || approveDate >= searchFrom;
-  //   });
-  // } else if (searchFrom == "" && searchTo != "") {
-  //   searchTo = new Date(searchTo);
-  //   data = data.filter((el) => {
-  //     const waiveDate = new Date(el.waiveDate);
-  //     const approveDate = new Date(el.approveDate);
-  //     return waiveDate <= searchTo || approveDate <= searchTo;
-  //   });
-  // }
-
   console.log(data);
   return data;
 };
 searchButton.addEventListener("click", (el) =>
   setData(filterData(dataContent))
 );
-// setData(dataContent);
-// SORT BUTTON
-// const editButton = document.querySelectorAll(".edit-button");
-// console.log(editButton);
-// for (var i = 0; i < editButton.length; i++) {
-//   (function (index) {
-//     editButton[index].addEventListener("click", function () {
-//       console.log(index);
-//       edit_row(index);
-//     });
-//   })(i);
-// }
-// const saveButton = document.querySelectorAll(".save-button");
-// console.log(saveButton);
-// for (var i = 0; i < saveButton.length; i++) {
-//   (function (index) {
-//     saveButton[index].addEventListener("click", function () {
-//       console.log(index);
-//       save_row(index);
-//     });
-//   })(i);
-// }
 for (var i = 0; i < sortButton.length; i++) {
   (function (index) {
     sortButton[index].addEventListener("click", function () {
@@ -387,7 +338,7 @@ function edit_row(index) {
   document.getElementById("save-button-" + index).style.display = "inline";
 
   const service = document.getElementById("service" + index);
-  const chargable = document.getElementById("chargable" + index);
+  const chargeable = document.getElementById("chargeable" + index);
   const customer = document.getElementById("customer" + index);
   const awbnumber = document.getElementById("awbnumber" + index);
   const uldnumber = document.getElementById("uldnumber" + index);
@@ -398,7 +349,7 @@ function edit_row(index) {
   const reason = document.getElementById("reason" + index);
 
   const serviceValue = service.innerHTML;
-  const chargableValue = chargable.innerHTML;
+  const chargeableValue = chargeable.innerHTML;
   const customerValue = customer.innerHTML;
   const awbnumberValue = awbnumber.innerHTML;
   const uldnumberValue = uldnumber.innerHTML;
@@ -407,10 +358,23 @@ function edit_row(index) {
   const remarksValue = remarks.innerHTML;
   const statusValue = status.innerHTML;
   const reasonValue = reason.innerHTML;
+  const flightda = flightDateValue.split(" ");
+
+  document.getElementById("service").value = serviceValue;
+  // document.getElementById("chargeable").value = chargeableValue;
+  document.getElementById("customer").value = customerValue;
+  document.getElementById("awbnumber").value = awbnumberValue;
+  document.getElementById("uldnumber").value = uldnumberValue;
+  document.getElementById("flight").value = flightda[0];
+  document.getElementById("flightdate").value = flightda[1];
+  document.getElementById("requesteddate").value = requesteddateValue;
+  document.getElementById("remarks").value = remarksValue;
+  document.getElementById("status").value=statusValue;
+  document.getElementById("reason").value = reasonValue;
 
   console.log(
     serviceValue,
-    chargableValue,
+    chargeableValue,
     customerValue,
     awbnumberValue,
     uldnumberValue,
@@ -420,20 +384,48 @@ function edit_row(index) {
     statusValue,
     reasonValue
   );
-  var content = "";
-  content += `<input id="service_text${index}" class="input-element" value='${serviceValue}' >`;
-  content += `<input id="charge_text${index}" class="input-element" value='${chargableValue}' >`;
-  content += `<input id="customer_text${index}" class="input-element" value='${customerValue}' >`;
-  content += `<input id="awb_text${index}" class="input-element" value='${awbnumberValue}' >`;
-  content += `<input id="uld_text${index}" class="input-element" value='${uldnumberValue} '>`;
-  content += `<input id="flight_text${index}" class="input-element" value='${flightDateValue}' >`;
-  content += `<input id="request_text${index}" class="input-element" value='${requesteddateValue} '>`;
-  content += `<input id="remarks_text${index}" class="input-element" value='${remarksValue}' >`;
-  content += `<input id="status_text${index}" class="input-element" value='${statusValue}' >`;
-  content += `<input id="reason_text${index}" class="input-element" value='${reasonValue}' >`;
-  editName(content);
-  console.log(content);
+  document.getElementById("saveedit").addEventListener("click", function () {
+  
+    save_row(index);
+  });
+
+
+  // var content = "";
+  // content += `<input id="service_text${index}" class="input-element" value='${serviceValue}' >`;
+  // content += `<input id="charge_text${index}" class="input-element" value='${chargeableValue}' >`;
+  // content += `<input id="customer_text${index}" class="input-element" value='${customerValue}' >`;
+  // content += `<input id="awb_text${index}" class="input-element" value='${awbnumberValue}' >`;
+  // content += `<input id="uld_text${index}" class="input-element" value='${uldnumberValue} '>`;
+  // content += `<input id="flight_text${index}" class="input-element" value='${flightDateValue}' >`;
+  // content += `<input id="request_text${index}" class="input-element" value='${requesteddateValue} '>`;
+  // content += `<input id="remarks_text${index}" class="input-element" value='${remarksValue}' >`;
+  // content += `<input id="status_text${index}" class="input-element" value='${statusValue}' >`;
+  // content += `<input id="reason_text${index}" class="input-element" value='${reasonValue}' >`;
+  // editName(content);
+  // console.log(content);
 }
+function clearALL() {
+  document.getElementById("service").value = "";
+  // document.getElementById("chargeable").value = chargeableValue;
+  document.getElementById("customer").value = "";
+  document.getElementById("awbnumber").value = "";
+  document.getElementById("uldnumber").value = "";
+  document.getElementById("flight").value = "";
+  document.getElementById("flightdate").value = "";
+  document.getElementById("requesteddate").value = "";
+  document.getElementById("status")="Pending";
+  document.getElementById("remarks").value = "";
+  document.getElementById("reason").value = "";
+}
+
+document.getElementById("clearall").addEventListener("click", function () {
+  clearALL();
+});
+
+document.getElementById("cancel").addEventListener("click", function () {
+  document.getElementById("edit").style.display = "none";
+});
+// document.getElementById("saveedit").addEventListener("click");
 // document.getElementById("edit").innerHTML = content;
 function delete_row(index) {
   console.log("Delete", index);
@@ -445,65 +437,137 @@ function delete_row(index) {
 
   setData(dataContent);
 }
+document.getElementById("add").addEventListener("click", function () {
+  add_row();
+});
 function add_row() {
+  document.getElementById("edit").style.display = "block";
   dataContent.push({
-    Servicerequested: document.getElementById("new_service").value,
-    Chargable: document.getElementById("new_chargable").value,
-    Customer: document.getElementById("new_customer").value,
-    AWBNumber: document.getElementById("new_awbnumber").value,
-    ULDNumber: document.getElementById("new_uldnumber").value,
-    FlightDate: document.getElementById("new_flightdate").value,
-    RequestedDate: document.getElementById("new_requesteddate").value,
-    Remarks: document.getElementById("new_remarks").value,
-    Status: document.getElementById("new_status").value,
-    ReasonforRejection: document.getElementById("new_reason").value,
+    Servicerequested: document.getElementById("service").value,
+    chargeable: "Y",
+    Customer: document.getElementById("customer").value,
+    AWBNumber: document.getElementById("awbnumber").value,
+    ULDNumber: document.getElementById("uldnumber").value,
+    FlightDate:
+      document.getElementById("flight").value +
+      " " +
+      changeFormate(document.getElementById("flightdate").value),
+    RequestedDate:
+      changeFormate(document.getElementById("requesteddate").value) +
+      " " +
+      document.getElementById("requestedtime").value,
+    Remarks: document.getElementById("remarks").value,
+    Status: document.getElementById("remarks").value,
+    ReasonforRejection: document.getElementById("reason").value,
   });
-  setData(dataContent);
+  document.getElementById("saveedit").addEventListener("click", function () {
+    document.getElementById("edit").style.display = "none";
+    setData(dataContent);
+  });
 }
 
+
+
 function save_row(index) {
+  document.getElementById("cancel").removeEventListener("click", function () {
+    document.getElementById("edit").style.display = "none";
+  });
+  console.log("saveindex",index)
   document.getElementById("edit-button-" + index).style.display = "inline";
   document.getElementById("save-button-" + index).style.display = "none";
 
-  const service = document.getElementById("service_text" + index);
-  const chargable = document.getElementById("charge_text" + index);
-  const customer = document.getElementById("customer_text" + index);
-  const awbnumber = document.getElementById("awb_text" + index);
-  const uldnumber = document.getElementById("uld_text" + index);
-  let flightdate = document.getElementById("flight_text" + index);
-  const requesteddate = document.getElementById("request_text" + index);
-  const remarks = document.getElementById("remarks_text" + index);
-  const status = document.getElementById("status_text" + index);
-  const reason = document.getElementById("reason_text" + index);
+  const service = document.getElementById("service" + index);
+  const chargeable = document.getElementById("chargeable" + index);
+  const customer = document.getElementById("customer" + index);
+  const awbnumber = document.getElementById("awbnumber" + index);
+  const uldnumber = document.getElementById("uldnumber" + index);
+  const flightdate = document.getElementById("flightdate" + index);
+  const requesteddate = document.getElementById("requesteddate" + index);
+  const remarks = document.getElementById("remarks" + index);
+  const status = document.getElementById("status" + index);
+  const reason = document.getElementById("reason" + index);
+  // const flightda = el.flightdate.split(" ");
+  // document.getElementById("service").value;
+  // // document.getElementById("chargeable").value = chargeableValue;
+  // document.getElementById("customer").value = customerValue;
+  // document.getElementById("awbnumber").value = awbnumberValue;
+  // document.getElementById("uldnumber").value = uldnumberValue;
+  // document.getElementById("flight").value = flightda[0];
+  // document.getElementById("flightdate").value = flightda[1];
+  // document.getElementById("requesteddate").value = requesteddateValue;
+  // document.getElementById("remarks").value = remarksValue;
+  // document.getElementById("reason").value = reasonValue;
+  const serviceValue = document.getElementById("service").value;
+  const chargeableValue = "Y";
+  const customerValue = document.getElementById("customer").value;
+  var awbnumberValue = document.getElementById("awbnumber").value;
+  const uldnumberValue = document.getElementById("uldnumber").value;
+  const flightDateValue =
+    document.getElementById("flight").value +
+    " " +
+    changeFormate(document.getElementById("flightdate").value);
+  const requesteddateValue =
+    changeFormate(document.getElementById("requesteddate").value) +
+    " " +
+    document.getElementById("requestedtime").value;
+  const remarksValue = document.getElementById("remarks").value;
+  const statusValue = document.getElementById("status").value;
+  const reasonValue = document.getElementById("reason").value;
+  var numbers=/^[0-9]{3}[\-]?[0-9]{8}/;
+  var uldnumbertest=/^[A-Z]{3}[0-9]{4,5}[0-9A-Z]{3}/;
+  if(serviceValue=="")
+  {
+    return(setError("Please provide Service Name "));
+  }
+  // else if(customerName="")
+  // {
+  //   return(setError("Please provide Customer Name "));
+  // }
+  if(customerValue=="")
+  {
+    return(setError("Please provide Customer Code"));
+  }
+  if(awbnumberValue=="")
+  {
+    return(setError("Please provide AWB Number"));
+  }
+  else
+  {
+    if(!numbers.test(awbnumberValue))
+    {
+      return(setError("Please provide AWB Number in given format"));
+    }
+    awbnumberValue = awbnumberValue.replace(/(\d{3})(\d{8})/, '$1-$2');
+  }
 
-  const serviceValue = service.value;
-  const chargableValue = chargable.value;
-  const customerValue = customer.value;
-  const awbnumberValue = awbnumber.value;
-  const uldnumberValue = uldnumber.value;
-  const flightDateValue = flightdate.value;
-  const requesteddateValue = requesteddate.value;
-  const remarksValue = remarks.value;
-  const statusValue = status.value;
-  const reasonValue = reason.value;
+  if(!uldnumberValue=="")
+  {
+    if(!uldnumbertest.test(uldnumberValue))
+    {
+      return(setError("Please provide Uld Number in correct format"));
+    }
+
+  }
+
 
   // service.parentNode.innerHTML = serviceValue
   // console.log(service.parentNode);
-  console.log(flightDateValue);
-  service.parentNode.innerHTML = serviceValue;
-  chargable.parentNode.innerHTML = chargableValue;
-  customer.parentNode.innerHTML = customerValue;
-  awbnumber.parentNode.innerHTML = awbnumberValue;
-  uldnumber.parentNode.innerHTML = uldnumberValue;
-  flightdate.parentNode.innerHTML = flightDateValue;
-  requesteddate.parentNode.innerHTML = requesteddateValue;
-  remarks.parentNode.innerHTML = remarksValue;
-  status.parentNode.innerHTML = statusValue;
-  reason.parentNode.innerHTML = reasonValue;
+  // console.log(flightDateValue);
+  // console.log(serviceValue,chargeableValue,customerValue);
+  // service.value = serviceValue;
+  // chargeable.value = chargeableValue;
+  // customer.value = customerValue;
+  // awbnumber.value = awbnumberValue;
+  // uldnumber.value = uldnumberValue;
+  // flightdate.value = flightDateValue;
+  // requesteddate.value = requesteddateValue;
+  // remarks.value = remarksValue;
+  // status.value = statusValue;
+  // reason.value = reasonValue;
 
   dataContent[index] = {
     Servicerequested: serviceValue,
-    Chargable: chargableValue,
+    chargeable: chargeableValue,
     Customer: customerValue,
     AWBNumber: awbnumberValue,
     ULDNumber: uldnumberValue,
@@ -514,4 +578,52 @@ function save_row(index) {
     ReasonforRejection: reasonValue,
   };
   setData(dataContent);
+  document.getElementById("edit").style.display = "none";
 }
+
+function changeFormate(date) {
+  let month_names = [
+    "JAN",
+    "FEB",
+    "MAR",
+    "APR",
+    "MAY",
+    "JUN",
+    "JUL",
+    "AUG",
+    "SEP",
+    "OCT",
+    "NOV",
+    "DEC",
+  ];
+  let incomingDateChnge = new Date(date);
+  let incomingDay = incomingDateChnge.getDate();
+  let incomingMonth = incomingDateChnge.getMonth();
+
+  let incomingYear = incomingDateChnge.getFullYear();
+  if (incomingDay < 10) {
+    incomingDay = "0" + incomingDay;
+  }
+
+  incomingDateChnge = incomingDay + month_names[incomingMonth] + incomingYear;
+  // console.log(incomingDateChnge);
+  return incomingDateChnge;
+}
+
+function setError(errorMessage) {
+  let errorContainer = document.querySelector(".error-container");
+  // var waiverLimitField = document.getElementById("new_country");
+  // var approvalLimitField = document.getElementById("new_age");
+
+  errorContainer.style.display = "flex";
+  let errorText = document.querySelector(".error-text");
+  errorText.innerText = errorMessage;
+
+  setTimeout(function () {
+    errorContainer.style.display = "none";
+    // waiverLimitField.classList.remove("error-field");
+    // approvalLimitField.classList.remove("error-field");
+  }, 10000); //
+}
+
+setError("Ashwinth");
