@@ -44,14 +44,14 @@ function save_row(no) {
 
   if (role && waiverLimit && approvalLimit) {
     // console.log(isFloat(waiverLimit) && isFloat(approvalLimit));
-    if (!(isFloat(waiverLimit) && isFloat(approvalLimit))) {
-      if (!isFloat(waiverLimit)) {
-        waiverLimitField.classList.add("error-field");
-      }
+    if (!isFloat(waiverLimit)) {
+      waiverLimitField.classList.add("error-field");
+    }
 
-      if (!isFloat(approvalLimit)) {
-        approvalLimitField.classList.add("error-field");
-      }
+    if (!isFloat(approvalLimit)) {
+      approvalLimitField.classList.add("error-field");
+    }
+    if (!(isFloat(waiverLimit) && isFloat(approvalLimit))) {
       return setError("Please Provide the Correct Value");
     }
 
@@ -107,17 +107,23 @@ function add_row() {
   var waiverLimit = document.getElementById("new_country").value;
   var approvalLimit = document.getElementById("new_age").value;
 
+  if (!role) {
+    return setError("Make Sure You have Selected a Role");
+  }
+
+  if (!isFloat(waiverLimit)) {
+    setError("Please fill the Correct Value , Waiver Limit Must be an Number ");
+    return waiverLimitField.classList.add("error-field");
+  }
+  if (!isFloat(approvalLimit)) {
+    setError(
+      "Please fill the Correct Value , Approval Limit Must be an Number "
+    );
+    return approvalLimitField.classList.add("error-field");
+  }
   if (role && waiverLimit && approvalLimit) {
     // console.log(isFloat(waiverLimit) && isFloat(approvalLimit));
     if (!(isFloat(waiverLimit) && isFloat(approvalLimit))) {
-      if (!isFloat(waiverLimit)) {
-        waiverLimitField.classList.add("error-field");
-      }
-
-      if (!isFloat(approvalLimit)) {
-        approvalLimitField.classList.add("error-field");
-      }
-
       return setError("Please Provide the Correct Value");
     }
 
@@ -129,19 +135,12 @@ function add_row() {
         "Waiver Limit must be Greater or Equal to Approved Limit"
       );
     }
-    console.log("dcec", isRoleAlreadyExists(role));
 
     if (isRoleAlreadyExists(role)) {
       console.log("role", role);
-      // console.log("dcec", isRoleAlreadyExists(role));
+
       return setError("Role already exists");
     }
-
-    // datas.push({
-    //   role,
-    //   waiverLimit: waiverLimitValue,
-    //   approvalLimit: approvalLimitValue,
-    // });
 
     var table = document.getElementById("data_table");
     var table_len = table.rows.length - 1;
@@ -176,12 +175,16 @@ function add_row() {
     document.getElementById("new_country").value = "";
     document.getElementById("new_age").value = "";
   } else {
+    waiverLimitField.classList.add("error-field");
+    approvalLimitField.classList.add("error-field");
     setError("Please fill all the fields below");
   }
 }
 
 function setError(errorMessage) {
   let errorContainer = document.querySelector(".error-container");
+  var waiverLimitField = document.getElementById("new_country");
+  var approvalLimitField = document.getElementById("new_age");
 
   errorContainer.style.display = "flex";
   let errorText = document.querySelector(".error-text");
@@ -189,6 +192,8 @@ function setError(errorMessage) {
 
   setTimeout(function () {
     errorContainer.style.display = "none";
+    waiverLimitField.classList.remove("error-field");
+    approvalLimitField.classList.remove("error-field");
   }, 10000); //
 }
 
