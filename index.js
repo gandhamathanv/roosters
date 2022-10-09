@@ -578,6 +578,7 @@ function save_row(index) {
     ReasonforRejection: reasonValue,
   };
   setData(dataContent);
+  console.log("data",dataContent)
   document.getElementById("edit").style.display = "none";
 }
 
