@@ -1,3 +1,5 @@
+import editName from "./edit.js";
+// const edit = require("editfunction");
 const dataContent = [
   {
     Servicerequested: "TOWING SERVICE OF ENGINE",
@@ -99,13 +101,13 @@ const content = (el, index) => ` <tr id="row${index}">
 <td id="reason${index}">${el.ReasonforRejection}</td>
 <td id="toolbox${index}">
 <div style="display:flex; gap:15px">
-<div class="tooltip"><i id="edit-button-${index}" onclick="edit_row(${index})" class="fa-solid fa-pen" id="AWBsort"></i>
+<div class="tooltip"><i id="edit-button-${index}" class="fa-solid fa-pen edit-button" id="AWBsort"></i>
                   <span class="tooltiptext">Edit</span>
                 </div>
-                <div class="tooltip"><i id="save-button-${index}" onclick="save_row(${index})" class="fa-regular fa-floppy-disk" style="display:none"></i>
+                <div class="tooltip"><i id="save-button-${index}" class="fa-regular fa-floppy-disk save-button" style="display:none"></i>
                 <span class="tooltiptext">Save</span>
               </div>
-              <div class="tooltip"><i id="delete-button-${index}" onclick="delete_row(${index})" class="fa-solid fa-trash"></i>
+              <div class="tooltip"><i id="delete-button-${index}"  class="fa-solid fa-trash delete-button"></i>
               <span class="tooltiptext">Delete</span>
             </div>
 </div>
@@ -113,9 +115,15 @@ const content = (el, index) => ` <tr id="row${index}">
 </tr>`;
 
 {
+  // <div class="tooltip"><i id="edit-button-${index}" onclick="edit_row(${index})" class="fa-solid fa-pen" id="AWBsort"></i>
+  //                 <span class="tooltiptext">Edit</span>
+  //               </div>
   /* <div class="tooltip"><i id="delete-button-${index}" onclick="delete_row(${index})" class="fa-solid fa-trash"></i>
                   <span class="tooltiptext">Delete</span>
                 </div> */
+  //   <div class="tooltip"><i id="delete-button-${index}" onclick="delete_row(${index})" class="fa-solid fa-trash"></i>
+  //   <span class="tooltiptext">Delete</span>
+  // </div>
 }
 const last = `<tr>
 
@@ -168,6 +176,35 @@ const setData = (data) => {
     tabelContent.innerHTML += content(el, index);
   });
   tabelContent.innerHTML += last;
+  const editButton = document.querySelectorAll(".edit-button");
+  console.log(editButton);
+  for (var i = 0; i < editButton.length; i++) {
+    (function (index) {
+      editButton[index].addEventListener("click", function () {
+        console.log(index);
+        edit_row(index);
+      });
+    })(i);
+  }
+  const saveButton = document.querySelectorAll(".save-button");
+  console.log(saveButton);
+  for (var i = 0; i < saveButton.length; i++) {
+    (function (index) {
+      saveButton[index].addEventListener("click", function () {
+        console.log(index);
+        save_row(index);
+      });
+    })(i);
+  }
+  const deleteButton = document.querySelectorAll(".delete-button");
+  for (var i = 0; i < deleteButton.length; i++) {
+    (function (index) {
+      deleteButton[index].addEventListener("click", function () {
+        console.log(index);
+        delete_row(index);
+      });
+    })(i);
+  }
 };
 setData(dataContent);
 
@@ -314,7 +351,28 @@ const filterData = (data) => {
 searchButton.addEventListener("click", (el) =>
   setData(filterData(dataContent))
 );
+// setData(dataContent);
 // SORT BUTTON
+// const editButton = document.querySelectorAll(".edit-button");
+// console.log(editButton);
+// for (var i = 0; i < editButton.length; i++) {
+//   (function (index) {
+//     editButton[index].addEventListener("click", function () {
+//       console.log(index);
+//       edit_row(index);
+//     });
+//   })(i);
+// }
+// const saveButton = document.querySelectorAll(".save-button");
+// console.log(saveButton);
+// for (var i = 0; i < saveButton.length; i++) {
+//   (function (index) {
+//     saveButton[index].addEventListener("click", function () {
+//       console.log(index);
+//       save_row(index);
+//     });
+//   })(i);
+// }
 for (var i = 0; i < sortButton.length; i++) {
   (function (index) {
     sortButton[index].addEventListener("click", function () {
@@ -322,9 +380,9 @@ for (var i = 0; i < sortButton.length; i++) {
     });
   })(i);
 }
-setData(dataContent);
 
 function edit_row(index) {
+  document.getElementById("edit").style.display = "block";
   document.getElementById("edit-button-" + index).style.display = "none";
   document.getElementById("save-button-" + index).style.display = "inline";
 
@@ -362,19 +420,21 @@ function edit_row(index) {
     statusValue,
     reasonValue
   );
-
-  service.innerHTML = `<input id="service_text${index}" value='${serviceValue}' >`;
-  chargable.innerHTML = `<input id="charge_text${index}" value='${chargableValue}' >`;
-  customer.innerHTML = `<input id="customer_text${index}" value='${customerValue}' >`;
-  awbnumber.innerHTML = `<input id="awb_text${index}" value='${awbnumberValue}' >`;
-  uldnumber.innerHTML = `<input id="uld_text${index}" value='${uldnumberValue} '>`;
-  flightdate.innerHTML = `<input id="flight_text${index}" value='${flightDateValue}' >`;
-  requesteddate.innerHTML = `<input id="request_text${index}" value='${requesteddateValue} '>`;
-  remarks.innerHTML = `<input id="remarks_text${index}" value='${remarksValue}' >`;
-  status.innerHTML = `<input id="status_text${index}" value='${statusValue}' >`;
-  reason.innerHTML = `<input id="reason_text${index}" value='${reasonValue}' >`;
+  var content = "";
+  content += `<input id="service_text${index}" class="input-element" value='${serviceValue}' >`;
+  content += `<input id="charge_text${index}" class="input-element" value='${chargableValue}' >`;
+  content += `<input id="customer_text${index}" class="input-element" value='${customerValue}' >`;
+  content += `<input id="awb_text${index}" class="input-element" value='${awbnumberValue}' >`;
+  content += `<input id="uld_text${index}" class="input-element" value='${uldnumberValue} '>`;
+  content += `<input id="flight_text${index}" class="input-element" value='${flightDateValue}' >`;
+  content += `<input id="request_text${index}" class="input-element" value='${requesteddateValue} '>`;
+  content += `<input id="remarks_text${index}" class="input-element" value='${remarksValue}' >`;
+  content += `<input id="status_text${index}" class="input-element" value='${statusValue}' >`;
+  content += `<input id="reason_text${index}" class="input-element" value='${reasonValue}' >`;
+  editName(content);
+  console.log(content);
 }
-
+// document.getElementById("edit").innerHTML = content;
 function delete_row(index) {
   console.log("Delete", index);
   console.log({ dataContent });

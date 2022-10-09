@@ -125,7 +125,7 @@ th,
 td {
   border: 2px solid #fff;
   border-collapse: collapse;
-  padding: 1rem 1rem;
+  /* padding: 1rem 1rem; */
   text-align: center;
 }
 
