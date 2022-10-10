@@ -1,125 +1,127 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Message  Log Enquiry </title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
-        <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-       <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-       <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-      <link rel="stylesheet" href="style.css" />
-        
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="#">
-              <b> Messange Log Enquiry -Incoming</b>
-            </a>
-        </nav>
-        <hr>
-         <div class="container">
-            <div class="card-body">
-                <div class="container overflow-hidden">
-                  <div calss="row-align-items-starts">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Message Log Enquiry </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">
+            <b> Message Log Enquiry -Incoming</b>
+        </a>
+    </nav>
+    <hr>
+    <div class="container">
+        <div class="card-body">
+            <div class="container overflow-hidden">
+                <div calss="row-align-items-starts">
                     <div class="row gx-4">
-                      <div class="col">
-                       <div class="approver">
-                        <label>MessageType</label>
-                        <br>
-                        <select class="form-select message-type"  aria-label="Default select example">
+                        <div class="col">
+                            <div class="approver">
+                                <label>MessageType</label>
+                                <br>
+                                <select class="form-select message-type" aria-label="Default select example">
                            <option value="Incoming">Incoming</option>
                           <option value="Outgoing">Outgoing</option>
                           <option value="All" selected>ALL</option><br>
                         </select>
-                       </div>
-                      </div>
-                      <div class="col">
-                        <div class="approver">
-                         <label>Message Status</label>
-                         <br>
-                         <select class="form-select message-status" >
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="approver">
+                                <label>Message Status</label>
+                                <br>
+                                <select class="form-select message-status">
                             <option value="Accepted">Accepted</option>
                            <option value="Rejected">Rejected</option>
                            <option value="All">ALL</option><br>
                          </select>
+                            </div>
                         </div>
-                       </div>
-                      <div class="col">
-                        <label id="header">Message Header</label>
-                        <input type="text" class="message-header"><br>
-                      </div>
-                      <div class="col">
-                        <label>Message Text</label>
-                        <input type="text" id="header"><br>
-                      </div>
-                      <div class="col">
-                        <label>Flight Number</label>
-                        <input type="text" id="header"><br>
-                      </div>
-                      <br></br>
-                      <div class="col">
-                        <label id="flightschdate">Flight Schedule Date</label>
-                        <input type="date" id="flightschdate" name="flightschdate"><br><br>
-                      </div>
-                      <div class="col">
-                        <label id="recdate">Received From Date</label><br>
-                        <input type="date" id="recdate" name="recdate"><br>
-                      </div>
-                      <div class="col">
-                        <label id="timehrs">Time</label><br>
-                        <input type="time" id="timehrs" name="timehrs"><br>
-                      </div>
-                      <div class="col">
-                        <label id="todate">Received To Date</label><br>
-                        <input type="date" id="todate" name="todate"><br>
-                      </div>
-                      <div class="col">
-                        <label>Time</label><br>
-                        <input type="time" id="timehrs" name="timehrs"><br>
-                      </div>
-                     
-                       <br></br> 
-                       <button type="button" class="btn btn-success" onclick="searchData()">Search <i class="fa fa-search" aria-hidden="true"></i></button> &nbsp;
+                        <div class="col">
+                            <label id="header">Message Header</label>
+                            <input type="text" class="message-header"><br>
+                        </div>
+                        <div class="col">
+                            <label>Message Text</label>
+                            <input type="text" id="header"><br>
+                        </div>
+                        <div class="col">
+                            <label>Flight Number</label>
+                            <input type="text" id="header"><br>
+                        </div>
+                        <br></br>
+                        <div class="col">
+                            <label id="flightschdate">Flight Schedule Date</label>
+                            <input type="date" id="flightschdate" name="flightschdate"><br><br>
+                        </div>
+                        <div class="col">
+                            <label id="recdate">Received From Date</label><br>
+                            <input type="date" id="recdate" name="recdate"><br>
+                        </div>
+                        <div class="col">
+                            <label id="timehrs">Time</label><br>
+                            <input type="time" id="timehrs" name="timehrs"><br>
+                        </div>
+                        <div class="col">
+                            <label id="todate">Received To Date</label><br>
+                            <input type="date" id="todate" name="todate"><br>
+                        </div>
+                        <div class="col">
+                            <label>Time</label><br>
+                            <input type="time" id="timehrs" name="timehrs"><br>
+                        </div>
+
+                        <br></br>
+                        <button type="button" class="btn btn-success" onclick="searchData()">Search <i class="fa fa-search" aria-hidden="true"></i></button> &nbsp;
                         <button type="button" class="btn btn-success">Refresh <i class="fa fa-refresh" aria-hidden="true"></i></button>
-                        
-                      </div>
-                  </div>
+
+                    </div>
                 </div>
-              </div>
+            </div>
         </div>
-        <section class="table-section">
-          <table>
+    </div>
+    <section class="table-section">
+        <table>
             <tr>
-              <th>Message Type</th>
-              <th>Message Header</th>
-              <th>Copy Number</th>
-              <th>Receieved Date Time</th>
-              <th>Message From Address</th>
-              
-              <th>Rejected Code</th>
-              <th>View Message</th>
+                <th>Message Type</th>
+                <th>Message Header</th>
+                <th>Copy Number</th>
+                <th>Receieved Date Time</th>
+                <th>Message From Address</th>
+
+                <th>Rejected Code</th>
+                <th>View Message</th>
             </tr>
             <tbody class="table-body">
-               <td><input  value=""></td>
-               <td><input type="" value=""></td>
-               <td><input type="" value=""></td>
-               <td><input type="" value=""></td>
-               <td><input type="" value=""></td>
-               <td><input type="" value=""></td>
+                <td><input value=""></td>
+                <td><input type="" value=""></td>
+                <td><input type="" value=""></td>
+                <td><input type="" value=""></td>
+                <td><input type="" value=""></td>
+                <td><input type="" value=""></td>
                 <td><a href="#"><i class="fa fa-file"></i></a></td>
-              </tbody>
-         
-          </table>
-          
-        </section>
-      </section>
+            </tbody>
+
+        </table>
+
+    </section>
+    </section>
     </div>
-  </div>
-<script src="./script.js"></script>
-        
-    </body>
+    </div>
+    <script src="./script.js"></script>
+
+</body>
 
 </html>
