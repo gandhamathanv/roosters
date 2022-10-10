@@ -1,4 +1,4 @@
-import editName from "./edit.js";
+// import editName from "./edit.js";
 // const edit = require("editfunction");
 const dataContent = [
   {
@@ -101,7 +101,7 @@ const content = (el, index) => ` <tr id="row${index}">
 <td id="reason${index}">${el.ReasonforRejection}</td>
 <td id="toolbox${index}">
 <div style="display:flex; gap:15px">
-<div class="tooltip"><i id="edit-button-${index}" class="fa-solid fa-pen edit-button" id="AWBsort"></i>
+<div class="tooltip"><a href="edit.html" ><i id="edit-button-${index}" onclick="./edit.html" class="fa-solid fa-pen edit-button" id="AWBsort"></i></a>
                   <span class="tooltiptext">Edit</span>
                 </div>
                 <div class="tooltip"><i id="save-button-${index}" class="fa-regular fa-floppy-disk save-button" style="display:none"></i>
@@ -176,26 +176,26 @@ const setData = (data) => {
     tabelContent.innerHTML += content(el, index);
   });
   // tabelContent.innerHTML += last;
-  const editButton = document.querySelectorAll(".edit-button");
-  console.log(editButton);
-  for (var i = 0; i < editButton.length; i++) {
-    (function (index) {
-      editButton[index].addEventListener("click", function () {
-        console.log(index);
-        edit_row(index);
-      });
-    })(i);
-  }
-  const saveButton = document.querySelectorAll(".save-button");
-  // console.log(saveButton);
-  for (var i = 0; i < saveButton.length; i++) {
-    (function (index) {
-      saveButton[index].addEventListener("click", function () {
-        console.log(index);
-        save_row(index);
-      });
-    })(i);
-  }
+  // const editButton = document.querySelectorAll(".edit-button");
+  // console.log(editButton);
+  // for (var i = 0; i < editButton.length; i++) {
+  //   (function (index) {
+  //     editButton[index].addEventListener("click", function () {
+  //       console.log(index);
+  //       edit_row(index);
+  //     });
+  //   })(i);
+  // }
+  // const saveButton = document.querySelectorAll(".save-button");
+  // // console.log(saveButton);
+  // for (var i = 0; i < saveButton.length; i++) {
+  //   (function (index) {
+  //     saveButton[index].addEventListener("click", function () {
+  //       console.log(index);
+  //       save_row(index);
+  //     });
+  //   })(i);
+  // }
   const deleteButton = document.querySelectorAll(".delete-button");
   for (var i = 0; i < deleteButton.length; i++) {
     (function (index) {
@@ -332,78 +332,78 @@ for (var i = 0; i < sortButton.length; i++) {
   })(i);
 }
 
-function edit_row(index) {
-  document.getElementById("edit").style.display = "block";
-  document.getElementById("edit-button-" + index).style.display = "none";
-  document.getElementById("save-button-" + index).style.display = "inline";
+// function edit_row(index) {
+//   document.getElementById("edit").style.display = "block";
+//   document.getElementById("edit-button-" + index).style.display = "none";
+//   document.getElementById("save-button-" + index).style.display = "inline";
 
-  const service = document.getElementById("service" + index);
-  const chargeable = document.getElementById("chargeable" + index);
-  const customer = document.getElementById("customer" + index);
-  const awbnumber = document.getElementById("awbnumber" + index);
-  const uldnumber = document.getElementById("uldnumber" + index);
-  const flightdate = document.getElementById("flightdate" + index);
-  const requesteddate = document.getElementById("requesteddate" + index);
-  const remarks = document.getElementById("remarks" + index);
-  const status = document.getElementById("status" + index);
-  const reason = document.getElementById("reason" + index);
+//   const service = document.getElementById("service" + index);
+//   const chargeable = document.getElementById("chargeable" + index);
+//   const customer = document.getElementById("customer" + index);
+//   const awbnumber = document.getElementById("awbnumber" + index);
+//   const uldnumber = document.getElementById("uldnumber" + index);
+//   const flightdate = document.getElementById("flightdate" + index);
+//   const requesteddate = document.getElementById("requesteddate" + index);
+//   const remarks = document.getElementById("remarks" + index);
+//   const status = document.getElementById("status" + index);
+//   const reason = document.getElementById("reason" + index);
 
-  const serviceValue = service.innerHTML;
-  const chargeableValue = chargeable.innerHTML;
-  const customerValue = customer.innerHTML;
-  const awbnumberValue = awbnumber.innerHTML;
-  const uldnumberValue = uldnumber.innerHTML;
-  const flightDateValue = flightdate.innerHTML;
-  const requesteddateValue = requesteddate.innerHTML;
-  const remarksValue = remarks.innerHTML;
-  const statusValue = status.innerHTML;
-  const reasonValue = reason.innerHTML;
-  const flightda = flightDateValue.split(" ");
+//   const serviceValue = service.innerHTML;
+//   const chargeableValue = chargeable.innerHTML;
+//   const customerValue = customer.innerHTML;
+//   const awbnumberValue = awbnumber.innerHTML;
+//   const uldnumberValue = uldnumber.innerHTML;
+//   const flightDateValue = flightdate.innerHTML;
+//   const requesteddateValue = requesteddate.innerHTML;
+//   const remarksValue = remarks.innerHTML;
+//   const statusValue = status.innerHTML;
+//   const reasonValue = reason.innerHTML;
+//   const flightda = flightDateValue.split(" ");
 
-  document.getElementById("service").value = serviceValue;
-  // document.getElementById("chargeable").value = chargeableValue;
-  document.getElementById("customer").value = customerValue;
-  document.getElementById("awbnumber").value = awbnumberValue;
-  document.getElementById("uldnumber").value = uldnumberValue;
-  document.getElementById("flight").value = flightda[0];
-  document.getElementById("flightdate").value = flightda[1];
-  document.getElementById("requesteddate").value = requesteddateValue;
-  document.getElementById("remarks").value = remarksValue;
-  document.getElementById("status").value=statusValue;
-  document.getElementById("reason").value = reasonValue;
+//   document.getElementById("service").value = serviceValue;
+//   // document.getElementById("chargeable").value = chargeableValue;
+//   document.getElementById("customer").value = customerValue;
+//   document.getElementById("awbnumber").value = awbnumberValue;
+//   document.getElementById("uldnumber").value = uldnumberValue;
+//   document.getElementById("flight").value = flightda[0];
+//   document.getElementById("flightdate").value = flightda[1];
+//   document.getElementById("requesteddate").value = requesteddateValue;
+//   document.getElementById("remarks").value = remarksValue;
+//   document.getElementById("status").value=statusValue;
+//   document.getElementById("reason").value = reasonValue;
 
-  console.log(
-    serviceValue,
-    chargeableValue,
-    customerValue,
-    awbnumberValue,
-    uldnumberValue,
-    flightDateValue,
-    requesteddateValue,
-    remarksValue,
-    statusValue,
-    reasonValue
-  );
-  document.getElementById("saveedit").addEventListener("click", function () {
+//   console.log(
+//     serviceValue,
+//     chargeableValue,
+//     customerValue,
+//     awbnumberValue,
+//     uldnumberValue,
+//     flightDateValue,
+//     requesteddateValue,
+//     remarksValue,
+//     statusValue,
+//     reasonValue
+//   );
+//   document.getElementById("saveedit").addEventListener("click", function () {
   
-    save_row(index);
-  });
+//     save_row(index);
+//   });
 
 
-  // var content = "";
-  // content += `<input id="service_text${index}" class="input-element" value='${serviceValue}' >`;
-  // content += `<input id="charge_text${index}" class="input-element" value='${chargeableValue}' >`;
-  // content += `<input id="customer_text${index}" class="input-element" value='${customerValue}' >`;
-  // content += `<input id="awb_text${index}" class="input-element" value='${awbnumberValue}' >`;
-  // content += `<input id="uld_text${index}" class="input-element" value='${uldnumberValue} '>`;
-  // content += `<input id="flight_text${index}" class="input-element" value='${flightDateValue}' >`;
-  // content += `<input id="request_text${index}" class="input-element" value='${requesteddateValue} '>`;
-  // content += `<input id="remarks_text${index}" class="input-element" value='${remarksValue}' >`;
-  // content += `<input id="status_text${index}" class="input-element" value='${statusValue}' >`;
-  // content += `<input id="reason_text${index}" class="input-element" value='${reasonValue}' >`;
-  // editName(content);
-  // console.log(content);
-}
+//   // var content = "";
+//   // content += `<input id="service_text${index}" class="input-element" value='${serviceValue}' >`;
+//   // content += `<input id="charge_text${index}" class="input-element" value='${chargeableValue}' >`;
+//   // content += `<input id="customer_text${index}" class="input-element" value='${customerValue}' >`;
+//   // content += `<input id="awb_text${index}" class="input-element" value='${awbnumberValue}' >`;
+//   // content += `<input id="uld_text${index}" class="input-element" value='${uldnumberValue} '>`;
+//   // content += `<input id="flight_text${index}" class="input-element" value='${flightDateValue}' >`;
+//   // content += `<input id="request_text${index}" class="input-element" value='${requesteddateValue} '>`;
+//   // content += `<input id="remarks_text${index}" class="input-element" value='${remarksValue}' >`;
+//   // content += `<input id="status_text${index}" class="input-element" value='${statusValue}' >`;
+//   // content += `<input id="reason_text${index}" class="input-element" value='${reasonValue}' >`;
+//   // editName(content);
+//   // console.log(content);
+// }
 function clearALL() {
   document.getElementById("service").value = "";
   // document.getElementById("chargeable").value = chargeableValue;
@@ -418,13 +418,13 @@ function clearALL() {
   document.getElementById("reason").value = "";
 }
 
-document.getElementById("clearall").addEventListener("click", function () {
-  clearALL();
-});
+// document.getElementById("clearall").addEventListener("click", function () {
+//   clearALL();
+// });
 
-document.getElementById("cancel").addEventListener("click", function () {
-  document.getElementById("edit").style.display = "none";
-});
+// document.getElementById("cancel").addEventListener("click", function () {
+//   document.getElementById("edit").style.display = "none";
+// });
 // document.getElementById("saveedit").addEventListener("click");
 // document.getElementById("edit").innerHTML = content;
 function delete_row(index) {
@@ -437,9 +437,9 @@ function delete_row(index) {
 
   setData(dataContent);
 }
-document.getElementById("add").addEventListener("click", function () {
-  add_row();
-});
+// document.getElementById("add").addEventListener("click", function () {
+//   add_row();
+// });
 function add_row() {
   document.getElementById("edit").style.display = "block";
   dataContent.push({
@@ -627,4 +627,3 @@ function setError(errorMessage) {
   }, 10000); //
 }
 
-setError("Ashwinth");
