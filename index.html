@@ -9,7 +9,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     />
-    <!-- <link rel="stylesheet" href="./index.css" /> -->
+    <link rel="stylesheet" href="./index.css" />
     
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
@@ -49,6 +49,8 @@ html {
 .navbar-options {
   display: flex;
   gap: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
 .navbar-icons-container {
@@ -179,7 +181,7 @@ html {
       }
       .element1 {
         padding: 5px;
-        box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.158);
+        /* box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.158); */
         border-radius: 3px;
       }
       .element-head {
@@ -260,6 +262,7 @@ html {
   background: none;
   border: 2px solid #ddd;
   transition: border-color 0.3s ease;
+  margin-bottom: 20px;
 }
 
 .custom-field.one input + .placeholder {
@@ -417,7 +420,7 @@ html {
 table,
 th,
 td {
-  border: 2px solid #fff;
+  /* border: 2px solid #fff; */
   border-collapse: collapse;
   /* padding: 1rem 1rem; */
   text-align: center;
@@ -428,10 +431,10 @@ th {
   color: #fff;
 }
 
-td {
+/* td {
   box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
     rgba(17, 17, 26, 0.1) 0px 0px 8px;
-}
+} */
 .table-section {
   margin-top: 3rem;
 }
@@ -458,9 +461,8 @@ td {
           <i class="fa-regular fa-plus icon"></i>
           <p class="icon-name">Add </p>
         </div></a> 
-        <div class="navbar-icons-container bg-white">
-          <i class="fa-solid fa-eraser icon"></i>
-          <p class="icon-name">Clear All</p>
+        <div>
+          <i class="fa-regular fa-circle-question" style="color: white"></i>
         </div>
       </div>
     </nav>
@@ -475,7 +477,7 @@ td {
       cursor: pointer;
     "
   >
-    Help ?
+    <!-- Help ? -->
 
     <span class="tooltip-text">
           The objective of this Use Case is to list the service requests within the given date range with specified status.<br /><br />
@@ -501,7 +503,7 @@ td {
     ><img
       src="./india-flag-icon.svg"
       style="width: 35px; margin: 0 10px;"
-    />INR - Indian Rupee</span
+    />AED - Emirati Dirham</span
   >
 </p>
     <section class="main-section">

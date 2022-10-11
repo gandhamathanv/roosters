@@ -1,4 +1,6 @@
+
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
 * {
   padding: 0;
   margin: 0;
@@ -10,15 +12,30 @@ html {
 }
 
 /* =================START OF NAVBAR============= */
-
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   padding: 1.6rem 2rem;
   background-color: #4263eb;
 }
+.navbar1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
+  padding: 1.8rem 2rem;
+
+}
+.navbar2 {
+
+ padding-left: 1000px;
+  align-items: center;
+
+  
+ 
+}
 .heading {
   color: #fff;
   font-size: 24px;
@@ -29,6 +46,10 @@ html {
   gap: 10px;
 }
 
+.navbar-options1 {
+  display: flex;
+  gap: 10px;
+}
 .navbar-icons-container {
   border-radius: 7px;
   padding: 10px 18px;
@@ -71,8 +92,10 @@ html {
   .navbar {
     flex-direction: column;
     gap: 20px;
+
     font-size: 12px;
   }
+
   .icon {
     font-size: 12px;
   }
@@ -84,7 +107,6 @@ html {
     align-items: center;
   }
 }
-
 /* =================END OF NAVBAR============= */
 
 .main-section {
