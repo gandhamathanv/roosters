@@ -1,51 +1,51 @@
-const data1 = [{
+const data1 = [
+  {
     AWBNumber: "618-4274283",
     CustomerName: "Aatarsh",
     SHC: "VAL EAP EAW",
     HandlingArea: "AFT1",
     ExportImport: "Import",
-    Counter:"T5-L-01"
-}]
-const data2=[{
-  Charges: {
-    WeightVerification: {
+    Counter: "T5-L-01",
+  },
+];
+const data2 = [
+  {
+    Charges: {
+      WeightVerification: {
         Quantity: 1000.0,
         Duration: null,
         Amount: 3.0,
-      waivedAmount: null,
-    },
-    RcarScreeningFee: {
+        waivedAmount: null,
+      },
+      RcarScreeningFee: {
         Quantity: 1000.0,
         Duration: null,
         Amount: 90.0,
-      
-        waivedAmount: 3.00,
-    },
-    FwbCreationServiceFee: {
+
+        waivedAmount: 3.0,
+      },
+      FwbCreationServiceFee: {
         Quantity: 1.0,
         Duration: null,
         Amount: 18.0,
-       
+
         waivedAmount: null,
-    },
-    
-    ToCollect: {
+      },
+
+      ToCollect: {
         Quantity: " ",
         Duration: " ",
         Amount: 30.0,
-       
-        waivedAmount: 3.00,
-    }
-  }
-   
 
-  }];
-  const data3=[{
-    
-  }]
+        waivedAmount: 3.0,
+      },
+    },
+  },
+];
+const data3 = [{}];
 
 const customerInfoTemplate = (el) =>
-`
+  `
 <nav class="navbar1">
     
 <div class="navbar-options">
@@ -79,8 +79,7 @@ const customerInfoTemplate = (el) =>
        
       </nav>`;
 
-
-      const tabelContentTemlate = (el) => `
+const tabelContentTemlate = (el) => `
       <table class="table" >
       <tr>
         <th>Service Type</th>
@@ -132,38 +131,26 @@ const customerInfoTemplate = (el) =>
         </tr>
     </table>
   </section>`;
-      
-      const customerInfo = document.querySelector(".customer-info");
 
+const customerInfo = document.querySelector(".customer-info");
 
+function editInput() {
+  let editinput = document.getElementById("codn");
+  console.log(editinput.innerHTML);
+  const editvalue = editinput.value;
+  editinput.innerHTML = `<p>${editvalue}</p> `;
+  console.log(editinput.value);
+}
 
-
-
-   
-      
-           
-        function editInput(){
-          const input =document.getElementById("cn");
-          input.readOnly=!input.readOnly;
-          console.log("change");
-        }
-
-
-
-
-
-        
-
-
-        let request = new XMLHttpRequest();
-        request.open("POST", "FinanceERPrequest.json");
-        request.send();
-        request.onload = () => {
-          console.log(request);
-          if (request.status === 200) {
-            // by default the response comes in the string format, we need to parse the data into JSON
-            console.log(JSON.parse(request.response));
-          } else {
-            console.log(`error ${request.status} ${request.statusText}`);
-          }
-        };
+let request = new XMLHttpRequest();
+request.open("POST", "FinanceERPrequest.json");
+request.send();
+request.onload = () => {
+  console.log(request);
+  if (request.status === 200) {
+    // by default the response comes in the string format, we need to parse the data into JSON
+    console.log(JSON.parse(request.response));
+  } else {
+    console.log(`error ${request.status} ${request.statusText}`);
+  }
+};
