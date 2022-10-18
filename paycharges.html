@@ -14,91 +14,242 @@
   </head>
 
   <body class="by">
-    <nav class="navbar">
-      <h3 class="heading">Pay Charges</h3>
-
-      <div class="navbar-options">
-        <div class="navbar-icons-container bg-white">
-          <i class="fa-solid fa-print icon"></i>
-          <p class="icon-name">Print</p>
+    <div>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 50px 15px 15px;
+          background-color: #4263eb;
+        "
+      >
+        <h3 style="color: white; font-size: x-large ;padding-top: 20px;">Pay Charges</h3>
+        <div
+          style="
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            padding-top: 14px;
+          "
+        ><div style="
+        display: flex;
+        align-items: center;
+        gap: 10px 12px;
+        padding: 6px 12px ;
+       
+       
+      ">
+        <p  font-size: 15px">
+          <span style="height: 20px">
+            Base Currency
+            <img
+              src="./Flag_of_the_United_Arab_Emirates.svg.png"
+              style="width: 20px; height: 20px; margin: 0 10px"
+            /><span style="font-weight: bold">AED - Emirati Dirham</span></span
+          >
+        </p>
         </div>
-        <div class="navbar-icons-container bg-red">
-          <i class="fa-solid fa-xmark icon"></i>
-          <p class="icon-name">Cancel</p>
-        </div>
-        <div class="navbar-icons-container bg-green">
-          <i class="fa-regular fa-floppy-disk icon"></i>
-          <p class="icon-name">Save</p>
-        </div>
-        <div class="navbar-icons-container bg-white">
-          <i class="fa-solid fa-eraser icon"></i>
-          <p class="icon-name">Clear All</p>
-        </div>
-        <div class="navbar-icons-container bg-white">
-         
-          <p class="icon-name" id="myBtn">Finance ERP</p>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 10px 12px;
+              padding: 6px 12px ;
+              background-color: white;
+              border-radius: 5px;
+              cursor: pointer;
+             
+            "
+            onclick="take_print()"
+          >
+            <i class="fa-solid fa-print" style="font-size: 12px"> </i>
+            <p style="font-size: 16px; margin: 0">Print</p>
+          </div>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              padding: 5px 12px;
+              background-color: #fa5252;
+              color: white;
+              border-radius: 5px;
+              cursor: pointer;
+            "
+          >
+            <i class="fa-solid fa-xmark" style="font-size: 12px"></i>
+            <p style="font-size: 16px; margin: 0">Cancel</p>
+          </div>
+          
+            <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              padding: 5px 12px;
+              background-color:green;
+              color: white;
+              border-radius: 5px;
+              cursor: pointer;
+            "
+          >
+          <i class="fa-solid fa-floppy-disk"style="font-size: 12px"></i>
+            <p style="font-size: 16px; margin: 0">Save</p>
+          </div>
+          
+            <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              padding: 5px 12px ;
+              background-color: white;
+              
+              border-radius: 5px;
+              cursor: pointer;
+            "
+          >
+          <i class="fa-solid fa-eraser" style="font-size: 12px"></i>
+            <p style="font-size: 16px; margin: 0">Clear All</p>
+          </div>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              padding: 5px 12px ;
+              background-color: white;
+              
+              border-radius: 5px;
+              cursor: pointer;
+            "
+          >
+          <a class="button" href="#popup2">
+            <p style="font-size: 16px; margin: 0;text-decoration: none;">Finance ERP</p>
+            </a>
+          </div>
+          <div>
+            <a class="button" href="#popup1">
+              <i
+                class="fa-regular fa-circle-question tooltip-container"
+                style="color: white; font-size: 18px"
+              ></i>
+            </a>
+            <div id="popup1" class="overlay">
+              <div class="popup">
+                <h2>Here i am</h2>
+                <a class="close" href="#">&times;</a>
+                <div class="content">
+                  Thank to pop me out of that button, but now i'm done so you can
+                  close this window.
+                </div>
+              </div>
+            </div>
+            <div id="popup2" class="overlay">
+              <div class="popup">
+                <h2>Internal Server Error</h2>
+                <a class="close" href="#">&times;</a>
+                <div class="content">
+                  The server encountered an internal error and was unable to complete your request. Either the server is overloaded or
+        there is an error in the application.
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </nav>
-    <br><br>
+    </div>
+   <!-- <p style="margin-left: 120px; margin-top: 60px; font-size: 15px">
+        <span style="height: 20px">
+          Base Currency
+          <img
+            src="./Flag_of_the_United_Arab_Emirates.svg.png"
+            style="width: 20px; height: 20px; margin: 0 10px"
+          /><span style="font-weight: bold">AED - Emirati Dirham</span></span
+        >
+      </p>
     <!-- The Modal -->
-<div id="myModal" class="modal">
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p><!doctype html>
-      <html lang=en>
-      <title>500 Internal Server Error</title>
-      <h1>Internal Server Error</h1>
-      <p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or
-        there is an error in the application.</p></p>
-  </div>
-
-</div>
 
     
       <nav class="navbar1">
     
         <div class="navbar-options">
+          <div class="card">
+
+            <div class="container">
+              <label for="cn">Customer Name</label>
+              <h4 name="cn" >JUPITER SINGAPORE PTE LTD</h4> 
+            </div>
+            </div>     
+            <div class="card">
+
+              <div class="container">
+                <label for="cn">AWB Number</label>
+                <h4 name="cn" >618-42747283</h4> 
+              </div>
+              </div>     
+              <div class="card">
+                <label for="cn">Special Handling Code</label>
+                <h4 name="cn" >VAL EAP EAW</h4> 
+                <div class="container">
+                 
+                </div>
+                </div> 
+                <div class="card">
+                  <label for="cn"> Zone/Area</label>
+                  <h4 name="cn" >Import/Cold Storage 1</h4>
+                  <div class="container">
+                   
+                  </div>
+                  </div> 
+                  <div class="card">
+                    <label for="cn">Export/Import Shipment</label>
+          <h4 name="cn" >Import</h4> 
+                    <div class="container">
+                     
+                    </div>
+                    </div> 
+                    <div class="card">
+                      <label for="cn" >Counter</label><br>
+         
+          <select name="cn" id="cn" readonly="true" style="padding: 8px;">
+            <option value="c1">T5-L-01</option>
+            <option value="c1">T5-L-02</option>
+            <option value="c1">T5-L-03</option>
+            
+          </select>
+                    
+                       
+                      </div>
+                      </div> 
+        
+        
+       
         <div>
-          <label for="cn">Customer Name</label>
-          <h2 name="cn" >JUPITER SINGAPORE PTE LTD</h2> 
-          </div>
-          <br>
-          <div>
-          <label for="cn">AWB Number</label>
-          <h2 name="cn" >618-42747283</h2> 
-        </div><br>
-        <div>
-          <label for="cn">SHC</label>
-          <h2 name="cn" >VAL EAP EAW</h2> 
-        </div><br>
-        <div>
-          <label for="cn">Handling Area</label>
-          <h2 name="cn" >AFT1</h2> 
-        </div><br>
-        <div>
-          <label for="cn">Export/Import</label>
-          <h2 name="cn" >Import</h2> 
-        </div>
-        <div>
-          <label for="cn" >Counter</label><br>
-          <input name="cn" id="cn" value="T5-L-01" type="text" readonly="true" style="padding: 8px;"> 
-        </div>
-        <div>
-          <input  style="padding: 10px;margin-left: 20px;" onclick="editInput()" id="edit_button" type="button" value="Set/Change Counter ">
+          <input type="button" value="Set/Change Counter" onclick="editInput()" id="edit_button"  style="
+       
+        
+        gap: 12px;
+        padding: 5px 12px;
+        background-color: #4263eb;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      width:140px;
+       height:40px" class="search-button">
+         
         </div>
         </div>
        
       </nav>
 
-      <div style="margin-top:15px;margin-left: 15px;"><h2>CHARGE</h2></div>
-      <div style="text-align:right;margin-right: 120px;">
-        <label for="cn">Total Amount</label>
-    <h3 name="cn">27.00</h3>
-</div>
-      <section class="table-section">
+      <div style="margin-top:15px;margin-left: 15px;"><h2>CHARGES</h2></div>
+      
+      
+      <section class="table-section" style="margin-top:20px">
         
         <table class="table" >
           <tr>
@@ -140,26 +291,44 @@
  <td><input value="   " class="table-input" /></td>
  
            </tr>
-           <tr >
+            
+             <tr  style="background-color:#d1d8f6" >
              <td style="text-align: right">To Collect</td>
               
-             <td><input value="  " class="table-input" /></td>
-             <td><input value="  " class="table-input" /></td>
+             <td></td>
+             <td></td>
               <td><input value="30.00" class="table-input" /></td>
              <td><input value="3.00" class="table-input" /></td>
   
             </tr>
         </table>
       </section>
+      <nav class="navbar1">
+    
+        <div class="navbar-options">
+          <div class="card">
+
+            <div class="container">
+              <label for="cn">Total Amount</label>
+              <h3 name="cn">27.00</h3>
+              
+            </div>
+            </div>  
+            <div class="card">
+
+              <div class="container">
+                <div >
+                  <label for="rf"><h4>RECEIVED FROM</h4></label>
+                 <input name="rf" type="text" style="height: 20px;width: auto;" placeholder="AATARSH">
+              </div>
+          
+                
+              </div>
+              </div> 
+        </div></nav>
       
-      <div style="margin-top:15px;margin-left: 15px;">
-        <label for="rf"><h2>RECIEVED FROM</h2></label><br>
-        <input name="rf" type="text"  style="width: 120px;height: 40px;margin-top: 0ch;" placeholder="TIM WEE HOCK">
-    </div>
-      <div style="text-align:right;margin-right: 120px;">
-      
-        <input  style="padding: 10px" type="button" value="Add More ">
-      </div>
+
+        
         <section class="table-section">
         
         <table class="table" >
@@ -233,18 +402,34 @@
              <td><input value="  " class="table-input" /></td>
              <td><input value="20.00" class="table-input" /></td>
            </tr>
-           <tr >
+           <tr  style="background-color: #d1d8f6">
             
-             <td><input value="  " class="table-input" /></td>
-             <td><input value="  " class="table-input" /></td>
-             <td><input value="  " class="table-input" /></td>
-             <td><input value="  " class="table-input" /></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
               <td>Total</td>
              <td><input value="27.00" class="table-input" /></td>
   
             </tr>
+            
+      </div>
+      
         </table>
+        
       </section>
+      <br>
+      <input type="button" value="Add more"  style="
+       
+        
+        gap: 12px;
+        padding: 5px 12px;
+        background-color: #4263eb;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 89rem;">
+        
       <p style="font-weight: bolder;">Note:Check <a href="#">www.IATA.org</a> for updated rates</p>
      
      

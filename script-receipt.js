@@ -2,7 +2,7 @@ const data=[{
     ReceivedFrom : "RICHLAND LOGISTICS SVCS PTE LTD",
     AWBNumber: "816-11001015",
 
-CUSTOMERDETAILS:" 1A1 GOODBOYS TEAM-ACT-CNE-SHP BEACH GRAND AND SPA HULHUMALE,MLE,MV.12011",
+CUSTOMERDETAILS:" 1A1 GOODBOYS TEAM-ACT-CNE-SHP <br>BEACH GRAND AND SPA<br> HULHUMALE,MLE,MV.12011",
 TIN: "98765ABCD12",
 
 CollectionTime : "17AUG2016",
@@ -42,28 +42,28 @@ ChargeItems:[
         Amount:"900.00"
     },
     {
-        title1:"FWB CREATION SERVICE FEE",
-        Quantity1:"1.0",
-        Duration1:" ",
-        Amount1:"18.00"
+        title:"FWB CREATION SERVICE FEE",
+        Quantity:"1.0",
+        Duration:" ",
+        Amount:"18.00"
     },
     {
-        title2:"DANGEROUS GOODS HANDLING FEE",
-        Quantity2:"1.0",
-        Duration2:" ",
-        Amount2:"100.00"
+        title:"DANGEROUS GOODS HANDLING FEE",
+        Quantity:"1.0",
+        Duration:" ",
+        Amount:"100.00"
     },
     {
-        title3:"FORK LIFT CHARGES",
-        Quantity3:"1.0",
-        Duration3:"3",
-        Amount3:"360.00"
+        title:"FORK LIFT CHARGES",
+        Quantity:"1.0",
+        Duration:"3",
+        Amount:"360.00"
     },
     {
-        title4:"TOTAL",
-        Quantity4:" ",
-        Duration4:" ",
-        Amount4:"1378.00"
+        title:"TOTAL",
+        Quantity:" ",
+        Duration:" ",
+        Amount:"1378.00"
     },
     
 
@@ -77,10 +77,10 @@ WaiveDetail:[
         Amount:"120.00"
     },
     {
-        title1:"TOTAL",
-        Quantity1:" ",
-        Duration1:" ",
-        Amount1:"120.00"
+        title:"TOTAL",
+        Quantity:" ",
+        Duration:" ",
+        Amount:"120.00"
     },
 
 
@@ -96,38 +96,54 @@ Total:[
 }
 ]
 const tabelContentTemlate = (el) => `
-<header>Cargo Official Receipt <img src="Ata.jpg" alt="KMA.jpg" width="10%" style="margin-left: 80%;"></header>
-        
-<div class="left">
-    <p>Received From : ${el.ReceivedFrom}</p>
-    <p>AWB Number: ${el.AWBNumber}</p>
+<header><img src="Ata.jpg" alt="KMA.jpg" width="10%" "><h2 style="margin-left:5px">Cargo Official Receipt</h2> </header>
+     
+<div style="margin-left:10px">
+<div class="title">
+    <p><h4><b>Received From</b></h4></p><p>${el.ReceivedFrom}</p></div>
+    <div class="title">
+    <p><h4><b>AWB Number</b></h4></p><p>${el.AWBNumber}</p></div>
+    <div class="title">
+    <P><h4><b>FLT/DATE</b></h4></p><p>${el.FLTDATE}</P></div>
+    <div class="title">
+    <p><h4><b>ACT PCS/TOT PCS</b></h4> </p><p>${el.ACTPCSTOTPCS}</p></div>
+    <div class="title">
+    <P ><h4><b>CUSTOMER DETAILS</b></h4></p><p style="line-height:normal;">${el.CUSTOMERDETAILS}</p></div>
+    <div class="title">
+<p><h4><b>TIN</b></h4></p><p>${el.TIN}
+</P></div>
+<div class="title">
+<p><h4><b>Collection Time </b></h4></p><p>${el.CollectionTime}</p></div>
+<div class="title">
+    <P><h4><b>SHC</b></h4></p><p>${el.SHC}</P></div>
+    <div class="title">
+    <P><h4><b>CHARGEABLE WT</b></h4></p><p>${el.CHARGEABLEWT}</P></div>
+    <div class="title">
+    <P><h4><b>RCVD WT/TOT WT</b></h4></p><p>${el.RCVDWTTOTWT}</P></div>
+    <div class="title">
+    <P><h4><b>NATURE OF GOODS</b></h4></p><p>${el.NATUREOFGOODS}</P></div>
+    <div class="title">
+    <p><h4><b>Terminal </b></h4></p><p>${el.Terminal}</p></div>
+    <div class="title">
+    <p><h4><b>Receipt Number </b></h4> </p><p>${el.ReceiptNumber} </p></div>
+    <div class="title">
+    <p><h4><b>Receipt Date</b></h4> </p><p>${el.ReceiptDate}</p></div>
+    <div class="title">
+    <P><h4><b>CURRENCY</b></h4></p><p>${el.CURRENCY}</P></div>
+    <div class="title">
+    <P><h4><b>BILLING PARTY CODE</b></h4></p><p>${el.BILLINGPARTYCODE} </P></div>
+    <div class="title">
+    <P><h4><b>PAYMENT METHOD</b></h4></p><p>${el.PAYMENTMETHOD}</P></div>
+    <div class="title">
+    <P><h4><b>ISSUED BY </b></h4> </p><p>${el.ISSUEDBY}</P></div>
    
-    <P>CUSTOMER DETAILS:${el.CUSTOMERDETAILS}</p>
-<p>TIN: ${el.TIN}
-</P>
-<p>Collection Time :${el.CollectionTime}</p>
-    <P>SHC:${el.SHC}</P>
-    <P>CHARGEABLE WT:${el.CHARGEABLEWT}</P>
-    <P>RCVD WT/TOT WT:${el.RCVDWTTOTWT}</P>
-    <P>NATURE OF GOODS:${el.NATUREOFGOODS}</P>
-    <p>Terminal :${el.Terminal}</p>
-    <p></p>
-</div>
-<div class="right">
-    <p>Receipt Number : ${el.ReceiptNumber} </p>
-    <p>Receipt Date: ${el.ReceiptDate}</p>
-    <P>CURRENCY:${el.CURRENCY}</P>
-    <P>BILLING PARTY CODE:${el.BILLINGPARTYCODE} </P>
-    <P>PAYMENT METHOD:${el.PAYMENTMETHOD}</P>
-    <P>ISSUED BY : ${el.ISSUEDBY}</P>
-    <P>MAWB :${el.MAWB}</P>
-    <P>FLT/DATE:${el.FLTDATE}</P>
-    <p>ACT PCS/TOT PCS: ${el.ACTPCSTOTPCS}</p>
+   
+
     
 </div>
-
+</div>
 <div >
-<p>Charge Detail</p>
+<p><header>Charge Detail</header></p>
 <table>
     <tr class="ch">
         <th class="ch">Charge Items</th>
@@ -135,40 +151,22 @@ const tabelContentTemlate = (el) => `
         <th class="a">Duration</th>
         <th class="a">Amount</th>
     </tr>
-    <tr>
-        <td>${el.ChargeItems.title}</td>
-        <td>${el.ChargeItems.Quantity}</td>
-        <td>${el.ChargeItems.Duration}</td>
-        <td>${el.ChargeItems.Amount}</td>
+
+    ${
+        el.ChargeItems.map(el => 
+            `
+            <tr>
+        <td>${el.title}</td>
+        <td>${el.Quantity}</td>
+        <td>${el.Duration}</td>
+        <td>${el.Amount}</td>
     </tr>
-    <tr>
-    <td>${el.ChargeItems.title1}</td>
-    <td>${el.ChargeItems.Quantity1}</td>
-    <td>${el.ChargeItems.Duration1}</td>
-    <td>${el.ChargeItems.Amount1}</td>
-    </tr>
-    <tr>
-    <td>${el.ChargeItems.title2}</td>
-    <td>${el.ChargeItems.Quantity2}</td>
-    <td>${el.ChargeItems.Duration2}</td>
-    <td>${el.ChargeItems.Amount2}</td>
-    </tr>
-    <tr>
-    <td>${el.ChargeItems.title3}</td>
-    <td>${el.ChargeItems.Quantity3}</td>
-    <td>${el.ChargeItems.Duration3}</td>
-    <td>${el.ChargeItems.Amount3}</td>
-    </tr>
-    <tr>
-    <td>${el.ChargeItems.title4}</td>
-    <td>${el.ChargeItems.Quantity4}</td>
-    <td>${el.ChargeItems.Duration4}</td>
-    <td>${el.ChargeItems.Amount4}</td>
-    </tr>
+    `)
+    }
 </table>
 </div>
 <div>
-<p>Waive Detail</p>
+<p><header>Waive Detail</header></p>
 <table>
     <tr >
         <th class="ch1">Service Type</th>
@@ -177,37 +175,49 @@ const tabelContentTemlate = (el) => `
         <th class="a">Amount</th>
     </tr>
     <tr>
-    <td>${el.WaiveDetail.title}</td>
-    <td>${el.WaiveDetail.Quantity4}</td>
-    <td>${el.WaiveDetail.Duration4}</td>
-    <td>${el.WaiveDetail.Amount4}</td>
+    ${
+        el.WaiveDetail.map(el => 
+            `
+            <tr>
+        <td>${el.title}</td>
+        <td>${el.Quantity}</td>
+        <td>${el.Duration}</td>
+        <td>${el.Amount}</td>
     </tr>
-    <tr>
-    <td>${el.WaiveDetail.title1}</td>
-    <td>${el.WaiveDetail.Quantity1}</td>
-    <td>${el.WaiveDetail.Duration1}</td>
-    <td>${el.WaiveDetail.Amount1}</td>
-    </tr>
+    `)
+    }
 </table>
 </div>
 <div>
-<p>Waive Detail</p>
+<p><header>Total</header></p>
 <table>
-    <tr >
-       <td>Total</td>
-       <td>${el.Total.total}</td>
-    </tr>
-    <tr>
-        <td>GST(6%)</td>
-        <td>${el.Total.GST}</td>
+<tr >
+        <th class="TOTAL">Total</th>
+        <th class="a">GST(6%)</th>
+        <th class="a">GRANDTOTAL</th>
        
     </tr>
-    <tr>
-        <td>GRAND TOTAL</td>
-        <td>${el.Total.GRANDTOTAL}</td>
-        
+<tr>
+    ${
+        el.Total.map(el => 
+            `
+            <tr>
+        <td>${el.total}</td>
+        <td>${el.GST}</td>
+        <td>${el.GRANDTOTAL}</td>
+       
     </tr>
+    `)
+    }
+    
 </table>
 </div>
 
+
+
 `
+
+console.log(tabelContentTemlate(data[0]));
+
+document.getElementById("tablef").innerHTML=tabelContentTemlate(data[0]);
+
