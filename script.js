@@ -1,58 +1,58 @@
 const data = {
-    AWBNumber: "618-4274283",
+    AWBNumber: "618-42742836",
     CustomerName: "Aatarsh",
     SHC: "VAL EAP EAW",
-    HandlingArea: "AFT1",
+    HandlingArea: "Import/Cold Storage 1",
     ExportImport: "Import",
     ChargeAdvice: [{
-            title: " WeightVerification: ",
+            title: " WeightVerification ",
             Quantity: 1000.0,
-            Duration: null,
+            Duration: " ",
             Amount: 3.0,
             CollectionMechanism: ["BILL", "COLLECT"],
             paid: false,
-            recieptNumber: null,
-            waivedAmount: null,
+            recieptNumber:" ",
+            waivedAmount: " ",
         },
         {
             title: " RcarScreeningFee",
             Quantity: 1000.0,
-            Duration: null,
+            Duration: " ",
             Amount: 90.0,
             CollectionMechanism: ["BILL", "COLLECT"],
             paid: false,
-            recieptNumber: null,
-            waivedAmount: null,
+            recieptNumber: " ",
+            waivedAmount: " ",
         },
         {
             title: " FwbCreationServiceFee",
             Quantity: 1.0,
-            Duration: null,
+            Duration: " ",
             Amount: 18.0,
             CollectionMechanism: "Collect",
             paid: false,
-            recieptNumber: null,
-            waivedAmount: null,
+            recieptNumber: " ",
+            waivedAmount: " ",
         },
         {
             title: "DangerousGoodsHandlingFee:",
             Quantity: 10.0,
-            Duration: null,
-            Amount: 100.0,
+            Duration: " ",
+            Amount: " ",
             CollectionMechanism: "Collect",
             paid: true,
             recieptNumber: "100-09102917",
-            waivedAmount: null,
+            waivedAmount: " ",
         },
         {
             title: "ForkLiftCharges:",
-            Quantity: null,
+            Quantity: " ",
             Duration: 3,
             Amount: 360.0,
             CollectionMechanism: "Collect",
             paid: true,
             recieptNumber: "100-09102917",
-            waivedAmount: null,
+            waivedAmount: " ",
         },
     ],
 };
@@ -101,7 +101,6 @@ const tableBodyTemplate = (el) => `
 <td><input value="${el.paid}" class="table-input" /></td>
 <td><input value="${el.recieptNumber}" class="table-input" /></td>
 <td><input value="${el.waivedAmount}" class="table-input" /></td>
-
 </tr>`;
 const tabelContentTemlate = (el) => `
 <div style="margin-top:15px;margin-left:15px"><h2>CHARGE ADVICE</h2></div>
@@ -112,47 +111,108 @@ const tabelContentTemlate = (el) => `
 
   </thead>
   <tbody class="table-body">
-  </tbody>
-  <tfoot class="table-foot">
+
+</tbody>
+ 
+
+
+</section>
+</table>
+
+<br>
+<tfoot class="table-foot">
   </tfoot>
     
   </table>
-</section><br><br>
+</section>
 
  
 <div class="navbar2" style="margin-right:75px;text-align:right;">
-  <input style="margin-right:15px;padding: 10px;" type="submit" value="Waive Charge">
-  <input style="margin-right:15px;padding: 10px;" type="button" value="Make Payment">
-  <input style="margin-right:15px;padding: 10px;" type="button" class="add-button" value="Add Service ">
+<input type="button" value="Waive Charge" style="
+       
+        
+gap: 12px;
+
+background-color: #4263eb;
+color: white;
+border-radius: 5px;
+cursor: pointer;
+width:100px;
+height:40px" 
+margin-right:15px;padding: 10px;>
+
+<input type="button" value="Add Services" style="
+       
+        
+gap: 12px;
+
+background-color: #4263eb;
+color: white;
+border-radius: 5px;
+cursor: pointer;
+width:100px;
+height:40px" 
+margin-right:15px;padding: 10px; class="add-button">
+<input type="button" value="Make Payment" style="
+       
+        
+gap: 12px;
+
+background-color: #4263eb;
+color: white;
+border-radius: 5px;
+cursor: pointer;
+width:100px;
+height:40px" 
+margin-right:15px;padding: 10px; >
+  
  </div>
 </div>
 `;
 const customerInfoTemplate = (el) =>
     `<nav class="navbar1">
 
-<div class="navbar-options">
-<div>
+<div class="navbar-options" >
+
+<div class="card">
+
+<div class="container">
 <label for="cn" style="font-size:12px" >Customer Name</label>
-<h2 name="cn" >${el.CustomerName}</h2> 
+<h4 name="cn" >${el.CustomerName}</h4> 
 </div>
-<br>
-<div>
+</div>     
+<div class="card">
+
+<div class="container">
 <label for="cn" style="font-size:12px" >AWB Number</label>
-<h2 name="cn" >${el.AWBNumber}</h2> 
-</div><br>
-<div>
-<label for="cn" style="font-size:12px" >SHC</label>
-<h2 name="cn" >${el.SHC}</h2> 
-</div><br>
-<div>
-<label for="cn" style="font-size:12px" >Zone/Import/Export</label>
-<h2 name="cn" >${el.HandlingArea}</h2> 
-</div><br>
-<div>
-<label for="cn" style="font-size:12px" >Export/Import</label>
-<h2 name="cn" >${el.ExportImport}</h2> 
+<h4 name="cn" >${el.AWBNumber}</h4> 
+</div>
+</div>                
+<div class="card">
+
+<div class="container">
+<label for="cn" style="font-size:12px" >Special Handling Code</label>
+<h4 name="cn" >${el.SHC}</h4> 
+</div>
+</div> 
+<div class="card">
+
+<div class="container">
+<label for="cn" style="font-size:12px" >Zone/Area</label>
+<h4 name="cn" >${el.HandlingArea}</h4> 
+</div>
+</div> 
+<div class="card">
+<label for="cn" style="font-size:12px" >Export/Import Shipment</label>
+<h4 name="cn" >${el.ExportImport}</h4> 
+
+
+</div>
+</div> 
 </div>
 </div>
+
+
 
 </nav>`;
 const addAditional = (el) => ` <tr>
