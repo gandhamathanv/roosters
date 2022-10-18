@@ -257,12 +257,12 @@ async function getUsers() {
                 <div class="tooltip"><i id="save-button-${
                   el.id
                 }" class="fa-regular fa-floppy-disk save-button" style="display:none"></i>
-                <span class="tooltiptext">Save</span>
+                <span class="tooltiptext tooltip-left">Save</span>
               </div>
               <div class="tooltip"><i id="${
                 el.id
               }"  class="fa-solid fa-trash delete-button"></i>
-              <span class="tooltiptext">Delete</span>
+              <span class="tooltiptext tooltip-left">Delete</span>
             </div>
 </div>
 </td>
