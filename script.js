@@ -10,7 +10,7 @@ const messageFlight = document.querySelector(".message-flight");
 const FlightScheduleData = document.querySelector(".fDate");
 const FlightRecieveData = document.querySelector(".rfDate");
 const FlightRecieveToData = document.querySelector(".rtDate");
-
+console.log(FlightRecieveData);
 // TEMPLATES
 
 const template = (el) => `
@@ -28,126 +28,151 @@ const template = (el) => `
 `;
 // DATA CONTAINER
 
-const data = [{
-        messageType: "SSM",
-        messageHeader: "20SEP000111E001",
-        copyNumber: 1,
-        recivedDate: "20-09-2019 18:14",
-        messageFromAddress: "HDQFWX",
-        read: "",
-        rejectCode: "",
-        message: "lorem",
-    },
-    {
-        messageType: "SSM",
-        messageHeader: "20SEP000111E001",
-        copyNumber: 1,
-        recivedDate: "20-09-2019 18:14",
-        messageFromAddress: "HDQFWX",
-        read: "",
-        rejectCode: "",
-        message: "lorem",
-    },
-    {
-        messageType: "SSM",
-        messageHeader: "20SEP000111E001",
-        copyNumber: 1,
-        recivedDate: "20-09-2019 18:14",
-        messageFromAddress: "HDQFWX",
-        read: "",
-        rejectCode: "",
-        message: "lorem",
-    },
-    {
-        messageType: "SSM",
-        messageHeader: "20SEP000111E001",
-        copyNumber: 1,
-        recivedDate: "20-09-2019 18:14",
-        messageFromAddress: "HDQFWX",
-        read: "",
-        rejectCode: "",
-        message: "lorem",
-    },
-    {
-        messageType: "SSM",
-        messageHeader: "20SEP000111E001",
-        copyNumber: 1,
-        recivedDate: "20-09-2019 18:14",
-        messageFromAddress: "HDQFWX",
-        read: "",
-        rejectCode: "",
-        message: "lorem",
-    },
+const data = [
+  {
+    messageType: "SSM",
+    messageHeader: "20SEP000111E001",
+    copyNumber: 1,
+    recivedDate: "20-09-2019 18:14",
+    messageFromAddress: "HDQFWX",
+    read: "",
+    rejectCode: "",
+    message: "lorem",
+  },
+  {
+    messageType: "SSM",
+    messageHeader: "20SEP000111E002",
+    copyNumber: 1,
+    recivedDate: "21-09-2019 18:14",
+    messageFromAddress: "HDQFWX",
+    read: "",
+    rejectCode: "",
+    message: "lorem",
+  },
+  {
+    messageType: "SSM",
+    messageHeader: "20SEP000111E003",
+    copyNumber: 1,
+    recivedDate: "23-09-2019 18:14",
+    messageFromAddress: "HDQFWX",
+    read: "",
+    rejectCode: "",
+    message: "lorem",
+  },
+  {
+    messageType: "SSM",
+    messageHeader: "20SEP000111E004",
+    copyNumber: 1,
+    recivedDate: "28-09-2019 18:14",
+    messageFromAddress: "HDQFWX",
+    read: "",
+    rejectCode: "",
+    message: "lorem",
+  },
+  {
+    messageType: "SSM",
+    messageHeader: "20SEP000111E005",
+    copyNumber: 1,
+    recivedDate: "29-09-2019 18:14",
+    messageFromAddress: "HDQFWX",
+    read: "",
+    rejectCode: "",
+    message: "lorem",
+  },
 ];
 // UPDATE UI
 const UpdateUI = (data) => {
-    data.forEach((el) => {
-        tableContent.innerHTML += template(el);
-    });
+  tableContent.innerHTML = "";
+  data.forEach((el) => {
+    tableContent.innerHTML += template(el);
+  });
 };
 
 // FILTER FUNCTION
 const filterData = (data, search) => {
-    console.log(search.messageType, search.messageStatus);
-    if (search.messageType != "All") {
-        console.log("FILTER MESSAGE TYPE", search.messageType);
-        data = data.filter((el) => {
-            return el.messageType == search.messageType;
-        });
-    }
-    if (searchName != "") {
-        data = data.filter((el) => {
-            console.log(searchName, el.customerName);
-            return el.waiveBy.toLowerCase().startsWith(searchName.toLowerCase());
-        });
-    }
-    if (searchFrom != "" && searchTo != "") {
-        searchFrom = new Date(searchFrom);
-        searchTo = new Date(searchTo);
-        data = data.filter((el) => {
-            const waiveDate = new Date(el.waiveDate);
-            const approveDate = new Date(el.approveDate);
-            return (
-                (waiveDate >= searchFrom && waiveDate <= searchTo) ||
-                (approveDate >= searchFrom && approveDate <= searchTo)
-            );
-        });
-    } else if (searchFrom != "" && searchTo == "") {
-        searchFrom = new Date(searchFrom);
-        data = data.filter((el) => {
-            const waiveDate = new Date(el.waiveDate);
-            const approveDate = new Date(el.approveDate);
-            return waiveDate >= searchFrom || approveDate >= searchFrom;
-        });
-    } else if (searchFrom == "" && searchTo != "") {
-        searchTo = new Date(searchTo);
-        data = data.filter((el) => {
-            const waiveDate = new Date(el.waiveDate);
-            const approveDate = new Date(el.approveDate);
-            return waiveDate <= searchTo || approveDate <= searchTo;
-        });
-    }
+  console.log("jjj", search, search.messageStatus, search.messageName);
+  if (search.messageType != "All") {
+    console.log("FILTER MESSAGE TYPE", search.messageType);
+    data = data.filter((el) => {
+      return el.messageType == search.messageType;
+    });
+  }
+  if (search["messageHeader"] != "") {
+    data = data.filter((el) => {
+      console.log(search.messageName, el.messageType);
+      return el.messageHeader
+        .toLowerCase()
+        .startsWith(search["messageHeader"].toLowerCase());
+    });
+  }
+  if (
+    search["FlightRecieveData"] != "" &&
+    search["FlightRecieveToData"] != ""
+  ) {
+    search["FlightRecieveData"] = new Date(search["FlightRecieveData"]);
+    console.log("sdvdsd", search["FlightRecieveData"]);
+    search["FlightRecieveToData"] = new Date(search["FlightRecieveToData"]);
+    data = data.filter((el) => {
+      console.log(
+        "sdvdsd",
+        search["FlightRecieveData"],
+        changeFormate(el.recivedDate),
+        new Date(changeFormate(el.recivedDate))
+      );
+      const waiveDate = new Date(changeFormate(el.recivedDate));
+      return (
+        waiveDate >= search["FlightRecieveData"] &&
+        waiveDate <= search["FlightRecieveToData"]
+      );
+    });
+  } else if (
+    search["FlightRecieveData"] != "" &&
+    search["FlightRecieveToData"] == ""
+  ) {
+    search["FlightRecieveData"] = new Date(search["FlightRecieveData"]);
+    data = data.filter((el) => {
+      const waiveDate = new Date(changeFormate(el.recivedDate));
+      return waiveDate >= search["FlightRecieveData"];
+    });
+  } else if (
+    search["FlightRecieveData"] == "" &&
+    search["FlightRecieveToData"] != ""
+  ) {
+    search["FlightRecieveToData"] = new Date(search["FlightRecieveToData"]);
+    data = data.filter((el) => {
+      const waiveDate = new Date(changeFormate(el.recivedDate));
+      return waiveDate <= search["FlightRecieveToData"];
+    });
+  }
 
-    console.log(data);
-    return data;
+  console.log(data);
+  UpdateUI(data);
+  return data;
 };
 
 // SEARCH MODULE
 
 const searchData = () => {
-    console.log("search");
-    const search = {
-        messageType: messageType.value,
-        messageName: messageName.value,
-        messageStatus: messageStatus.value,
-        messageHeader: messageHeader.value,
-        messageText: messageText.value,
-        messageFlight: messageFlight.value,
-        FlightScheduleData: FlightScheduleData.value,
-        FlightRecieveData: FlightRecieveData.value,
-        FlightRecieveToData: FlightRecieveToData.value,
-    };
-    const result = filterData(data, search);
-    console.log(result);
+  console.log("search");
+  const search = {
+    messageType: messageType.value,
+    messageName: messageName.value,
+    messageStatus: messageStatus.value,
+    messageHeader: messageHeader.value,
+    messageText: messageText.value,
+    messageFlight: messageFlight.value,
+    FlightScheduleData: FlightScheduleData.value,
+    FlightRecieveData: FlightRecieveData.value,
+    FlightRecieveToData: FlightRecieveToData.value,
+  };
+  const result = filterData(data, search);
+  console.log(result);
 };
 UpdateUI(data);
+
+function changeFormate(date) {
+  var datearray = date.split("-");
+  var newdate = datearray[1] + "-" + datearray[0] + "-" + datearray[2];
+  console.log(newdate);
+  return newdate;
+}
