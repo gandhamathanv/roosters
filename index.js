@@ -208,7 +208,8 @@ const userVariables = {
 };
 
 async function getUsers() {
-  let url = "http://127.0.0.1:3005/api/v1/ListOfServices/";
+  let url =
+    "http://127.0.0.1:3005/api/v1/ListOfServices/?Servicerequested='tow'";
   let res = await fetch(url);
   dataContent = await res.json();
   dataContent = dataContent.data.data;
@@ -387,13 +388,45 @@ async function getUsers() {
   };
 
   // FILTER FUNCTION
-  const filterData = (data) => {
+  const filterData = async (data) => {
     const searchNumber = AWBNumber.value;
     const searchName = customerName.value;
     const searchService = ServiceName.value;
     const searchULD = ULDNumber.value;
     const searchflight = Flight.value;
-    const searchDate = flightDate.value;
+    const searchDate = changeFormate(flightDate.value);
+
+    let url = "http://127.0.0.1:3005/api/v1/ListOfServices/?";
+    if (searchService != "") {
+      url += `ServiceRequested=${searchService}`;
+    }
+
+    if (searchName != "") {
+      url += `&Customer=${searchName}`;
+    }
+
+    if (searchNumber != "") {
+      url += `&AWBNumber=${searchNumber}`;
+    }
+    if (searchULD != "") {
+      url += `&ULDNumber=${searchULD}`;
+    }
+
+    if (searchflight != "") {
+      url += `&Flight=${searchflight}`;
+    }
+
+    if (searchDate != "NaN") {
+      url += `&FlightDate=${searchDate}`;
+    }
+
+    let res = await fetch(url);
+    dataContent = await res.json();
+    dataContent = dataContent.data.data;
+    console.log("nnnjj", dataContent);
+
+    console.log(url);
+
     if (searchNumber != "") {
       data = data.filter((el) => {
         return el.AWBNumber.startsWith(searchNumber);
@@ -423,19 +456,20 @@ async function getUsers() {
         );
       });
     }
-    if (searchDate != "") {
-      let FlightD = "";
-      data = data.filter((el) => {
-        if (el.FlightDate) {
-          FlightD = el.FlightDate.split(" ");
-          console.log(FlightD);
-          FlightD = FlightD[1];
-        } else {
-          FlightD = "";
-        }
-        return FlightD.startsWith(searchDate.toLowerCase());
-      });
-    }
+    // if (searchDate != "") {
+    //   let FlightD = "";
+    //   data = data.filter((el) => {
+    //     if (el.FlightDate) {
+    //       FlightD = el.FlightDate.split(" ");
+    //       console.log(FlightD);
+    //       FlightD = FlightD[1];
+    //     } else {
+    //       FlightD = "";
+    //     }
+    //     console.log(FlightD, searchDate, FlightD.startsWith(searchDate));
+    //     return FlightD.startsWith(searchDate);
+    //   });
+    // }
     console.log(data);
     return data;
   };
