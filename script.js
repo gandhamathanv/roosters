@@ -20,9 +20,8 @@ const template = (el) => `
 <td><input value="${el.copyNumber}" class="table-input" /></td>
 <td><input value="${el.recivedDate}" class="table-input"/></td>
 <td><input value="${el.messageFromAddress}" class="table-input"/></td>
-<td><input value="${el.read}" class="table-input" /></td>
 <td><input value="${el.rejectCode}" class="table-input" /></td>
-<td><a href="#">
+<td><a href="view.html">
   <i class='far fa-file-alt' style='font-size:24px'></i></a></td>
 </tr>
 `;
@@ -35,8 +34,7 @@ const data = [
     copyNumber: 1,
     recivedDate: "20-09-2019 18:14",
     messageFromAddress: "HDQFWX",
-    read: "",
-    rejectCode: "",
+     rejectCode: "",
     message: "lorem",
   },
   {
@@ -45,7 +43,6 @@ const data = [
     copyNumber: 1,
     recivedDate: "21-09-2019 18:14",
     messageFromAddress: "HDQFWX",
-    read: "",
     rejectCode: "",
     message: "lorem",
   },
@@ -55,7 +52,6 @@ const data = [
     copyNumber: 1,
     recivedDate: "23-09-2019 18:14",
     messageFromAddress: "HDQFWX",
-    read: "",
     rejectCode: "",
     message: "lorem",
   },
@@ -65,7 +61,6 @@ const data = [
     copyNumber: 1,
     recivedDate: "28-09-2019 18:14",
     messageFromAddress: "HDQFWX",
-    read: "",
     rejectCode: "",
     message: "lorem",
   },
@@ -75,8 +70,7 @@ const data = [
     copyNumber: 1,
     recivedDate: "29-09-2019 18:14",
     messageFromAddress: "HDQFWX",
-    read: "",
-    rejectCode: "",
+     rejectCode: "",
     message: "lorem",
   },
 ];
