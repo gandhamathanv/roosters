@@ -154,3 +154,8 @@ request.onload = () => {
     console.log(`error ${request.status} ${request.statusText}`);
   }
 };
+
+const last = ` <td>Total</td>
+<td><input value="27.00" class="table-input" /></td>
+
+</tr>`;
