@@ -588,7 +588,58 @@ th {
 </p>
     <section class="main-section">
       <section class="section-1">
+
+        
         <div>
+
+          <div style="display:flex ; gap:20px;">
+
+            <div>
+            <label class="custom-field one">
+        <input type="date" id="dateFrom" placeholder=" " />
+        <span class="placeholder">Requested Date From</span>
+      </label>
+            <label class="custom-field one">
+        <input type="time" id="timeFrom" placeholder=" " />
+        <span class="placeholder">Requested Time From</span>
+      </label>
+    </div>
+    <div>
+            <label class="custom-field one">
+        <input type="date" id="dateTo" placeholder=" " />
+        <span class="placeholder">Requested Date To</span>
+      </label>
+            <label class="custom-field one">
+        <input type="time" id="timeTo" placeholder=" " />
+        <span class="placeholder">Requested Time To</span>
+      </label>
+    </div>
+    <label class="custom-field one">
+      <select
+              class="form-contol"
+              id="status"
+              style="
+                padding: 13px;
+                font-size: inherit;
+                border: none;
+                width: 100px;
+                min-width: 200px;
+                border: 2px solid black;
+               
+                border-radius: 2px;
+              "
+            >
+              <option value="Status">Choose Status</option>
+              <option value="Pending">Pending</option>
+              <option value="Completed">Completed</option>
+              <option value="Started">Started</option>
+              <option value="Rejected">Rejected</option>
+            </select>
+      <!-- <span class="placeholder">Status</span> -->
+    </label>
+    
+
+        </div>
           <label class="custom-field one">
             <input type="text" id="serviceName" placeholder=" " />
             <span class="placeholder">Service Name</span>
@@ -613,12 +664,12 @@ th {
             <input type="date" id="Date" placeholder=" " />
             <span class="placeholder">Date</span>
           </label>
-          
-          <div class="tooltip"><span href="*" class="button-primary button-add search-button "
-            >Search</span
-          >
+
+          <div class="tooltip"><span href="*" class="button-primary button-add search-button" "><i class="fa-solid fa-search icon"></i>Search</span>
             <span class="tooltiptext">Search</span>
           </div>
+          
+         
         </div>
       </section>
       <br />

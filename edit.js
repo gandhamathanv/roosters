@@ -82,34 +82,7 @@ async function getOneService(id) {
 getOneService(id);
 
 function save_row(id) {
-  // document.getElementById("cancel").removeEventListener("click", function () {
-  //   document.getElementById("edit").style.display = "none";
-  // });
-  // console.log("saveindex", index);
-  // document.getElementById("edit-button-" + index).style.display = "inline";
-  // document.getElementById("save-button-" + index).style.display = "none";
-
-  // const service = document.getElementById("service" + index);
-  // const chargeable = document.getElementById("chargeable" + index);
-  // const customer = document.getElementById("customer" + index);
-  // const awbnumber = document.getElementById("awbnumber" + index);
-  // const uldnumber = document.getElementById("uldnumber" + index);
-  // const flightdate = document.getElementById("flightdate" + index);
-  // const requesteddate = document.getElementById("requesteddate" + index);
-  // const remarks = document.getElementById("remarks" + index);
-  // const status = document.getElementById("status" + index);
-  // const reason = document.getElementById("reason" + index);
-  // const flightda = el.flightdate.split(" ");
-  // document.getElementById("service").value;
-  // // document.getElementById("chargeable").value = chargeableValue;
-  // document.getElementById("customer").value = customerValue;
-  // document.getElementById("awbnumber").value = awbnumberValue;
-  // document.getElementById("uldnumber").value = uldnumberValue;
-  // document.getElementById("flight").value = flightda[0];
-  // document.getElementById("flightdate").value = flightda[1];
-  // document.getElementById("requesteddate").value = requesteddateValue;
-  // document.getElementById("remarks").value = remarksValue;
-  // document.getElementById("reason").value = reasonValue;
+  
   if (id == null) {
     const serviceValue = document.getElementById("service").value;
     const chargeableValue = "Y";
@@ -167,27 +140,20 @@ function save_row(id) {
         return setError("Please provide Uld Number in correct format");
       }
     }
+async function leng(){
+    let url = "http://127.0.0.1:3005/api/v1/ListOfServices/";
+  let res = await fetch(url);
+  dataContent = await res.json();
+  dataContent = dataContent.data.data;
+  console.log(dataContent);
 
-    // service.parentNode.innerHTML = serviceValue
-    // console.log(service.parentNode);
-    // console.log(flightDateValue);
-    // console.log(serviceValue,chargeableValue,customerValue);
-    // service.value = serviceValue;
-    // chargeable.value = chargeableValue;
-    // customer.value = customerValue;
-    // awbnumber.value = awbnumberValue;
-    // uldnumber.value = uldnumberValue;
-    // flightdate.value = flightDateValue;
-    // requesteddate.value = requesteddateValue;
-    // remarks.value = remarksValue;
-    // status.value = statusValue;
-    // reason.value = reasonValue;
-    fetch("http://127.0.0.1:3005/api/v1/ListOfServices/", {
+  
+     fetch("http://127.0.0.1:3005/api/v1/ListOfServices/", {
+
       // Adding method type
       method: "POST",
-
-      // Adding body or contents to send
       body: JSON.stringify({
+        id: dataContent.length+1,
         Servicerequested: serviceValue,
         chargeable: chargeableValue,
         Customer: customerValue,
@@ -216,13 +182,18 @@ function save_row(id) {
     })
       // Converting to JSON
       .then((response) => {
-        window.open("./index.html");
+        // window.open("./index.html");
         response.json();
       })
 
       // Displaying results to console
       .then((json) => console.log(json));
-  } else {
+      console.log(dataContent.length);
+  }
+  leng();
+}
+  
+   else {
     const serviceValue = document.getElementById("service").value;
     const chargeableValue = "Y";
     const customerValue = document.getElementById("customer").value;
@@ -311,24 +282,9 @@ function save_row(id) {
       .then((response) => response.json())
       .then((json) => console.log(json));
   }
-
-
-
-  // const dataContent = {
-  //   Servicerequested: serviceValue,
-  //   chargeable: chargeableValue,
-  //   Customer: customerValue,
-  //   AWBNumber: awbnumberValue,
-  //   ULDNumber: uldnumberValue,
-  //   FlightDate: flightDateValue,
-  //   RequestedDate: requesteddateValue,
-  //   Remarks: remarksValue,
-  //   Status: statusValue,
-  //   ReasonforRejection: reasonValue,
-  // };
-  window.open("./index.html", "_self");
+  // window.open("./index.html", "_self");
   // setData(dataContent);
-  console.log("data", dataContent);
+
   // document.getElementById("edit").style.display = "none";
 }
 
@@ -383,14 +339,11 @@ function changeFormate(date) {
   }
 
   incomingDateChnge = incomingDay + month_names[incomingMonth] + incomingYear;
-  // console.log(incomingDateChnge);
   return incomingDateChnge;
 }
 
 function setError(errorMessage) {
   let errorContainer = document.querySelector(".error-container");
-  // var waiverLimitField = document.getElementById("new_country");
-  // var approvalLimitField = document.getElementById("new_age");
 
   errorContainer.style.display = "flex";
   let errorText = document.querySelector(".error-text");
@@ -398,7 +351,6 @@ function setError(errorMessage) {
 
   setTimeout(function () {
     errorContainer.style.display = "none";
-    // waiverLimitField.classList.remove("error-field");
-    // approvalLimitField.classList.remove("error-field");
+  
   }, 10000); //
 }
